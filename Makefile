@@ -15,3 +15,6 @@ init:
 	mkdir -p gh-pages
 	git branch gh-pages
 	git worktree add gh-pages gh-pages
+
+clean:
+	rm -rf book
