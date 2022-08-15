@@ -8,7 +8,7 @@ build:
 	cp -rf ../book/* .
 	git update-ref -d refs/heads/gh-pages
 	git add .
-	git commit -m "expected one commit"
+	git commit -m "expected: one commit"
 	git push --force -u origin gh-pages
 
 init:
