@@ -24,7 +24,7 @@ entrainant des perturbations physico-chimiques, puis chimiques pour
 aboutir enfin à un effet biologique. La séquence de ces phénomènes et
 représentée sur (cf. figure 1).
 
-![image](images/2022_08_14_a90853513f3cfee72250g-02)
+![image](../images/2022_08_14_a90853513f3cfee72250g-02.jpg)
 
 FIGURE 1. RESUME DES DIFFERENTS PHENOMENES APRES UNE IRRADIATION
 
@@ -45,7 +45,7 @@ une couche interne d'un atome, le réarrangement électronique qui
 s'ensuit entraîne l'émission soit d'un photon dit de " fluorescence`,
 soit d'un électron Auger).
 
-![image](images/2022_08_14_a90853513f3cfee72250g-03)
+![image](../images/2022_08_14_a90853513f3cfee72250g-03.jpg)
 
 FIGURE 2. PRINCIPALES INTERACTIONS PHOTON-MATIERE
 
@@ -113,7 +113,7 @@ s'agit de lésions de bases ou des sucres, de pontage, ou surtout de
 ruptures de chaines, simple ou double. La cellule possède des enzymes,
 telle que l'ADN polymérase, qui permettent sous certains conditions la
 réparation des chaines lésées (cf. figure 3).  
-![image](images/2022_08_14_a90853513f3cfee72250g-04)
+![image](../images/2022_08_14_a90853513f3cfee72250g-04.jpg)
 
 FIGURE 2. L'ADN PEUT ETRE LESE, SOIT DIRECTEMENT, SOIT INDIRECTEMENT PAR
 L'INTERMEDIAIRE DES PRODUIT DE LA RADIOLYSE DE L'EAU CELLULAIRE
@@ -160,7 +160,7 @@ d'une population après une irradiation unique est la résultante de la
 disparition des cellules tuées et la multiplication des cellules
 survivantes (cf. figure 4).
 
-![image](images/2022_08_14_a90853513f3cfee72250g-05)
+![image](../images/2022_08_14_a90853513f3cfee72250g-05.jpg)
 
 FIGURE 4. L'EVOLUTION D'UNE POPULATION APRES UNE IRRADIATION UNIQUE
 (TRAIT GRAS) EST LA RESULTANTE DE LA DISPARITION DES CELLULES TUEES
@@ -242,7 +242,7 @@ outre la capacité de restauration cellulaire est donc le facteur
 prédictif principal de la réponse des populations tissulaires aux
 radiations ionisantes (radiosensibilité intrinsèque).
 
-![image](images/2022_08_14_a90853513f3cfee72250g-07)
+![image](../images/2022_08_14_a90853513f3cfee72250g-07.jpg)
 
 FIGURE 5.COURBE DE SURVIE DES POPULATIONS CELLULAIRES SOUMISES A UNE
 IRRADIATION :
@@ -305,7 +305,7 @@ augmenter la dose totale pour maintenir l'effet turnicidé (cf. figure
 plupart des cas le fractionnement dit classique, c'est-à-dire 5 semaines
 de 2 Gy par semaine.
 
-![image](images/2022_08_14_a90853513f3cfee72250g-08)
+![image](../images/2022_08_14_a90853513f3cfee72250g-08.jpg)
 
 FIGURE 6.SURVIE DE POPULATIONS CELLULAIRES SOUMISES A UNE IRRADIATION
 FRACTIONNEE (2 GY PAR JOUR) :
@@ -341,7 +341,7 @@ hypoxique ; le mécanisme le plus souvent invoque l'immigration des
 cellules hypoxiques vers les zones bien oxygénées, qui est favorisée par
 l'élimination des cellules qui s'y trouvaient (cf. figure 8$)$.
 
-![image](images/2022_08_14_a90853513f3cfee72250g-09)
+![image](../images/2022_08_14_a90853513f3cfee72250g-09.jpg)
 
 FIGURE 7.CELLULE SONT D'AUTANT MIEUX OXYGENEES QU'ELLES SONT PROCHES DES
 CAPILLAIRES. L'ETALEMENT DANS LE TEMPS FAVORISE LA REOXYGENATION DES
