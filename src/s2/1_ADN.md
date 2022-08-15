@@ -1,18 +1,10 @@
-# REPONSE PRECOCE AUX RAYONNEMENTS IONISANTS 
-oo  
-aa  
-<!-- ```math -->
-<!-- \mathrm{mix}(x, y, r) = x^r * y^{1-r} -->
-<!-- ``` -->
-where $x^r$ denotes  
-zz  
 Les radiations ionisantes ont de nombreuses applications en médecine et
 en biologie. Nous s'intéressant ici à celles utilisés en thérapeutique ;
 la plus courante de celle-ci est la destruction cellulaire, relativement
 sélective, qui est à la base de la radiothérapie. Les radiations
 ionisant utilisable en radiothérapie ont une énergie généralement
 comprise entre quelques dizaines de $\mathrm{keV}$ et quelques
-dizaines de  $ \frac{1}{3} $ $\mathrm{MeV}$ et sont produites par deux mécanismes :
+dizaines de $\mathrm{MeV}$ et sont produites par deux mécanismes :
 
   - La désintégration des atomes radioactifs naturels ou artificiels :
     électron et surtout les photons gammas,
