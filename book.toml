@@ -16,12 +16,6 @@ no-section-label = true
 git-repository-url = "https://github.com/ayoubelmhamdi/TRPM"
 edit-url-template = "https://github.com/ayoubelmhamdi/TRPM/tree/master/{path}"
 
-[output.html.playground]
-copyable = false
+[output.katex]
 
-[output.html.print]
-enable = false
-
-[preprocessor.preproc]
-command = "preproc"
-renderer = ["html"]
+[preprocessor.katex]
