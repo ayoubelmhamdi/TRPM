@@ -1,6 +1,5 @@
   
-**<span style="color: NavyBlue">INSTRUMENTATION NUCLÉAIRES</span>**  
-
+# INSTRUMENTATION NUCLÉAIRES
 ------------------------------------------------------------------------
 
   
@@ -29,7 +28,7 @@ Les principales caractéristiques des rayonnement
 
 -   Sa charge : négative, nulle, positive.
 
--   Son énersgie : basse, intermédiaire, haute.
+-   Son énergie : basse, intermédiaire, haute.
 
 -   Sa période : courte, moyenne, longue.
 
@@ -61,16 +60,16 @@ photons et les neutrons.
 
 ### Les photons
 
-Appelèés aussi rayonnements électromagnétiques, les photons ont:
+Appelées aussi rayonnements électromagnétiques, les photons ont:
 
 -   Une masse nulle
 
 -   une énergie E proportionnelle à leur fréquence: $E=h\nu$
 
 -   $h$ est appelée constante de Planck :
-    $h = \num{6.626e-43}~\si{\joule\cdot\second\text{$^{\text{-1}}$}}$
+    $h = 6.626~10^{-43}~j s^{\text{-1}}$
 
--   $\nu$ est la fréquence en $[s^{\text{-1}}]$
+-   $\nu$ est la fréquence en $s^{\text{-1}}$
 
  
 
@@ -94,13 +93,13 @@ $$E_{γ}=h\nu=\frac{hc}{\lambda}~~\rightarrow~~E_{γ_{ev}}=\frac{1240}{\lambda_{
 ### Les neutrons
 
 Le neutron est un nucléon de charge électriquement nulle et de masse
-égale à 1838 fois la masse de l'électron ($m_{n}= \num{1.008665} u$).
+égale à 1838 fois la masse de l'électron ($m_{n}= 1.008665 u$).
 
 Rappel sur la probabilité d'interaction
 ---------------------------------------
 
 Elle est notée σ et s'exprime en ***barns***:
-$1~barn = \num{e-24}~cm^{2}$.  
+$1~barn = 10^{-24}~cm^{2}$.  
 La notion de section efficace est liée :
 
 -   au type de particules incidentes (photon, neutron, proton,
@@ -144,7 +143,7 @@ electrons, qui produit des réactions (γ, n) telles :
 $$^{9}B_{e}~(γ,n)~^{8}B_{e} \quad or\quad ^{2}H~(γ,n)~^{1}H$$ Des
 accélérateurs de deutons de 100 à 200 $keV$sont très utilisés pour
 constituer des générateurs de neutrons. Les réactions mise en jeu sont :
-$$d~(d,n)~^{3}H_{e}, \text{qui donne des neutrons de}~\num{2.6}~\text{$MeV$}$$
+$$d~(d,n)~^{3}H_{e}, \text{qui donne des neutrons de}~2.6~\text{$MeV$}$$
 $$^{3}H~(d,n)~^{4}H_{e}, \text{qui donne des neutrons de}~\num{14}~\text{$MeV$}$$
 Les neutrons de 14 $MeV$sont très utilisés pour produire des actions (n,
 p), (n, α) et (n, 2n).
@@ -189,7 +188,7 @@ Fonctionnement
 Réacteur nucléaire
 ------------------
 
--   les réacteurs sont des les sources neutronique tres intense.
+-   les réacteurs sont des les sources neutronique très intense.
 
 -   Les neutrons bombardant l'échantillon dans un réacteur nucléaire
     sont isotropes
@@ -217,7 +216,7 @@ exprimée en neutrons par seconde dans un angle solide de $4π$
 stéradians. Les sources sont de forme cylindrique sont en capsulées dans
 une enceinte anche. L'incertitude sur l'émission neutronique est estimée
 pour un intervalle de inn fiance de 99,7 % Les neutrons sont obtenus par
-réactions du type (,n) ou (y,n) sur des noyaux legers. Les tableaux
+réactions du type (,n) ou (y,n) sur des noyaux légers. Les tableaux
 ci-dessous indiquent les caractéristiques de ces sources. En plus de ces
 sources, on utilise le californium 252, de période 26 ans, qui produit
 des neutrons par fission spontanée : 1 ma de Cf donne 2,3.10 ns avec une
