@@ -2,20 +2,16 @@
 authors = ["Ayoub EL Mhamdi"]
 title = "TRPM"
 language = "fr"
-multilingual = false
-src = "src"
 
 [build]
 create-missing = false
 
 [output.html]
-theme = "theme"
-default-theme = "light"
+no-section-label = false
+default-theme = "navy"
 preferred-dark-theme = "navy"
-no-section-label = true
 git-repository-url = "https://github.com/ayoubelmhamdi/TRPM"
 edit-url-template = "https://github.com/ayoubelmhamdi/TRPM/tree/master/{path}"
 
 [output.katex]
-
 [preprocessor.katex]
