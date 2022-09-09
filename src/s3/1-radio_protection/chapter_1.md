@@ -53,6 +53,7 @@ Des mesures comme le contrôle de la contamination, une diminution de la durée 
 # RADIOACTIVITE ARTIFICIELE
 # L'ETUDE DE LA RADIOPROTECTION CONSISTE:
 
+
 - Dans un premier temps:
 Schématiser la séquence des effets des radiations sur la matière vivante et discuter les paramètres d'influence. 
 - Différencier les effets déterministes et les effets stochastiques
