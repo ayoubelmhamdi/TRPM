@@ -1,12 +1,12 @@
 # RADIOPROTECTION
 --------------------
 ## SUMMARY
-- [Principes de radioprotection](#Principes-de-radioprotection)
-- [Principe ALARA](#Principe-ALARA:-As-Low-As-Reasonably-Achievable)
-- [HISTORIQUE](#HISTORIQUE)
-- [RADIOACTIVITE](#RADIOACTIVITE)
-    - [RADIOACTIVITE NATUREL](#RADIOACTIVITE-NATUREL)
-    - [RADIOACTIVITE ARTIFICIELE](#RADIOACTIVITE-ARTIFICIELE)
+- Principes de radioprotection]
+- Principe ALARA]
+- HISTORIQUE]
+- RADIOACTIVITE]
+    - RADIOACTIVITE NATUREL]
+    - RADIOACTIVITE ARTIFICIELE
 ------------------------
 # RADIOACTIVITE NATUREL
 
