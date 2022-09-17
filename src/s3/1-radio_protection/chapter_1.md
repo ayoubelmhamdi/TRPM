@@ -48,7 +48,7 @@
  - **1928:** `CIPR` International de Protection Contre les Rayonnements 
 
  ![image](./images/2022_09_10_64c1a943a8bd11ba89f4g-02.jpg) 
- ![image](./images/2022_09_10_64c1a943a8bd11ba89f4g-02(1).jpg) 
+ ![image](./images/2022_09_10_64c1a943a8bd11ba89f4g-02-1.jpg) 
 
  # RADIOACTIVITE 
  ------------------- 
@@ -529,7 +529,7 @@ Un rayonnement de freinage (appelé Bremsstralhung)
 > principe physique utilisé dans les appareils de radiologie pour produire les rayons $X$.
 
 Par exemple, dans le cas du $P^{32}$, le blindage sera généralement constitué de plaques de plexiglas d'un `cm` d'épaisseur.
-![image](./images/2022_09_10_778a3b88fd20437b691bg-05(2).jpg)
+![image](./images/2022_09_10_778a3b88fd20437b691bg-05-2.jpg)
 **transparent**: il est plus simple de travailler derrière ce type d'écran.
 
 Selon **G. Sitzlack** il est possible de calculer le rayonnement de freinage produit à l'aide de la relation empirique suivante :
@@ -618,7 +618,7 @@ Dans ces cas, il convient de mettre en place un système de monitoring adéquat 
 # Dosimètre supplémentaire
 Si une irradiation non négligeable des tissus ou d'un organe est à craindre, la personne portera un ou plusieurs dosimètres supplémentaires permettant de mesurer la dose à ces endroits.
 
-![image](./images/2022_09_10_778a3b88fd20437b691bg-10(1).jpg)
+![image](./images/2022_09_10_778a3b88fd20437b691bg-10-1.jpg)
 
 Dans le cas où l'irradiation est susceptible de provoquer une dose supérieure aux $3/10$ des limites pour le cristallin, les mains, les avant-bras, les pieds ou les chevilles, ces dosimètres supplémentaires seront toujours portés.
 
@@ -652,7 +652,7 @@ Divers matériaux détecteurs sont actuellement disponibles dont le fluorure de 
 
 ## Modèle de niveaux d'énergie
 
-![image](./images/2022_09_10_778a3b88fd20437b691bg-13(2).jpg)
+![image](./images/2022_09_10_778a3b88fd20437b691bg-13-2.jpg)
 Ce schéma représente les bandes de valence et de conduction, ainsi que les niveaux d'énergie associés aux pièges à électrons et à trous introduits dans le cristal par les activateurs, c'est-à-dire les impuretés chimiques et les défauts réticulaires.
 
 Si le cristal est irradié, l'énergie est transmise aux électrons de la bande de valence et les fait passer dans la bande de conduction, en laissant des trous dans la bande de valence (figure a).
@@ -677,7 +677,7 @@ Dans la plupart des matériaux utilisés, il existe un certain nombre de pièges
 
 La répartition des niveaux d'énergie des pièges, et donc le tracé de la courbe de thermoluminescence, dépend de plusieurs paramètres, dont le plus important est le passé thermique du matériau thermoluminescent considéré.
 
-![image](./images/2022_09_10_778a3b88fd20437b691bg-14(1).jpg)
+![image](./images/2022_09_10_778a3b88fd20437b691bg-14-1.jpg)
 
 Courbe de thermoluminescence du $LiF$ 
 
