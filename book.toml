@@ -16,3 +16,9 @@ edit-url-template = "https://github.com/ayoubelmhamdi/TRPM/tree/master/{path}"
 
 [output.katex]
 [preprocessor.katex]
+
+# [output.linkcheck]
+# optional = true
+# warning-policy = "warn"
+# traverse-parent-directories = true
+# follow-web-links = true
