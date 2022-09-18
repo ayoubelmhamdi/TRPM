@@ -5,6 +5,11 @@
     - [Chapter 2](./chapter_2.md)
     - [Chapter 3](./chapter_3.md)
 - Exercices:
+    - [TD 1](./td1.md)
+    - [TD 2](./td2.md)
     - [QCM 1](./qcm1.md)
-    - [QCM 2](./qcm2.md)
+- Corrigé
+    - [Correction TD1](./td1-cor.md)
+    - [Correction TD2](./td2-cor.md)
+    - [QCM 2: Énonce + Corrigé](./qcm2.md)
 - [Exposé](./expose.md)
