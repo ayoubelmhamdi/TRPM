@@ -1,15 +1,25 @@
 # TRPM S3
 -----
 
-- [Radioprotection](./1-radio_protection/index.md)
-    - [Chapter 1](./1-radio_protection/chapter_1.md)
-    - [Chapter 2](./1-radio_protection/chapter_2.md)
-    - [Chapter 3](./1-radio_protection/chapter_3.md)
+- [Radioprotection](./1-radio_protection/README.md)
+    - Cours:
+        - [Chapter 1](./1-radio_protection/chapter_1.md)
+        - [Chapter 2](./1-radio_protection/chapter_2.md)
+        - [Chapter 3](./1-radio_protection/chapter_3.md)
+    - Exercices:
+        - [TD 1](./1-radio_protection/td1.md)
+            - [Correction TD1](./1-radio_protection/td1-cor.md)
+        - [TD 2](./1-radio_protection/td2.md)
+            - [Correction TD2](./1-radio_protection/td2-cor.md)
+        - [QCM 1](./1-radio_protection/qcm1.md)
+        - [QCM 2](./1-radio_protection/qcm2.md)
+    - [Exposé](./1-radio_protection/expose.md)
+
 - [Imagerie 2](./2-imagerie2/README.md)
     - [Chapter 1](./2-imagerie2/chapter_1.md)
     - [Chapter 2](./2-imagerie2/chapter_2.md)
     - [Chapter 3](./2-imagerie2/chapter_3.md)
-- [Dosimètre](./3-dosimetrie/index.md)
+- [Dosimètre](./3-dosimetrie/README.md)
     - [Chapter 1](./3-dosimetrie/chapter_1.md)
     - [Chapter 2](./3-dosimetrie/chapter_2.md)
     - [Chapter 3](./3-dosimetrie/chapter_3.md)
@@ -17,7 +27,7 @@
     - [Chapter 1](./4-anatomie_dentaire/chapter_1.md)
     - [Chapter 2](./4-anatomie_dentaire/chapter_2.md)
     - [Chapter 3](./4-anatomie_dentaire/chapter_3.md)
-- [Traitement d'image](../5-traitement_d_image/index.md)
+- [Traitement d'image](./5-traitement_d_image/README.md)
     - [Chapter 1](./5-traitement_d_image/chapter_1.md)
     - [Chapter 2](./5-traitement_d_image/chapter_2.md)
     - [Chapter 3](./5-traitement_d_image/chapter_3.md)
