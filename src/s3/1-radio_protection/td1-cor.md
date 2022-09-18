@@ -4,10 +4,10 @@
 # Exercice 1:
 -----------
 
-E_{b}=500 KeV$
+$$E_{b}=500 ~KeV$$
 
-1.  $Gy$ ou $j / k_{g}$
-2. $1 ~rad=10^{-2} Gy$
+1.  $[Gy]$ ou $[j / k_{g}]$
+2. $1 ~rad=10^{-2} ~Gy$
 3. 
 
 $$ E=D \times m \Rightarrow  E=10^{-3} \times 10^{-3} $$
@@ -15,21 +15,26 @@ $$ E =10^{-6} ~J $$
 
 4. 
 
-$$
-\begin{array}{cll}
-  & \text {  1 } &  \text { pour les  $\gamma$ et  $\beta$} \\
-  \text {  Facteur de qualité }     \\
-  \text{(FQ)}&  \text { 10 } & \ \text { pour les $\alpha$ } \\
-\end{array}
-$$
-  
 
 $$
-\begin{array}{cll}
-  & \text {  1 } &  \text { Distribution uniforme} \\
-  \text {  Facten de distribution }     \\
-  \text{(FQ)}&  \text { 5 } & \ \text { Distribution irrégulier} \\
-\end{array}
+  \begin{equation*}
+    \text {  Facteur de qualité FQ } =
+    \begin{cases}
+      \text{ \text { pour les  $\gamma$ et  $\beta$}} \\
+      \text{ pour les $\alpha$ }
+    \end{cases}
+  \end{equation*}
+$$
+
+
+$$
+  \begin{equation*}
+    \text {  Facteur de distribution FD } =
+    \begin{cases}
+      \text{ \text { Distribution uniforme}} \\
+      \text{ Distribution irrégulier}
+    \end{cases}
+  \end{equation*}
 $$
 
 $$ ED(rems)= D(rad)\times FQ \times FD $$
@@ -99,7 +104,7 @@ $$ D_{1} ~d_{1}^{2}=D_{2} ~d_{2}^{2} $$
 
 $$ D_{2}=D_{1}\frac{d_{1}}{d_{2}}^{2}$$
 
-# Pour $50 ~cm$ :
+### Pour $50 ~cm$ :
 $$
 \begin{gathered}
 D_{1}=28 \mu Sv \quad \text{ à } \quad d_{1}=1 ~m 
@@ -108,7 +113,7 @@ D_{1}=28 \mu Sv \quad \text{ à } \quad d_{1}=1 ~m
 \end{gathered}
 $$
 
-#  Pour $3 ~m$ :
+### Pour $3 ~m$ :
 1. 
 $$D_{3}=28 \times\frac{1}{3}^{2}=\frac{28}{9}=3,1 \mu s \nu $$
 
@@ -119,12 +124,20 @@ $$D_{3}=3,1 \mu SV$$
 $$D_{1} d_{1}^{2}=D_{2} \times d_{2}^{2}$$
 $$d_{2}^{2}=\frac{D_{1}}{D_{2}} d_{1}^{2} \Rightarrow d_{2}=\sqrt{\frac{D_{1}}{D_{2}} d_{1}^{2}}$$
 
-$$d_{2}=d_{1} \sqrt{\frac{D_{1}}{D_{2}}}$$.
+$$d_{2}=d_{1} \sqrt{\frac{D_{1}}{D_{2}}}$$
 
-A.N: on a $d_{1}=2 ~m, D_{1}=1 ~mSv / h$ , $D_{1}=1000 ~\mu sv / h$ et $D_{2}=2,5 ~\mu sv / h$
+A.N: 
 
-Alors $d_{2}=2 \times \sqrt{\frac{1000}{2,5}}=2 \times 20=40 ~m$
+On a:
+- $d_{1}=2 ~m $
+- $D_{1}=1 ~mSv / h$
+- $D_{1}=1000 ~\mu sv / h$
+- $D_{2}=2,5 ~\mu sv / h$
+
+Alors 
+$$d_{2}=2 \times \sqrt{\frac{1000}{2,5}}=2 \times 20=40 ~m$$
 $$ d_{2}=40 ~m $$
+
 3.
 $\checkmark$ Avant l'écran :On divise par 100 la dose a $1 ~m:$
 
@@ -141,10 +154,10 @@ $\checkmark$ Après l'écran: ($1 ~CDA$) de la dose est:
 
 
 
-$$ D=\frac{D_{2}}{2}=5 \mu ~G_{y} / h $$
+$$ D=\frac{D_{2}}{2}=5 ~\mu ~G_{y} / h $$
 
 - le facteur de pondération est 1 alors
-$$D=5 \mu ~Sv / h $$
+$$D=5 ~\mu ~Sv / h $$
 
 ### Calculs d'activités :
 1.
