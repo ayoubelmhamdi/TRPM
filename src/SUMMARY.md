@@ -10,6 +10,11 @@
         - [Chapter 1](./s3/1-radio_protection/chapter_1.md)
         - [Chapter 2](./s3/1-radio_protection/chapter_2.md)
         - [Chapter 3](./s3/1-radio_protection/chapter_3.md)
+        - [TD 1](./s3/1-radio_protection/td1.md)
+        - [Correction TD1](./s3/1-radio_protection/td1-cor.md)
+        - [TD 2](./s3/1-radio_protection/td2.md)
+        <!-- bugs if i remove this comment  -->
+        - [Correction TD2](./s3/1-radio_protection/td2-cor.md)
         - [QCM 1](./s3/1-radio_protection/qcm1.md)
         - [QCM 2](./s3/1-radio_protection/qcm2.md)
         - [Exposé](./s3/1-radio_protection/expose.md)
