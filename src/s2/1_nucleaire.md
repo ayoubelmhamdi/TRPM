@@ -173,7 +173,7 @@ Fonctionnement
 -   La cible est un disque de cuivre de 28,5 mm de diamètre, recouvert
     d'un dépôt constitué de titane et de deutérium.
 
-![image](images/accelerateur_sames)
+![image](./images/accelerateur_sames.jpg)
 
 \- cible  
 2- Piège  
