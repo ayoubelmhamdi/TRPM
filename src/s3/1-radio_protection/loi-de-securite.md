@@ -4,7 +4,7 @@
 # Lois fondamentales sur la SST
 --------------------------------
 
-Dahir du - $n^{\circ} 1-14-149$ du 25 chaoual 1435 (22 aout 2014) portant promulgation de la loi $n^{\circ} 142-12$ relative à la sûreté et à la sécurité nucléaires et radiologiques et à la création de l'Agence marocaine de sûreté et de sécurité nucléaires et radiologiques.
+Dahir du - $n^{\circ} 1-14-149$ du 25 *chaoual* 1435 (22 aout 2014) portant promulgation de la loi $n^{\circ} 142-12$ relative à la sûreté et à la sécurité nucléaires et radiologiques et à la création de l'Agence marocaine de sûreté et de sécurité nucléaires et radiologiques.
 
 BULLETIN OFFICIEL $n^{\circ} 6292$ du 22 kaada 1435 (18-9-2014).
 
