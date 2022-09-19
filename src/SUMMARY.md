@@ -17,6 +17,8 @@
         - [QCM 1](./s3/1-radio_protection/qcm1.md)
         - [QCM 2](./s3/1-radio_protection/qcm2.md)
         - [Exposé](./s3/1-radio_protection/expose.md)
+        - [Législation marocaine](./s3/1-radio_protection/legislation.md)
+        - [Lois et sécurité](./s3/1-radio_protection/loi-de-securite.md)
     - [Imagerie 2](./s3/2-imagerie2/README.md)
         - [Chapter 1](./s3/2-imagerie2/chapter_1.md)
         - [Chapter 2](./s3/2-imagerie2/chapter_2.md)
