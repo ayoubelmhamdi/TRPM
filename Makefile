@@ -4,6 +4,12 @@ build:
 	@gh-pages
 	@echo "Done"
 
+gitlab:
+	@echo "run gh-pages"
+	@gh-pages gitlab
+	@echo "Done"
+
+
 clean:
 	@rm -rf $(REPO)
 	@git worktree prune 2>/dev/null || true
