@@ -3,10 +3,9 @@
 
 # Exercice 1:
 -------------
-author:
 
-
-1. En fonction de la dose délivrée, les effets des radiations sur l'organisme peuvent être des effets déterministes ou stochastiques ; donner la signification de chaque effet.
+En fonction de la dose délivrée, les effets des radiations sur l'organisme peuvent être des effets déterministes ou stochastiques 
+1. donner la signification de chaque effet.
 
 2. Donner la signification du principe d'`ALARA` 
 
@@ -15,7 +14,7 @@ author:
 
 Pour réaliser une tomographie par émission de positons `TEP`, on injecte a un patient un `radiopharmaceutique` marqué au $^{18}fluor$, émetteur $\beta^{+}$.
 
-Le personnel médical est expose au\\cours de cet examen a une irradiation a proximité du patient. cours de cet examen o une irradiation à proximité du patient.
+Le personnel médical est expose au cours de cet examen a une irradiation a proximité du patient.
 
 A 1 mètre de celui-ci, le débit de dose est de $30 ~\mu Sv/ h^{-1}$.
 
@@ -42,13 +41,10 @@ On constate alors une atténuation d'un facteur 8 du nombre de photons transmis.
 
 On donne :
 
-$$
-\begin{array}{ccc}
-\text { matériau } & \text { fer } & \text { aluminium } \\
-\mu ~[cm^{-1} ] & 0,5 & 1
-\end{array}
-$$
 
+|    matériau      |  fer  | aluminium |
+|:----------------:|:-----:|:---------:|
+|$\mu ~[cm^{-1} ]$ | 0,5   | 1         |
 
 # Exercice 5:
 Un technicien doit préparer une solution contenant de l'iode 123 pour une scintigraphie.
