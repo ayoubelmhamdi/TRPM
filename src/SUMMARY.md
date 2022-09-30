@@ -32,6 +32,8 @@
         - [Chapter 2](./s3/4-anatomie_dentaire/chapter_2.md)
         - [Chapter 3](./s3/4-anatomie_dentaire/chapter_3.md)
     - [Traitement d'image](./s3/5-traitement_d_image/README.md)
+        - [Introduction au traitement d'image](./s3/5-traitement_d_image/introduction/README.md)
+            - [Chapter 1](./s3/5-traitement_d_image/introduction/chapter_1.md)
         - [Initialisation au traitement d'image](./s3/5-traitement_d_image/initialisation/README.md)
             - [Lire et écrire des images sous Matlab](./s3/5-traitement_d_image/initialisation/chapter_1.md)
             - [Lire et écrire des images sous Matlab](./s3/5-traitement_d_image/initialisation/chapter_2.md)
