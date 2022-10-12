@@ -32,7 +32,7 @@ function addTabsToGroup(group) {
     group.prepend(tab_bar);
 
     // Add a tab for each code block, and hide all but the first block.
-    const pre_elements = group.querySelectorAll("pre");
+    const pre_elements = group.querySelectorAll(":scope > pre");
     pre_elements.forEach((pre_elt, ix) => {
         const tab_elt = addTabForCodeBlock(tab_bar, pre_elements, pre_elt);
         if (ix > 0) {
