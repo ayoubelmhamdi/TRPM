@@ -1,7 +1,7 @@
 # Traitement d'images
 ------------------------
 
-- [Generalite](./)
+- [Généralité](./)
     - [Système de vision:]()
         - [Introduction, système visuel humain, couleur, perception,]()
         - [Acquisition et formats des images,]()
@@ -9,10 +9,10 @@
     - [Analyse des images:]()
         - [Histogramme : étirements, égalisation, manipulation, seuillage,]()
         - [Filtrage : lissage, rehaussement d'images, détection de contours]()
-    - [Applications:]()
-        - [Compression d'images,]()
-        - [Manipulation d'images,]()
-        - [segmentation d'images.]()
+    - [Applications]()
+        - [Compression d'images]()
+        - [Manipulation d'images]()
+        - [segmentation d'images]()
 
 - [MATLAB](./)
     - [Introduction](./)

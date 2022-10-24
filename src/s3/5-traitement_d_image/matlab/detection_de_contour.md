@@ -6,7 +6,6 @@
 - Il existe de nombreuses méthodes pour trouver les contours des objets, la plupart sont basées sur les dérivées premières et secondes de l'image.
 ```Matlab
 
-$$
 >> img = imread('rice.tif');
 >> cont1 = edge(img,'prewitt');
 >> cont2 = edge(img,'canny');
@@ -34,8 +33,8 @@ $$
 - Ainsi pour une image qui possède 256 niveaux de gris, l'histogramme représente le niveau de gris en fonction du nombre de pixels à ce niveau de gris dans l'image.
 ```Matlab
 
->> $img=imread($ 'rice.tif');
->> histo $=imhist(img, 256)$;
+>> img=imread( 'rice.tif');
+>> histo =imhist(img, 256)$;
 >> figure;plot(histo);
 ```
 
@@ -47,10 +46,10 @@ $$
 ```Matlab
 >> img =imread('saturn.tif');
 >> figure;imshow(img);
->> img $=im2double(img);
+>> img =im2double(img);
 >> figure;subplot(1,2,1);imshow (img);
 >> result=(img 2>0.5).*img;
->> subplot $(1,2,2) ;
+>> subplot (1,2,2) ;
 >> imshow(result);
 ```
 
