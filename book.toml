@@ -16,8 +16,8 @@ edit-url-template = "https://github.com/ayoubelmhamdi/TRPM/tree/master/{path}"
 additional-css = ["./theme/tabbed-code-blocks.css", "./theme/highlight.css"]
 additional-js = ["./theme/tabbed-code-blocks.js"]
 
-[output.katex]
 [preprocessor.katex]
+after = ["links"]
 
 # [output.linkcheck]
 # optional = true
