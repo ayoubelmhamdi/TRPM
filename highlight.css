@@ -1,124 +1,82 @@
-/*!
-  Theme: GitHub Dark Dimmed
-  Description: Dark dimmed theme as seen on github.com
-  Author: github.com
-  Maintainer: @Hirse
-  Updated: 2021-05-15
+/*
+ * An increased contrast highlighting scheme loosely based on the
+ * "Base16 Atelier Dune Light" theme by Bram de Haan
+ * (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/dune)
+ * Original Base16 color scheme by Chris Kempson
+ * (https://github.com/chriskempson/base16)
+ */
 
-  Colors taken from GitHub's CSS
-*/
+/* Comment */
+.hljs-comment,
+.hljs-quote {
+  color: #575757;
+}
+
+/* Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-attribute,
+.hljs-tag,
+.hljs-name,
+.hljs-regexp,
+.hljs-link,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class {
+  color: #d70025;
+}
+
+/* Orange */
+.hljs-number,
+.hljs-meta,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params {
+  color: #b21e00;
+}
+
+/* Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet {
+  color: #008200;
+}
+
+/* Blue */
+.hljs-title,
+.hljs-section {
+  color: #0030f2;
+}
+
+/* Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+  color: #9d00ec;
+}
 
 .hljs {
-  color: #adbac7;
-  background: #22272e;
-}
-
-.hljs-doctag,
-.hljs-keyword,
-.hljs-meta .hljs-keyword,
-.hljs-template-tag,
-.hljs-template-variable,
-.hljs-type,
-.hljs-variable.language_ {
-  /* prettylights-syntax-keyword */
-  color: #f47067;
-}
-
-.hljs-title,
-.hljs-title.class_,
-.hljs-title.class_.inherited__,
-.hljs-title.function_ {
-  /* prettylights-syntax-entity */
-  color: #dcbdfb;
-}
-
-.hljs-attr,
-.hljs-attribute,
-.hljs-literal,
-.hljs-meta,
-.hljs-number,
-.hljs-operator,
-.hljs-variable,
-.hljs-selector-attr,
-.hljs-selector-class,
-.hljs-selector-id {
-  /* prettylights-syntax-constant */
-  color: #6cb6ff;
-}
-
-.hljs-regexp,
-.hljs-string,
-.hljs-meta .hljs-string {
-  /* prettylights-syntax-string */
-  color: #96d0ff;
-}
-
-.hljs-built_in,
-.hljs-symbol {
-  /* prettylights-syntax-variable */
-  color: #f69d50;
-}
-
-.hljs-comment,
-.hljs-code,
-.hljs-formula {
-  /* prettylights-syntax-comment */
-  color: #768390;
-}
-
-.hljs-name,
-.hljs-quote,
-.hljs-selector-tag,
-.hljs-selector-pseudo {
-  /* prettylights-syntax-entity-tag */
-  color: #8ddb8c;
-}
-
-.hljs-subst {
-  /* prettylights-syntax-storage-modifier-import */
-  color: #adbac7;
-}
-
-.hljs-section {
-  /* prettylights-syntax-markup-heading */
-  color: #316dca;
-  font-weight: bold;
-}
-
-.hljs-bullet {
-  /* prettylights-syntax-markup-list */
-  color: #eac55f;
+  display: block;
+  overflow-x: auto;
+  background: #f6f7f6;
+  color: #000;
 }
 
 .hljs-emphasis {
-  /* prettylights-syntax-markup-italic */
-  color: #adbac7;
   font-style: italic;
 }
 
 .hljs-strong {
-  /* prettylights-syntax-markup-bold */
-  color: #adbac7;
   font-weight: bold;
 }
 
 .hljs-addition {
-  /* prettylights-syntax-markup-inserted */
-  color: #b4f1b4;
-  background-color: #1b4721;
+  color: #22863a;
+  background-color: #f0fff4;
 }
 
 .hljs-deletion {
-  /* prettylights-syntax-markup-deleted */
-  color: #ffd8d3;
-  background-color: #78191b;
-}
-
-.hljs-char.escape_,
-.hljs-link,
-.hljs-params,
-.hljs-property,
-.hljs-punctuation,
-.hljs-tag {
-  /* purposely ignored */
+  color: #b31d28;
+  background-color: #ffeef0;
 }
