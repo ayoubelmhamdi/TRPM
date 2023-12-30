@@ -221,8 +221,119 @@ La condition ( u'(1) + u(1) = 0 ) est discrétisée en utilisant une différence
 </li>
 </ol>
 <p>Ensuite, on résout le système linéaire résultant pour obtenir les valeurs approchées ( u_i ) aux points de la grille. Ce système peut être résolu par des méthodes directes ou itératives, selon la taille du système et les propriétés de la matrice.</p>
-<p>Citations:
-[1] https://pplx-res.cloudinary.com/image/upload/t_fit/v1703950972/user_uploads/pftfdfpxt/image.jpg</p>
+<h1 id="schema-numérique"><a class="header" href="#schema-numérique">Schema numérique</a></h1>
+<p>Pour résoudre l'équation de diffusion-réaction avec la condition de Fourier donnée dans l'image, on peut utiliser la méthode des différences finies. Voici les étapes de la résolution :</p>
+<ol>
+<li>
+<p><strong>Discrétisation du domaine</strong> :
+On divise l'intervalle ( [1] ) en ( N ) sous-intervalles de taille ( h = \frac{1}{N} ), où ( x_i = i \cdot h ) pour ( i = 0, 1, \ldots, N ).</p>
+</li>
+<li>
+<p><strong>Approximation des dérivées</strong> :
+On remplace la dérivée seconde par une différence finie centrale :
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.0074em;vertical-align:-0.686em;"></span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord mathnormal">c</span><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span>
+pour ( i = 1, \ldots, N-1 ), où ( f_i ) est l'évaluation de ( f(x) ) au point ( x_i ).</p>
+</li>
+<li>
+<p><strong>Application des conditions aux limites</strong> :</p>
+<ul>
+<li>Pour ( x = 0 ), on a ( u_0 = 1 ).</li>
+<li>Pour ( x = 1 ), on utilise la condition de Fourier ( u'(1) + u(1) = 0 ). En utilisant une différence finie arrière pour ( u'(1) ), on obtient :
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.9463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.2603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">h</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></span></li>
+</ul>
+</li>
+<li>
+<p><strong>Assemblage du système linéaire</strong> :
+On forme un système linéaire ( AU = F ) où ( A ) est une matrice tridiagonale résultant de la discrétisation, ( U ) est le vecteur des inconnues ( u_i ), et ( F ) est le vecteur résultant de l'évaluation de ( f(x) ) et des conditions aux limites.</p>
+</li>
+<li>
+<p><strong>Résolution du système linéaire</strong> :
+On résout le système linéaire pour obtenir les valeurs approchées ( u_i ) aux points de la grille. Cela peut être fait à l'aide de méthodes directes (comme la décomposition LU) ou de méthodes itératives (comme la méthode de Gauss-Seidel ou la méthode du gradient conjugué).</p>
+</li>
+<li>
+<p><strong>Analyse des résultats</strong> :
+Après avoir résolu le système, on analyse les résultats pour s'assurer qu'ils sont physiquement raisonnables et qu'ils satisfont les conditions aux limites et l'équation différentielle à un degré acceptable d'approximation.</p>
+</li>
+</ol>
+<p>Il est important de noter que la précision de la solution numérique dépendra du choix de ( h ) (le pas de discrétisation) et de la méthode de résolution du système linéaire. Des pas plus petits conduisent généralement à des solutions plus précises, mais augmentent la taille du système linéaire et donc le coût computationnel.</p>
+<h1 id="fourier-matrices"><a class="header" href="#fourier-matrices">FOURIER MATRICES:</a></h1>
+<p>Pour former le système linéaire ( AU = F ) à partir de l'équation de diffusion-réaction avec la condition de Fourier donnée, on procède comme suit :</p>
+<ol>
+<li>
+<p><strong>Discrétisation du domaine</strong> :
+On divise l'intervalle ( [1] ) en ( N+1 ) points, ce qui donne ( N-1 ) intervalles internes de taille ( h = \frac{1}{N} ), où ( x_i = i \cdot h ) pour ( i = 0, 1, \ldots, N ).</p>
+</li>
+<li>
+<p><strong>Construction de la matrice ( A )</strong> :
+La matrice ( A ) est tridiagonale et de taille ( (N-1) \times (N-1) ) car on connaît les valeurs de ( u ) aux bords. Les éléments de ( A ) sont définis par :</p>
+<ul>
+<li>( A_{ii} = 2/h^2 + c ) pour ( i = 1, \ldots, N-1 ),</li>
+<li>( A_{i,i-1} = A_{i-1,i} = -1/h^2 ) pour ( i = 2, \ldots, N-1 ).</li>
+</ul>
+<p>La condition de Fourier ( u'(1) + u(1) = 0 ) modifie la dernière ligne de la matrice ( A ) :</p>
+<ul>
+<li>( A_{N-1,N-2} = -1/h^2 ) (comme avant),</li>
+<li>( A_{N-1,N-1} = 2/h^2 + c - 1/h ) car on ajoute ( -1/h ) pour prendre en compte la dérivée ( u'(1) ).</li>
+</ul>
+</li>
+<li>
+<p><strong>Construction du vecteur ( F )</strong> :
+Le vecteur ( F ) est de taille ( N-1 ) et contient les valeurs de la fonction ( f(x) ) aux points intérieurs ( x_i ), ( i = 1, \ldots, N-1 ). La condition aux limites ( u(0) = 1 ) modifie le premier élément de ( F ) :</p>
+<ul>
+<li>( F_1 = f_1 - u_0/h^2 = f_1 - 1/h^2 ),</li>
+<li>( F_i = f_i ) pour ( i = 2, \ldots, N-2 ),</li>
+<li>( F_{N-1} = f_{N-1} ) (la condition de Fourier est déjà prise en compte dans la matrice ( A )).</li>
+</ul>
+</li>
+<li>
+<p><strong>Résolution du système linéaire</strong> :
+On résout ensuite le système ( AU = F ) pour obtenir les valeurs approchées ( u_i ) aux points intérieurs du domaine.</p>
+</li>
+</ol>
+<p>En résumé, la matrice ( A ) et le vecteur ( F ) sont construits en tenant compte des conditions aux limites et de la condition de Fourier, et le système linéaire résultant est résolu pour obtenir la solution numérique de l'équation de diffusion-réaction.</p>
+<h1 id="matlab"><a class="header" href="#matlab">MATLAB</a></h1>
+<p>To solve the linear system ( AU = F ) in MATLAB for the given problem with Fourier boundary conditions, you can use the following MATLAB code. This code assumes that you have already computed the values of ( f(x) ) at the grid points and stored them in a vector <code>f</code>. The constant <code>c</code> is also given, and the number of grid points <code>N</code> is set by the user.</p>
+<pre><code class="language-matlab">% Define the number of grid points and calculate h
+N = 10; % Example value, adjust as needed
+h = 1/N;
+
+% Define the constant c (example value, adjust as needed)
+c = 1;
+
+% Initialize the matrix A and vector F
+A = zeros(N-1, N-1);
+F = zeros(N-1, 1);
+
+% Compute the vector F for the internal points
+x = h:h:1-h; % Grid points from h to 1-h
+f = sin(x) + x; % Define the function f(x) = sin(x) + x at the grid points
+
+% Apply the boundary condition at x=0 to the first element of F
+F(1) = f(1) - 1/h^2;
+
+% Fill the matrix A using the discretized equations
+for i = 1:N-1
+    A(i,i) = 2/h^2 + c;
+    if i &gt; 1
+        A(i, i-1) = -1/h^2;
+        A(i-1, i) = -1/h^2;
+    end
+end
+
+% Modify the last row of A to account for the Fourier boundary condition at x=1
+A(N-1, N-2) = -1/h^2; % This is the same as the internal points
+A(N-1, N-1) = 2/h^2 + c - 1/h; % Adjusted for the boundary condition
+
+% Solve the linear system AU = F
+U = A\F;
+
+% Add the boundary values to the solution vector
+U = [1; U]; % u(0) = 1 is the boundary condition at x=0
+
+% Display the solution
+disp(U);
+</code></pre>
+<p>This code sets up and solves the linear system for the given problem. The solution vector <code>U</code> will contain the approximations to the function <code>u(x)</code> at the internal grid points, with the boundary value at <code>x=0</code> prepended to the beginning of the vector. Adjust the number of grid points <code>N</code> and the constant <code>c</code> as needed for your specific problem.</p>
 
                     </main>
 
