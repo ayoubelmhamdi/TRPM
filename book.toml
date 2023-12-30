@@ -13,8 +13,8 @@ default-theme = "navy"
 preferred-dark-theme = "navy"
 git-repository-url = "https://github.com/ayoubelmhamdi/TRPM"
 edit-url-template = "https://github.com/ayoubelmhamdi/TRPM/tree/master/{path}"
-additional-css = ["./theme/tabbed-code-blocks.css", "./theme/highlight.css"]
-additional-js = ["./theme/tabbed-code-blocks.js"]
+# additional-css = ["./theme/tabbed-code-blocks.css", "./theme/highlight.css"]
+# additional-js = ["./theme/tabbed-code-blocks.js"]
 
 [preprocessor.katex]
 after = ["links"]
