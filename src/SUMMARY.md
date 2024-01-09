@@ -65,3 +65,4 @@
             - [Conclusion](./s3/5-traitement_d_image/matlab/conclusion.md)
 - [SEMESTRE 4](./s3/README.md)
     - [nabil 1](./s4/nabil.md)
+    - [nabil ex5](./s4/ex5.md)
