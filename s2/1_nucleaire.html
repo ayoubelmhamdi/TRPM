@@ -1,0 +1,675 @@
+<!DOCTYPE HTML>
+<html lang="fr" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Nucléaire - TRPM</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">TRPM</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/ayoubelmhamdi/TRPM" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/ayoubelmhamdi/TRPM/tree/master/src/s2/1_nucleaire.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="instrumentation-nuclÉaires"><a class="header" href="#instrumentation-nuclÉaires">INSTRUMENTATION NUCLÉAIRES</a></h1>
+<hr />
+<h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>Un rayonnement peut être défini comme l'émission ou la propagation d'un
+ensemble de radiations avec transport d'énergie et émission de
+corpuscules, Il existe plusieurs types de rayonnements :</p>
+<ul>
+<li>
+<p>les électrons, les protons, les alphas, les pions, les muons les
+neutrinos</p>
+</li>
+<li>
+<p>les noyaux lourds et fragments de fissions</p>
+</li>
+<li>
+<p>les neutrons et les photons.</p>
+</li>
+</ul>
+<h1 id="les-principales-caractéristiques-des-rayonnement"><a class="header" href="#les-principales-caractéristiques-des-rayonnement">Les principales caractéristiques des rayonnement</a></h1>
+<ul>
+<li>
+<p>Son origine : moléculaire, atomique ou nucléaire.</p>
+</li>
+<li>
+<p>Sa nature : photons, particule élémentaire ou noyau lourd.</p>
+</li>
+<li>
+<p>Sa charge : négative, nulle, positive.</p>
+</li>
+<li>
+<p>Son énergie : basse, intermédiaire, haute.</p>
+</li>
+<li>
+<p>Sa période : courte, moyenne, longue.</p>
+</li>
+<li>
+<p>Son intensité : faible, moyenne, forte.</p>
+</li>
+<li>
+<p>Le type de réactions potentiel avec atome, noyau, nucléon.</p>
+</li>
+<li>
+<p>Sa probabilité d'interaction faible, moyenne, élevée.</p>
+</li>
+</ul>
+<p>La détection d'une particule ou d'un rayonnement donné est liée à ses
+interaction avec la matière, on va distinguer deux grandes familles :</p>
+<ul>
+<li>
+<p>les particules chargées</p>
+</li>
+<li>
+<p>les particules non chargées</p>
+</li>
+</ul>
+<h2 id="les-particules-chargées"><a class="header" href="#les-particules-chargées">Les particules chargées</a></h2>
+<p>Elles se subdivisent en deux familles : les particules chargées lourdes
+(ions lourds et noyaux lourds) et les particules chargées légères (les
+électrons, les protons, l'alpha et les deutons)</p>
+<h2 id="les-particules-non-chargées-ou-neutres"><a class="header" href="#les-particules-non-chargées-ou-neutres">Les particules non chargées ou neutres</a></h2>
+<p>Comme leur nom l'indique, il s'agit de particules électriquement : les
+photons et les neutrons.</p>
+<h3 id="les-photons"><a class="header" href="#les-photons">Les photons</a></h3>
+<p>Appelées aussi rayonnements électromagnétiques, les photons ont:</p>
+<ul>
+<li>
+<p>Une masse nulle</p>
+</li>
+<li>
+<p>une énergie E proportionnelle à leur fréquence: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">h</span><span class="mord mathnormal" style="margin-right:0.06366em;">ν</span></span></span></span></p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">h</span></span></span></span> est appelée constante de Planck :
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">h</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord">6.626</span><span class="mspace nobreak"> </span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">43</span></span></span></span></span></span></span></span></span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">-1</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.06366em;">ν</span></span></span></span> est la fréquence en <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">-1</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+</li>
+</ul>
+<p> </p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05556em;">γ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> du photon est reliée à sa fréquence <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.06366em;">ν</span></span></span></span> et à sa Longueur par:
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05556em;">γ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">h</span><span class="mord mathnormal" style="margin-right:0.06366em;">ν</span></span></span></span></span>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05556em;">γ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">h</span><span class="mord mathnormal" style="margin-right:0.06366em;">ν</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0574em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">λ</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="mord mathnormal">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace nobreak"> </span><span class="mspace nobreak"> </span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace nobreak"> </span><span class="mspace nobreak"> </span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05556em;">γ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1645em;"><span style="top:-2.357em;margin-left:-0.0556em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1574em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">nm</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1240</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Nom</th><th style="text-align: right">longueur d'onde</th><th style="text-align: center"></th><th style="text-align: left">(m)</th><th style="text-align: right">énergie</th><th style="text-align: center"></th><th style="text-align: right"></th></tr></thead><tbody>
+<tr><td style="text-align: left">Basses fréquences</td><td style="text-align: right"></td><td style="text-align: center">à</td><td style="text-align: left"></td><td style="text-align: right"></td><td style="text-align: center"></td><td style="text-align: right"></td></tr>
+<tr><td style="text-align: left">Moyennes fréquences</td><td style="text-align: right"></td><td style="text-align: center">à</td><td style="text-align: left"></td><td style="text-align: right"></td><td style="text-align: center"></td><td style="text-align: right"></td></tr>
+<tr><td style="text-align: left">Hautes fréquences</td><td style="text-align: right"></td><td style="text-align: center">à</td><td style="text-align: left"></td><td style="text-align: right"></td><td style="text-align: center"></td><td style="text-align: right"></td></tr>
+<tr><td style="text-align: left">Micro-ondes</td><td style="text-align: right"></td><td style="text-align: center">à</td><td style="text-align: left"></td><td style="text-align: right"></td><td style="text-align: center"></td><td style="text-align: right"></td></tr>
+<tr><td style="text-align: left">Infrarouge</td><td style="text-align: right"></td><td style="text-align: center">à</td><td style="text-align: left"></td><td style="text-align: right"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></td><td style="text-align: center">à</td><td style="text-align: right"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></td></tr>
+<tr><td style="text-align: left">Visible</td><td style="text-align: right"></td><td style="text-align: center">à</td><td style="text-align: left"></td><td style="text-align: right"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></td><td style="text-align: center">à</td><td style="text-align: right"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></td></tr>
+<tr><td style="text-align: left">Ultraviolet</td><td style="text-align: right"></td><td style="text-align: center">à</td><td style="text-align: left"></td><td style="text-align: right"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></td><td style="text-align: center">à</td><td style="text-align: right"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></td></tr>
+<tr><td style="text-align: left"><strong>Rayon X</strong></td><td style="text-align: right"></td><td style="text-align: center">à</td><td style="text-align: left"></td><td style="text-align: right"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></td><td style="text-align: center">à</td><td style="text-align: right"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></td></tr>
+<tr><td style="text-align: left"><strong>Rayon γ</strong></td><td style="text-align: right"></td><td style="text-align: center">à</td><td style="text-align: left"></td><td style="text-align: right"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></td><td style="text-align: center">à</td><td style="text-align: right"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></td></tr>
+<tr><td style="text-align: left">Rayon cosmiques</td><td style="text-align: right"></td><td style="text-align: center">à</td><td style="text-align: left"></td><td style="text-align: right"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></td><td style="text-align: center">à</td><td style="text-align: right"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></td></tr>
+</tbody></table>
+</div>
+<h3 id="les-neutrons"><a class="header" href="#les-neutrons">Les neutrons</a></h3>
+<p>Le neutron est un nucléon de charge électriquement nulle et de masse
+égale à 1838 fois la masse de l'électron (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.008665</span><span class="mord mathnormal">u</span></span></span></span>).</p>
+<h2 id="rappel-sur-la-probabilité-dinteraction"><a class="header" href="#rappel-sur-la-probabilité-dinteraction">Rappel sur la probabilité d'interaction</a></h2>
+<p>Elle est notée σ et s'exprime en <em><strong>barns</strong></em>:
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">1</span><span class="mspace nobreak"> </span><span class="mord mathnormal">ba</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">24</span></span></span></span></span></span></span></span></span><span class="mspace nobreak"> </span><span class="mord mathnormal">c</span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span>.<br />
+La notion de section efficace est liée :</p>
+<ul>
+<li>
+<p>au type de particules incidentes (photon, neutron, proton,
+électron.) à l'énergie des particules incidentes,</p>
+</li>
+<li>
+<p>au noyau de l'isotope concerné (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">235</span></span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span></span></span></span>, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord">38</span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span></span></span></span>, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">239</span></span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">u</span></span></span></span>,
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span><span class="mord mathnormal">He</span></span></span></span>, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">O</span></span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> ).</p>
+</li>
+<li>
+<p>au type de réaction mis en jeu (absorption, diffusion, fission. ).</p>
+</li>
+</ul>
+<h1 id="les-sources-rayonnements-nucléaires-"><a class="header" href="#les-sources-rayonnements-nucléaires-">Les sources rayonnements nucléaires :</a></h1>
+<ul>
+<li>
+<p>accélérateurs:</p>
+<ul>
+<li>
+<p>Générateurs de neutrons(Linéaires)</p>
+</li>
+<li>
+<p>Van de graaff</p>
+</li>
+<li>
+<p>Synchrotrons ou cyclotron</p>
+</li>
+</ul>
+</li>
+<li>
+<p>les réacteurs nucléaires</p>
+</li>
+<li>
+<p>les sources radio-isotopiques</p>
+</li>
+</ul>
+<h2 id="accélérateurs"><a class="header" href="#accélérateurs">accélérateurs</a></h2>
+<p>Les accélérateurs de particules, type:</p>
+<ul>
+<li>
+<p>Générateurs de neutrons(Linéaires)</p>
+</li>
+<li>
+<p>van de Graaff</p>
+</li>
+<li>
+<p>Synchrotrons ou cyclotrons</p>
+</li>
+</ul>
+<p>Peuvent fournir des neutrons résultants du bombardement <strong>d'une cible
+appropriée par des deutons, protons, alphas, etc.</strong><br />
+On peut encore utiliser le rayonnement de freinage d'un faisceau
+electrons, qui produit des réactions (γ, n) telles :
+$$^{9}B_{e}<del>(γ,n)</del>^{8}B_{e} \quad or\quad ^{2}H~(γ,n)<del>^{1}H$$ Des
+accélérateurs de deutons de 100 à 200 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>sont très utilisés pour
+constituer des générateurs de neutrons. Les réactions mise en jeu sont :
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mspace nobreak"> </span><span class="mopen">(</span><span class="mord mathnormal">d</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span><span class="mord"><span class="mspace nobreak"> </span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">e</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">qui donne des neutrons de</span></span><span class="mspace nobreak"> </span><span class="mord">2.6</span><span class="mspace nobreak"> </span><span class="mord text"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></span></span>
+$$^{3}H</del>(d,n)<del>^{4}H_{e}, \text{qui donne des neutrons de}</del>\num{14}~\text{$MeV$}$$
+Les neutrons de 14 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>sont très utilisés pour produire des actions (n,
+p), (n, α) et (n, 2n).</p>
+<h2 id="fonctionnement"><a class="header" href="#fonctionnement">Fonctionnement</a></h2>
+<ul>
+<li>
+<p>Le deutérium, <strong>contenu dans un réservoir</strong>, diffuse à travers une
+paroi en palladium dont la perméabilité augmente avec la
+température. Puis il rentre <strong>dans une ampoule de quartz appelée
+source d'ions</strong> où il est ionisé par un oscillateur <strong>de 100 M</strong>
+avec un rendement de 80 %.</p>
+</li>
+<li>
+<p>Ce pourcentage élevé, d'ions monoatomiques, permet de produire des
+neutrons de 14 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>, lorsque les deutons accélérés par la haute
+tension de 300 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span> frappent une cible de tritium.</p>
+</li>
+<li>
+<p>La réaction nucléaire qui se produit est de type: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace nobreak"> </span><span class="mopen">(</span><span class="mord mathnormal">d</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span>.</p>
+</li>
+<li>
+<p>Le tube permet de régler la focalisation du faisceau vers la cible
+qui est au potentiel de la terre.</p>
+</li>
+<li>
+<p>Il est maintenu sous vide grâce à une pompe primaire à palettes et
+une pompe secondaire a diffusion d'huile, pour que les deutons ne
+soient pas freinés par l'air.</p>
+</li>
+<li>
+<p>La cible est un disque de cuivre de 28,5 mm de diamètre, recouvert
+d'un dépôt constitué de titane et de deutérium.</p>
+</li>
+</ul>
+<p><img src="./images/accelerateur_sames.jpg" alt="image" /></p>
+<p>- cible<br />
+2- Piège<br />
+3- Trappe escamotable<br />
+4- Tableau de commande<br />
+5- Tube accélérateur<br />
+6- Groupe de masse<br />
+7- électrode HT (contenant la source d'ions)<br />
+8- Résistance d'amortissement <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">10</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord">Ω</span></span></span></span>, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">10</span><span class="mspace nobreak"> </span><span class="mord mathnormal">m</span><span class="mord mathnormal">A</span></span></span></span><br />
+9- Générateur HT <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">300</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.22222em;">kV</span></span></span></span>, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">3</span><span class="mspace nobreak"> </span><span class="mord mathnormal">m</span><span class="mord mathnormal">A</span></span></span></span>.</p>
+<h2 id="réacteur-nucléaire"><a class="header" href="#réacteur-nucléaire">Réacteur nucléaire</a></h2>
+<ul>
+<li>
+<p>les réacteurs sont des les sources neutronique très intense.</p>
+</li>
+<li>
+<p>Les neutrons bombardant l'échantillon dans un réacteur nucléaire
+sont isotropes</p>
+</li>
+<li>
+<p>résultat une irradiation homogène dans toute la masse de
+l'échantillon irradié</p>
+</li>
+<li>
+<p>Les positions d'irradiation dans ces réacteurs déterminent le flux
+neutronique disponible pour les irradiations.</p>
+</li>
+<li>
+<p>Les flux utilisables vont en général de 1012 à plus de 1014
+n.cm-2s-1. Selon le type de réacteur, les neutrons sont parfaitement</p>
+</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Thermique</th><th style="text-align: left">épithermique</th><th style="text-align: left">rapids</th><th style="text-align: left"></th></tr></thead><tbody>
+<tr><td style="text-align: left">environs</td><td style="text-align: left">enter et</td><td style="text-align: left">&gt;&gt;</td><td style="text-align: left"></td></tr>
+</tbody></table>
+</div>
+<h2 id="sources-isotopiques"><a class="header" href="#sources-isotopiques">Sources isotopiques.</a></h2>
+<p>Les sources isotopiques sont portables et donnent un flux très stable de
+neutrons mais le flux neutronique obtenu est beaucoup moins intense que
+celui d'un réacteur nucléaire. L'émission neutronique de ces sources est
+exprimée en neutrons par seconde dans un angle solide de <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span>
+stéradians. Les sources sont de forme cylindrique sont en capsulées dans
+une enceinte anche. L'incertitude sur l'émission neutronique est estimée
+pour un intervalle de inn fiance de 99,7 % Les neutrons sont obtenus par
+réactions du type (,n) ou (y,n) sur des noyaux légers. Les tableaux
+ci-dessous indiquent les caractéristiques de ces sources. En plus de ces
+sources, on utilise le californium 252, de période 26 ans, qui produit
+des neutrons par fission spontanée : 1 ma de Cf donne 2,3.10 ns avec une
+énergie de 2,3 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>.</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Radionucléide</th><th style="text-align: left">Cibl</th><th style="text-align: left">Période</th><th style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> en <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></th><th style="text-align: left">ϕ en <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord mathnormal">n</span><span class="mspace nobreak"> </span><span class="mord mathnormal">c</span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></th><th style="text-align: left">ϵ en %</th></tr></thead><tbody>
+<tr><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9641em;vertical-align:-0.15em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">124</span></span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">e</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td><td style="text-align: left">60 j</td><td style="text-align: left">25</td><td style="text-align: left">à</td><td style="text-align: left">à</td></tr>
+<tr><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9641em;vertical-align:-0.15em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">126</span></span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">a</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">e</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td><td style="text-align: left">1620 ans</td><td style="text-align: left">700</td><td style="text-align: left">à</td><td style="text-align: left">à</td></tr>
+</tbody></table>
+</div>
+<ul>
+<li>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">ϵ</span></span></span></span> = l'incertitude maximale en</p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ϕ</span></span></span></span> = le flux de neutrons produit en neutron/surface/4π</p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> = l'énergie maximale approximative des neutrons produits par
+la source.</p>
+</li>
+</ul>
+<h1 id="introduction-1"><a class="header" href="#introduction-1">Introduction</a></h1>
+<p>La détection de rayonnements nucléaires passe obligatoirement par leur
+interaction avec le milieu détecteur.<br />
+Ces interactions génèrent directement ou indirectement des charges
+électriques lesquelles, une fois collectées sont amplifiées et
+converties en signaux électriques.<br />
+Cette opération est rendue possible grâce à la polarisation électrique
+du détecteur conduisant à l'établissement d'un champ électrique
+responsable du mouvement des charges produites et de leur collection.<br />
+La détection et la mesure de rayonnements est un processus à plusieurs
+étapes.<br />
+Il s'agit dans un premier temps de faire interagir le rayonnement
+incident utile avec le milieu détecteur après qu'il ait franchi l'espace
+<strong>source-détecteur</strong>.<br />
+Ces interactions sont ensuite converties en impulsions électriques qui
+sont traitées électriquement et acheminées vers une <strong>unité
+d'acquisition et d'analyse</strong><br />
+Faire l'image de la répartition de la radioactivité dans une source/un
+volume:</p>
+<ul>
+<li>Principe de l'imagerie scintigraphie quand ce volume source est un
+patient chez qui on a injecté un produit rradioactif.</li>
+</ul>
+<p>La détection et la mesure de rayonnements nucléaires est une thématique
+pluridisciplinaire faisant appel à des connaissances en :</p>
+<ul>
+<li>
+<p>Physique nucléaire et atomique</p>
+</li>
+<li>
+<p>Interaction rayonnement-matière</p>
+</li>
+<li>
+<p>Électronique</p>
+</li>
+<li>
+<p>Acquisition, traitement et analyse du signal</p>
+</li>
+<li>
+<p>Statistiques et interprétation des résultats.</p>
+</li>
+</ul>
+<p>Le taux de comptage, ne permet l'accès à l'activité de la source qu'au
+moyen d'un traitement approprié prenant en compte :</p>
+<ul>
+<li>
+<p>L'efficacité de détection</p>
+</li>
+<li>
+<p>la sensibilité de détection</p>
+</li>
+<li>
+<p>la distance source-détecteur</p>
+</li>
+<li>
+<p>le bruit de fond.'</p>
+</li>
+</ul>
+<h1 id="constitution-dun-détecteur"><a class="header" href="#constitution-dun-détecteur">Constitution d'un détecteur</a></h1>
+<ul>
+<li>
+<p>Capteur : lieu d'interaction RI - matière</p>
+</li>
+<li>
+<p>Système d'amplification du signal</p>
+</li>
+<li>
+<p>Traitement signal: discriminâteur d'amplitude</p>
+</li>
+<li>
+<p>Système d'affichage: fournit donnée mesure</p>
+<ul>
+<li>
+<p>flux de particules : compteur</p>
+</li>
+<li>
+<p>Énergie particules: spectremètre</p>
+</li>
+<li>
+<p>Dose absorbée dans milieu: dosimètre ou débitmètre</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="caractéristiques-générales-des-détecteurs"><a class="header" href="#caractéristiques-générales-des-détecteurs">Caractéristiques générales des détecteurs</a></h1>
+<h2 id="différents-paramètres"><a class="header" href="#différents-paramètres">Différents paramètres:</a></h2>
+<ul>
+<li>
+<p>Efficacité de détection</p>
+</li>
+<li>
+<p>Temps mort</p>
+</li>
+<li>
+<p>Mouvement propre</p>
+</li>
+<li>
+<p>Résolution en énergie</p>
+</li>
+<li>
+<p>Caractéristiques géométriques</p>
+</li>
+</ul>
+<h2 id="classification-des-détecteurs"><a class="header" href="#classification-des-détecteurs">Classification des détecteurs</a></h2>
+<ul>
+<li>
+<p>Détecteur mettant en jeu l'ionisation des gaz</p>
+</li>
+<li>
+<p>Détecteur à scintillations</p>
+</li>
+<li>
+<p>Détecteur utilisant le noircissement des films photographiques</p>
+</li>
+<li>
+<p>Détecteur à semi-conducteurs'</p>
+</li>
+<li>
+<p>Détecteur thermoluminescents</p>
+</li>
+<li>
+<p>Les autres:</p>
+<ul>
+<li>
+<p>Dosimètres par résonance paramagnétique électronique</p>
+</li>
+<li>
+<p>Dosimètres chimiques</p>
+</li>
+<li>
+<p>Appareils mettant en jeu les méthodes calorimétriques…</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="caractéristiques-générales-des-détecteurs-1"><a class="header" href="#caractéristiques-générales-des-détecteurs-1">Caractéristiques générales des détecteurs</a></h2>
+<h3 id="efficacité-de-détection-ed"><a class="header" href="#efficacité-de-détection-ed">Efficacité de détection <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span>:</a></h3>
+<p>dépend de la nature et de l'énergie du RI</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.2519em;vertical-align:-0.8804em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Nombre particules d</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord">e</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˊ</span></span></span></span></span></span></span><span class="mord">tect</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord">e</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˊ</span></span></span></span></span></span></span><span class="mord">es</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Nombre particules re</span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4306em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord">c</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">¸</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1701em;"><span></span></span></span></span></span><span class="mord">us par d</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord">e</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˊ</span></span></span></span></span></span></span><span class="mord">tecteur</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<h3 id="résolution-en-énergie"><a class="header" href="#résolution-en-énergie">Résolution en énergie</a></h3>
+<p>Caractérise la qualité du détecteur à séparer 2 énergies proches.</p>
+<h3 id="le-temps-mort-τ"><a class="header" href="#le-temps-mort-τ">Le temps mort <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.1132em;">τ</span></span></span></span>:</a></h3>
+<ul>
+<li>
+<p>Plus petit intervalle de temps qui doit séparer deux informations
+pour être prises en compte individuellement par le système.</p>
+</li>
+<li>
+<p>Dépend des caractéristiques du détecteur</p>
+</li>
+<li>
+<p>Si τ court → taux de comptage <strong>TC</strong> <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel">↗↗</span></span></span></span></p>
+</li>
+</ul>
+<p><img src="images/detectuer_resolution.png" alt="image" /></p>
+<h2 id="le-mouvement-propre"><a class="header" href="#le-mouvement-propre">Le mouvement propre</a></h2>
+<p>Il correspond au T.C enregistré en l'absence de toute source*. Origine
+du <strong>M.P</strong> :</p>
+<ul>
+<li>
+<p>Le Bruit de Fond <strong>BF</strong> naturel:</p>
+<ul>
+<li>
+<p>radioactivité ambiante</p>
+</li>
+<li>
+<p>rayonnements cosmiques</p>
+</li>
+</ul>
+</li>
+<li>
+<p>La radioactivité propre des matériaux du détecteur</p>
+</li>
+<li>
+<p>Le bruit de l'électronique associée'</p>
+</li>
+</ul>
+<h1 id="introduction-2"><a class="header" href="#introduction-2">Introduction</a></h1>
+<p>Ces détecteurs détectent le passage d'une particule chargée en mesurant
+<strong>la charge totale des électrons</strong> et les ions produits dans
+l'ionisation du milieu par la particule (formule de <strong>Bethe-Bloch</strong>). Le
+milieu peut être de <em>gaz</em>, <em>liquide</em> ou <em>solide</em>.</p>
+<p>Pour récupérer les électrons et les ions <strong>avant qu'ils ne se
+recombinent en atomes</strong>, il faut la présence d'un champ électrique qui
+les séparent et les font dériver vers les électrodes respectifs.</p>
+<p>Les charges (électrons et ions) induisent des courants sur les
+électrodes (figure suivante). Ces courants sont détectés par un
+amplificateur qui produit un signal électronique.</p>
+<p>Le nombre moyen de paires d'électron-ion produit dans un passage d'une
+particule chargée est proportionnel à l'énergie perdue, il est donné par
+la formule de <strong>Bethe-Bloch</strong>:</p>
+<p><img src="images/d_chambre_ionisation.png" alt="image" /></p>
+<h1 id="détecteurs-mettant-en-jeu-lionisation-des-gaz"><a class="header" href="#détecteurs-mettant-en-jeu-lionisation-des-gaz">Détecteurs mettant en jeu l'ionisation des gaz</a></h1>
+<h2 id="production-dun-grand-nombre-délectrons"><a class="header" href="#production-dun-grand-nombre-délectrons">production d'un grand nombre d'électrons</a></h2>
+<p>Normalement , en l'absence de tout <strong>RI</strong> , quelque soit la différence
+de potentiel <strong>ddp</strong> appliquée, aucun courant ne traverse la chambre,
+mais si une particule ionisante pénètre dans l'enceinte :</p>
+<p><img src="images/d_gaz1.png" alt="image" /></p>
+<h2 id="létude-de-limpulsion-en-fonction-de-la-tension-permet"><a class="header" href="#létude-de-limpulsion-en-fonction-de-la-tension-permet">L'étude de l'impulsion en fonction de la tension permet</a></h2>
+<p><img src="images/d_gaz2.png" alt="image" /></p>
+<p>Les 5 régions des détecteurs à gaz</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../s2/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../s2/1_bio.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../s2/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../s2/1_bio.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

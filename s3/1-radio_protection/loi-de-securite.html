@@ -1,0 +1,364 @@
+<!DOCTYPE HTML>
+<html lang="fr" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Lois et sécurité - TRPM</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../custom.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">TRPM</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/ayoubelmhamdi/TRPM" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/ayoubelmhamdi/TRPM/tree/master/src/s3/1-radio_protection/loi-de-securite.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="lois-et-réglementations-en-santé-et-sécurité-au-travail"><a class="header" href="#lois-et-réglementations-en-santé-et-sécurité-au-travail">Lois et réglementations en santé et sécurité au travail</a></h1>
+<hr />
+<h1 id="lois-fondamentales-sur-la-sst"><a class="header" href="#lois-fondamentales-sur-la-sst">Lois fondamentales sur la SST</a></h1>
+<hr />
+<p>Dahir du - <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7574em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∘</span></span></span></span></span></span></span></span></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">14</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">149</span></span></span></span> du 25 <em>chaoual</em> 1435 (22 aout 2014) portant promulgation de la loi <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7574em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∘</span></span></span></span></span></span></span></span></span><span class="mord">142</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">12</span></span></span></span> relative à la sûreté et à la sécurité nucléaires et radiologiques et à la création de l'Agence marocaine de sûreté et de sécurité nucléaires et radiologiques.</p>
+<p>BULLETIN OFFICIEL <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6741em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∘</span></span></span></span></span></span></span></span></span><span class="mord">6292</span></span></span></span> du 22 kaada 1435 (18-9-2014).</p>
+<h3 id="dispositions-des-textes-spécifiques-aux-risques-liés-à-lex--position-à-des-agents-physiques"><a class="header" href="#dispositions-des-textes-spécifiques-aux-risques-liés-à-lex--position-à-des-agents-physiques">Dispositions des textes spécifiques AUX risques liés à l'ex- position à des agents physiques</a></h3>
+<p>Protection contre les risques dus à l'utilisation des corps radioactifs et des rayons <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> :</p>
+<ul>
+<li>
+<p>Arrêté Viziriel du 1er août 1951 (27 chaoual 1370) déterminant les mesures particulières de protection applicables aux établissements dans lesquels sont préparés, manipulés ou employés les produits radioactifs et ceux dans lesquels sont mis en œuvre les rayons X (B. O. ((BO) Bulletin Officiel )) <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6741em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∘</span></span></span></span></span></span></span></span></span><span class="mord">2025</span></span></span></span> du 17 août 1951);</p>
+</li>
+<li>
+<p>Arrêté du directeur du travail et des questions sociales du 1er août 1951 déterminant les termes de l'avis concernant les dangers que présentent les corps radioactifs ainsi que les précautions à prendre pour les éviter (B. O. <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6741em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∘</span></span></span></span></span></span></span></span></span><span class="mord">2025</span></span></span></span> du 17 août 1951);</p>
+</li>
+<li>
+<p>Arrêté du directeur du travail et des questions sociales du 1er août 1951 déterminant les termes de l'avis concernant les dangers que présentent les rayons <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> ainsi que les précautions à prendre pour les éviter (B. O. <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6741em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∘</span></span></span></span></span></span></span></span></span><span class="mord">2025</span></span></span></span> du 17 août 1951);</p>
+</li>
+</ul>
+<h3 id="les-textes-relatifs-à-la-sst-établis-par-lautorité-gouver--nementale-chargée-de-la-santé"><a class="header" href="#les-textes-relatifs-à-la-sst-établis-par-lautorité-gouver--nementale-chargée-de-la-santé">Les textes relatifs à la SST établis par L'autorité gouver- nementale chargée de la santé</a></h3>
+<p>Protection contre les rayonnements ionisants :</p>
+<ul>
+<li>
+<p>Arrêté du ministre de la santé publique du 6 août 1959 portant interdiction d'emploi dans la formation de la santé publique de victimes de maladies professionnelles dues aux rayons X (BO 2479 du 29 avril 1960);</p>
+</li>
+<li>
+<p>Décret <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6741em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∘</span></span></span></span></span></span></span></span></span></span></span></span> 2-97-132 du 25 joumada II 1418 (28 octobre 1997) relatif à l'utilisation des rayonnements ionisants à des fins médicales ou dentaires (B. O. <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∘</span></span></span></span></span></span></span></span></span><span class="mord">4540</span><span class="mord mathnormal">d</span><span class="mord mathnormal">u</span><span class="mord">4</span></span></span></span> décembre 1997);</p>
+</li>
+<li>
+<p>Décret <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6741em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∘</span></span></span></span></span></span></span></span></span></span></span></span> 2-97-30 du 25 joumada II 1418 (28 octobre 1997) pris pour l'application de la loi <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6741em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∘</span></span></span></span></span></span></span></span></span></span></span></span> 005-71 du 21 chaabane 1391 (12 octobre 1971) relative à la protection contre les rayonnements ionisants (B. O. <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6741em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∘</span></span></span></span></span></span></span></span></span><span class="mord">4540</span></span></span></span> du 4 décembre 1997);</p>
+</li>
+<li>
+<p>Arrêté du ministre de la santé <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6741em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∘</span></span></span></span></span></span></span></span></span></span></span></span> 920-01 du 17 chaabane 1421 (14 novembre 2000) fixant les limites de doses ;</p>
+</li>
+<li>
+<p>Arrêté du ministre de la santé <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6741em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∘</span></span></span></span></span></span></span></span></span></span></span></span> 921-01 du 17 chaabane 1421 (14 novembre 2000) portant délimitation et signalisation particulières des zones contrôlées et surveillées ;</p>
+</li>
+</ul>
+<h1 id="22-autorités-nationales-compétentes"><a class="header" href="#22-autorités-nationales-compétentes"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2.2</span></span></span></span> Autorités nationales compétentes</a></h1>
+<h3 id="lautorité-gouvernementale-chargée-de-la-santé"><a class="header" href="#lautorité-gouvernementale-chargée-de-la-santé">L'autorité gouvernementale chargée de la Santé</a></h3>
+<p>Le ministère de la santé est chargé de l'élaboration et de la mise en œuvre de la politique gouvernementale en matière de santé de la population.</p>
+<p>Il agit, en liaison avec les départements concernés, en vue de promouvoir le bien-être physique, mental et social des habitants.</p>
+<p>Il harmonise les orientations et coordonne les objectifs et les actions ou mesures qui concourent à l'élévation du niveau de santé dans le pays et intervient afin d'assurer, au niveau national, une meilleure allocation des ressources, en matière de prévention, de soins curatifs ou d'assistance.</p>
+<p>A ce titre, le ministère de la santé participe avec les départements ministériels concernés à l'élaboration et/ou la mise en œuvre de la stratégie nationale de santé et sécurité au travail à travers les structures suivantes :</p>
+<p>La Direction de l'<em>Epidémiologie</em> et de Lutte contre les Maladies (<em>DELM</em>) chargée notamment de programmer et de réaliser des actions visant à protéger le milieu ambiant et de promouvoir et contribuer à la surveillance, au suivi et contrôle des installations utilisant les rayonnements ionisants de même qu'à la surveillance de la radioactivité de l'environnement.</p>
+<p>Les services concernés sont:</p>
+<ul>
+<li>
+<p>Le Service de la Santé des Travailleurs : dépend de la Division des Maladies Non Transmissibles (<em>DMNT</em>). Il est chargé notamment de :</p>
+<ul>
+<li>
+<p>participer à la conception et à la formulation et au suivi de la politique nationale en matière de protection de la santé en milieu de travail;</p>
+</li>
+<li>
+<p>participer à la conception et à la formulation et au suivi de la politique nationale en matière de protection de la santé en milieu de travail;</p>
+</li>
+<li>
+<p>planifier des services de santé au travail pour les secteurs exclus de la couverture par la médecine du travail;</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Le Centre National de Radioprotection : assure, entre autres, les missions de déclaration, de contrôle et d'inspection des équipements et procédés exposant aux rayonnements ionisants.</p>
+</li>
+</ul>
+<p>La Direction des Ressources Humaines : comprend notamment le Conseil de la Santé qui assure le suivi de l'aptitude médicale et l'instruction des dossiers de maladies et accidents contractés dans le service de tous les fonctionnaires de l'<em>Etat</em>.</p>
+<p>Les activités d'aptitude médicale sont assurées par des commissions médicales provinciales et préfectorales.</p>
+<h3 id="lagence-marocaine-de-sûreté-et-de-sécurité-nucléaires-et-radiologiques-amssnur"><a class="header" href="#lagence-marocaine-de-sûreté-et-de-sécurité-nucléaires-et-radiologiques-amssnur">L'Agence Marocaine de Sûreté et de Sécurité Nucléaires et Radiologiques (AMSSNuR)</a></h3>
+<p>L'Agence Marocaine de Sûreté et de Sécurité Nucléaires et Radiologiques 'AMSSNuR' est un Etablissement Public à caractère stratégique chargé de la réglementation et du contrôle des activités mettant en jeu des sources de rayonnements ionisants.</p>
+<ul>
+<li><strong>Mission</strong> :
+Veiller au respect de la conformité de la sûreté et de la sécurité nucléaires et radiologiques, des activités et des installations mettant en jeu des sources de rayonnements ionisants, aux dispositions de la loi 142-12 et la réglementation y afférente.</li>
+</ul>
+<p>AMSSNuRa pour vocation de veiller à la protection de l'homme, de la société et de l'environnement contre les risques liés aux utilisations des rayonnements ionisants.</p>
+<ul>
+<li>
+<p><strong>Fonctions</strong> :</p>
+</li>
+<li>
+<p>Législation et réglementation :
+Proposer des textes législatifs et réglementaires dans les domaines nucléaires et radiologiques à soumettre à l'approbation du Gouvernement.</p>
+</li>
+</ul>
+<p>Publier les guides de bonnes pratiques pour la mise en application, par les utilisateurs, des règlements adoptés.</p>
+<ul>
+<li>
+<p>Autorisation et Contrôle :
+Gérer le système d'examen - évaluation, d'octroi d'autorisations, d'inspection et de suivi des activités réglementées mettant en jeu des sources de rayonnements ionisants.</p>
+</li>
+<li>
+<p>Appui et Conseil à l'<em>Etat</em> :
+Assister l'<em>Administration</em> pour la mise en place du système national de protection physique des matières et installations nucléaires et du plan national d'intervention en cas de situation d'urgence radiologique ou nucléaire.</p>
+</li>
+</ul>
+<p>Conseiller les Autorités Gouvernementales sur les questions relatives à la sûreté, sécurité et garanties nucléaires, Assister le gouvernement dans les négociations internationales dans les domaines de compétences d'AMSSNuR.</p>
+<ul>
+<li>
+<p>Communication :
+Informer le public sur le processus réglementaire et les questions de sûreté et de sécurité relatives aux activités nucléaires ou radiologiques et communiquer avec les parties concernées.</p>
+</li>
+<li>
+<p>Coopération :
+Développer et/ou renforcer la coopération internationale et la veille en sûreté et sécurité nucléaires et radiologiques, ainsi qu'en garanties nucléaires.</p>
+</li>
+</ul>
+<h1 id="implémentation-de-la-législation-sst"><a class="header" href="#implémentation-de-la-législation-sst">Implémentation de la législation SST</a></h1>
+<hr />
+<h3 id="lautorité-gouvernementale-chargée-de-la-santé-1"><a class="header" href="#lautorité-gouvernementale-chargée-de-la-santé-1">L'autorité gouvernementale chargée de la santé</a></h3>
+<p>Au niveau central : la Direction de l'<em>Epidémiologie</em> et de lutte contre les maladies qui comprend :</p>
+<ul>
+<li>
+<p>Le Service de la Santé des Travailleurs (Division des Maladies Non Transmissibles);</p>
+</li>
+<li>
+<p>La Division de l'<em>Hygiène</em> de Milieu;</p>
+</li>
+<li>
+<p>Le Centre National de Radioprotection;</p>
+</li>
+</ul>
+<h3 id="lagence-marocaine-de-sûreté-et-de-sécurité-nucléaires-et-radiologiques"><a class="header" href="#lagence-marocaine-de-sûreté-et-de-sécurité-nucléaires-et-radiologiques">L'Agence Marocaine de Sûreté et de Sécurité Nucléaires et Radiologiques</a></h3>
+<p>L'<em>AMSSNuR</em> a parmi ses missions de veiller à la protection de l'homme, de la société et de l'environnement contre les risques liés aux utilisations des rayonnements ionisants.</p>
+<p>L'<em>AMSSNuR</em> est nouvellement créée .elle est en train de se structurer et par conséquent Le nombre des inspecteurs commissionnés par l'<em>Agence</em> pour le contrôle de toutes les activités mettant en œuvre des sources de rayonnements ionisants n'est pas encore connu.</p>
+<h1 id="structures-de-prévention-au-niveau-national"><a class="header" href="#structures-de-prévention-au-niveau-national">Structures de prévention au niveau national</a></h1>
+<hr />
+<h3 id="lagence-marocaine-de-sûreté-et-de-sécurité-nucléaires-et-radiologiques-lamssnur"><a class="header" href="#lagence-marocaine-de-sûreté-et-de-sécurité-nucléaires-et-radiologiques-lamssnur">L'Agence Marocaine de Sûreté et de Sécurité Nucléaires et Radiologiques L'AMSSNuR</a></h3>
+<h3 id="association-marocaine-de-radioprotection-amr"><a class="header" href="#association-marocaine-de-radioprotection-amr">Association marocaine de Radioprotection (AMR)</a></h3>
+<p>Créée le 18 Septembre 2002, conformément au dahir <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6741em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∘</span></span></span></span></span></span></span></span></span></span></span></span> 1-58- 376 du 3 Joumada I 1378 ( 15 novembre 1958 ) réglementant le droit d'association tel qu'il a été modifié et complété, l'AMR est ouverte aux personnes titulaires d'un diplôme de radioprotection et aux professionnels intéressés par la radioprotection, en relation directe ou indirecte avec le domaine.</p>
+<p>Elle regroupe des ingénieurs, chercheurs, médecins, juristes, techniciens, etc.</p>
+<p>La création de l'association répondait à différentes impulsions :</p>
+<ul>
+<li>
+<p>L'intérêt d'établir, en dehors des canaux et des structures administratives et officielles, un cadre de discussion et d'échange d'informations entre les différents acteurs dans le domaine de la radioprotection et d'œuvrer, éventuellement en liaison avec d'autres associations nationales ou étrangères, au renforcement de la radioprotection dans les différents secteurs, via l'organisation de séminaires, de conférences débats, ... etc. ;</p>
+</li>
+<li>
+<p>Constitué le 30 janvier 2002, le bureau de l'<em>AMR</em> est composé de onze membres représentant l'ensemble des secteurs concernés : le Centre National de l'<em>Energie</em>, des Sciences et des Techniques Nucléaires (<em>CNESTEN</em>), le Centre National de Radioprotection (<em>CNRP</em>) mais aussi les secteurs industriel, universitaire et médical. L'<em>AMR</em> coopère avec tout organisme ou association, national ou international, ayant des buts analogues. Elle a pour principal but :</p>
+<ul>
+<li>
+<p>De favoriser les travaux et les échanges d'information dans le domaine de la radioprotection et les domaines connexes;</p>
+</li>
+<li>
+<p>D'aider à faire connaitre, tant aux publics qu'aux professionnels concernés, les problèmes et les nécessités de la radioprotection pour le bien de l'Homme et de l'environnement;</p>
+</li>
+<li>
+<p>D'œuvrer pour la promotion des formations professionnelles en radioprotection.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>L'<em>Association</em> se propose de promouvoir des travaux de recherche, des congrès, des débats, des rencontres, des conférences, des séminaires, de patronner des publications ou d'en éditer.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../s3/1-radio_protection/legislation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../s3/2-imagerie2/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../s3/1-radio_protection/legislation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../s3/2-imagerie2/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

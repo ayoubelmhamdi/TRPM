@@ -1,0 +1,616 @@
+<!DOCTYPE HTML>
+<html lang="fr" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>RÉPONSE PRÉCOCE AUX RAYONNEMENTS IONISANTS - TRPM</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">TRPM</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/ayoubelmhamdi/TRPM" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/ayoubelmhamdi/TRPM/tree/master/src/s2/1_ADN.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="reponse-precoce-aux--rayonnements-ionisants"><a class="header" href="#reponse-precoce-aux--rayonnements-ionisants">REPONSE PRECOCE AUX  RAYONNEMENTS IONISANTS</a></h1>
+<p>Les radiations ionisantes ont de nombreuses applications en médecine et
+en biologie. Nous s'intéressant ici à celles utilisés en thérapeutique ;
+la plus courante de celle-ci est la destruction cellulaire, relativement
+sélective, qui est à la base de la radiothérapie. Les radiations
+ionisant utilisable en radiothérapie ont une énergie généralement
+comprise entre quelques dizaines de <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord"><span class="mord mathrm" style="margin-right:0.01389em;">keV</span></span></span></span></span> et quelques
+dizaines de <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord"><span class="mord mathrm" style="margin-right:0.01389em;">MeV</span></span></span></span></span> et sont produites par deux mécanismes :</p>
+<ul>
+<li>
+<p>La désintégration des atomes radioactifs naturels ou artificiels :
+électron et surtout les photons gammas,</p>
+</li>
+<li>
+<p>L'accélération artificielle de particules : neutrons, protons, ions
+lourds et surtout photons <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathrm">X</span></span></span></span> et électrons.</p>
+</li>
+</ul>
+<h1 id="mécanismes-daction-des-rayonnements-ionisant"><a class="header" href="#mécanismes-daction-des-rayonnements-ionisant">Mécanismes d'action des rayonnements ionisant</a></h1>
+<p>Les effets biologiques d'une irradiation sur les tissus cellulaires sont
+l'aboutissement d'une chaine de phénomènes déclenchés par le passage du
+rayonnement. Les événements initiaux sont des ionisations (éjection d'un
+électron) ou des excitations (passage d'un électron sur une couche
+supérieure), provoquées par l'interaction des radiations incidentes sur
+les atomes des molécules cellulaires. Ces modifications physiques
+entrainant des perturbations physico-chimiques, puis chimiques pour
+aboutir enfin à un effet biologique. La séquence de ces phénomènes et
+représentée sur (cf. figure 1).</p>
+<p><img src="../images/2022_08_14_a90853513f3cfee72250g-02.jpg" alt="image" /></p>
+<p>FIGURE 1. RESUME DES DIFFERENTS PHENOMENES APRES UNE IRRADIATION</p>
+<h1 id="1-Étape-physique"><a class="header" href="#1-Étape-physique">1. Étape physique</a></h1>
+<p>Elle correspond aux évènements physiques initiaux (ionisations,
+excitations) déclenchés par l'interaction des rayonnements incidents
+avec les atomes des molécules cellulaires. Ces évènements se produisent
+avec une extrême rapidité (de l'ordre de 10-15 à 10-16 secondes).</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> Interaction photons-matière : dans la gamme d'énergie
+des photons utilisés en radiothérapie, deux effets prédominent largement
+(cf. figure 2): l'effet Compton (énergie d'un photon incident transmise
+à un électron arraché à une couche périphérique d'un atome et à un
+photon dit <code>diffusé</code>) et l'effet photoélectrique (intégralité de
+l'énergie du photon incident est transférée à un électron arraché à
+une couche interne d'un atome, le réarrangement électronique qui
+s'ensuit entraîne l'émission soit d'un photon dit de " fluorescence`,
+soit d'un électron Auger).</p>
+<p><img src="../images/2022_08_14_a90853513f3cfee72250g-03.jpg" alt="image" /></p>
+<p>FIGURE 2. PRINCIPALES INTERACTIONS PHOTON-MATIERE</p>
+<p>$\Rightarrow$ Interaction électrons-matière : en radiothérapie, il
+peut s'agir soit des électrons <code>primaires</code>, produits directement par
+les appareils de traitement (accélérateurs linéaires), soit des
+électrons <code>secondaires</code>, produits au cours des interactions
+photonsmatière (voir paragraphe précédent). Deux types de phénomènes
+prédominent : des interactions électron-électron, appelées collisions,
+entraînant un transfert d'énergie qui s'épuise progressivement dans la
+matière et des interactions électron-noyau dits phénomènes de freinage
+[l'électron est freiné lors d'un passage à proximité d'un noyau (chargé
+positivement qui l'attire) et l'énergie perdue lors du freinage de
+l'électron est à l'origine de la production de photons
+$(\mathrm{X})$ dits `de freinage].</p>
+<h1 id="1-Étape-physico-chimique"><a class="header" href="#1-Étape-physico-chimique">1. Étape physico-chimique</a></h1>
+<p>Ce sont des collisions entre les électrons secondaires et les molécules
+du milieu qui sont responsables de ces effets. Une cellule peut être
+grossièrement assimilée à une solution aqueuse dans laquelle le
+rayonnement peut soit provoquer des lésions directes des molécules, soit
+induire des lésions indirectes des molécules par l'intermédiaire des
+produits de la radiolyse de l'eau cellulaire.</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> Action direct : les molécules excitées ou ionisées
+possèdent un excédent d'énergie qui peut être expulsé par rupture d'une
+liaison covalente et scission de la molécule en deux fragments. Chaque
+fragment moléculaire emporte un des deux électrons de liaison covalente
+et devient un radicale libre, qui est noté par un (.) :
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>. La présence dans un radical
+libre, d'un électron non couplé dit célibataire lui confère une grande
+réactivité chimique, qui est à la base de l'effet biologique. Les
+radicaux libres ont tendance à s'assembler entre eux pour produire des
+nouvelles molécules : <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span></span></span></span>
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>. Au total, lorsque toutes les
+molécules les sont revenues à un état stable, certaines ont été
+modifiées ; les lésions souvent observées sont des coupures et des
+pontages.</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> Action indirect : l'action indirecte des radiations
+ionisantes sur les molécules cellulaires induite par les produits de la
+radiolyse de l'eau cellulaire. L'ionisation d'une molécule d'eau produit
+après une cascade de réactions chimiques à la formation des radicaux
+libres hautement réactifs, qui sont à l'origine des effets biologiques :</p>
+<ul>
+<li>
+<p>Oxydant : OH</p>
+</li>
+<li>
+<p>Réducteur : H' (hydrogène atomique) et <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1544em;vertical-align:-0.3831em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7713em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">q</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3831em;"><span></span></span></span></span></span></span></span></span></span>(électron
+aqueux). Ces radicaux libres sont capturés par les molécules du
+soluté qu'ils modifient par les réactions chimiques qu'ils
+induisent.</p>
+</li>
+</ul>
+<h1 id="lésions-des-acides-désoxy-ribonucléiques-adn"><a class="header" href="#lésions-des-acides-désoxy-ribonucléiques-adn">Lésions des acides désoxy-ribonucléiques (ADN)</a></h1>
+<p>L'ADN joue un rôle essentiel dans la division cellulaire et de la
+synthèse des protéines. Les deux chaines complémentaires de l'ADN sont
+constituées par une alternance d'un sucre, le désoxyribose, et d'acide
+phosphorique, et sont reliées entre reliées entre elle par des paires de
+bases (soit adénine et guanine, soit cytosine et thymine) ; c'est
+l'agencement de ces bases qui constitue le code génétique. La molécule
+d'ADN peut être lésée directement par les électrons ou plus souvent par
+les radicaux libres produits par la radiolyse de l'eau (figure, , il
+s'agit de lésions de bases ou des sucres, de pontage, ou surtout de
+ruptures de chaines, simple ou double. La cellule possède des enzymes,
+telle que l'ADN polymérase, qui permettent sous certains conditions la
+réparation des chaines lésées (cf. figure 3).<br />
+<img src="../images/2022_08_14_a90853513f3cfee72250g-04.jpg" alt="image" /></p>
+<p>FIGURE 2. L'ADN PEUT ETRE LESE, SOIT DIRECTEMENT, SOIT INDIRECTEMENT PAR
+L'INTERMEDIAIRE DES PRODUIT DE LA RADIOLYSE DE L'EAU CELLULAIRE</p>
+<h1 id="action-sur-la-cellule"><a class="header" href="#action-sur-la-cellule">Action sur la cellule</a></h1>
+<p>Les lésions cellulaires sont essentiellement celles de l'ADN du noyau
+cellulaire. Ces lésions sont :</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> Létales (mortelles) si elles sont irréparables et
+touchent des fonctions vitales pour la cellule. La mort cellulaire n'est
+généralement immédiate que pour des irradiations de plusieurs centaines
+de Gy. Pour des doses de quelques Gy habituelles en radiothérapie, la
+cellule cesse de se diviser après une ou plusieurs mitoses : c'est la
+mort différée (reporté dans le temps), qui correspond à la perte de
+prolifération (ceci explique le délai constamment observé entre
+l'irradiation et la régression clinique du volume tumoral).</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> Sub-létales, qui ne sont pas individuellement létales et
+sont réparables. L'accumulation de ces lésions sub-létales dans la
+cellule peut tout de même conduire à sa mort. <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span>
+Potentiellement létales, qui peuvent être létales si la division
+survient rapidement, mais qui peuvent aussi se réparer si les conditions
+sont favorables.</p>
+<p>La réparation cellulaire peut être incomplète ; lésions du matériel
+génétique non ou mal réparées, appelées mutations, sont d'autant plus
+préoccupants qu'elles touchent les cellules germinales responsable de la
+fécondation.</p>
+<h1 id="2-Étape-tissulaire"><a class="header" href="#2-Étape-tissulaire">2. Étape tissulaire</a></h1>
+<p>Les conséquences d'une irradiation sur un tissu sont différentes selon
+que la population cellulaire qui le compose est en croissance ou en
+équilibre.</p>
+<h1 id="a-population-tissulaire-en-croissance"><a class="header" href="#a-population-tissulaire-en-croissance">a. Population tissulaire en croissance</a></h1>
+<p>L'exemple-type en est constitué par les tumeurs. Le temps de doublement
+est celui nécessaire à la multiplication par deux de l'effectif
+cellulaire. Il varie de plusieurs jours à plusieurs années et dépend
+notamment du pourcentage de cellule en cours de division. L'évolution
+d'une population après une irradiation unique est la résultante de la
+disparition des cellules tuées et la multiplication des cellules
+survivantes (cf. figure 4).</p>
+<p><img src="../images/2022_08_14_a90853513f3cfee72250g-05.jpg" alt="image" /></p>
+<p>FIGURE 4. L'EVOLUTION D'UNE POPULATION APRES UNE IRRADIATION UNIQUE
+(TRAIT GRAS) EST LA RESULTANTE DE LA DISPARITION DES CELLULES TUEES
+(POINTILLE) ET LA MULTIPLICATION DES CELLULES SURVIVANTES (TRAIT
+MAIGRE).</p>
+<h1 id="b-population-cellulaire-en-équilibre"><a class="header" href="#b-population-cellulaire-en-équilibre">b. Population cellulaire en équilibre</a></h1>
+<p>La majorité des tissus sains appartient à cette catégorie. Le nombre des
+cellules qui naissent est égal à celui de celles qui meurent. Le temps
+de renouvellement, qui est celui au bout duquel toutes les cellules ont
+été renouvelées, est compris entre quelques jours (muqueuse intestinal)
+et quelques mois ou années (foie, rein). Ces tissus saints sont le plus
+souvent composés de deux compartiments cellulaires :</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> Celui des cellules souches, indifférenciées, qui se
+multiplient en donnant naissance à la fois à de nouvelles cellules
+souches et aux cellules qui vont se différencier.</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> Celui des cellules différenciées qui ont perdu la
+capacité de se diviser.</p>
+<p>Dans certains tissus, telle que la moelle osseuse hématopoïétique, on
+décrit un troisième compartiment, dit intermédiaire, fait de cellules
+qui se multiplient en achevant leur différenciation. Dans certains
+tissus, enfin, il n'y a pas de hiérarchie cellulaire aussi stricte : ces
+tissus sont dits non compartimentaux. L'épiderme, par exemple, est
+constitué d'une couche basale de cellule souches dont une partie assure
+le renouvellement du tissu et l'autre se kératine (différenciation),
+tout en migrant vers la surface (avant de desquamer). On assiste
+successivement après l'irradiation de ce type de populations à deux
+compartiments à :</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> Un dépeuplement en cellules souches (par exemple les
+cellules de la couche basale de l'épiderme), seules touchées par les
+radiations ionisantes.</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> L'élimination progressive par sénescence des cellules
+différenciées (par exemple la desquamation des cellules kératinisées de
+l'épiderme), qui n'est qu'incomplètement compensée par la
+différentiation des cellules souches dont le nombre réduit.</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> L'accélération de la multiplication des cellules souches
+résiduelles.</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> Le repeuplement des cellules différenciées.</p>
+<p>Ceci explique que les effets cliniques sont perçus d'autant plus vite
+que l'élimination des cellules différenciées est plus rapide,
+c'est-à-dire que la durée de renouvellement du tissu est brève. Le
+temps de renouvellement de l'épiderme étant de 3 semaines et celui de la
+muqueuse de l'intestin grêle est de 3 jours, les effets aigus de
+l'irradiation seront perçus au bout de 2 à 3 jours au niveau de
+l'intestin et au cours de la troisième semaine pour la peau, quelle
+que soit la dose.</p>
+<h1 id="facteurs-influençant-leffet-biologique-des-radiations"><a class="header" href="#facteurs-influençant-leffet-biologique-des-radiations">Facteurs influençant l'effet biologique des radiations</a></h1>
+<p>L'action biologique des rayonnements peut être modifiée par plusieurs
+paramètres dont les propriétés sont mises à profit pour faire apparaitre
+un effet différentiel entre les tissus sains et malins.</p>
+<h1 id="radiosensilbilité-intrinsèque"><a class="header" href="#radiosensilbilité-intrinsèque">Radiosensilbilité intrinsèque</a></h1>
+<p>La proportion de cellules survivantes ou taux de survie cellulaire
+diminue lorsque la dose augmente. La courbe de survie est la
+représentation graphique de ces relations dose-effet. Elle représente
+en cordonnées semi-logarithmiques, une tangent à l'origine dont la pente
+négative est <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span> et une incurvation progressive appelée
+épaulement (cf. figure 5). L'aspect de la courbe ne peut être expliqué
+par les seules lésions létales. L'interprétation passe par le fait que
+la cellule peut être tuée soit par une lésion directement létale, soit
+par l'accumulation des lésions sublétales. L'incurvation s'explique par
+la diminution des réparations par saturation des mécanismes enzymatiques
+lorsque la dose augmente. La diminution de la cambrure de la courbe dans
+sa partie distale signifie que, lorsque ces mécanismes de restauration
+sont saturés, presque toutes les nouvelles lésions sont létales. En
+outre la capacité de restauration cellulaire est donc le facteur
+prédictif principal de la réponse des populations tissulaires aux
+radiations ionisantes (radiosensibilité intrinsèque).</p>
+<p><img src="../images/2022_08_14_a90853513f3cfee72250g-07.jpg" alt="image" /></p>
+<p>FIGURE 5.COURBE DE SURVIE DES POPULATIONS CELLULAIRES SOUMISES A UNE
+IRRADIATION :</p>
+<ul>
+<li>
+<p>TRAIT MAIGRE : MAJORITE DES TUMEURS ET TISSUS SAINS A REPONSES
+PRECOCES</p>
+</li>
+<li>
+<p>TRAIT GRAS : TISSUS A REPONSE TARDIVE ET TUMEURS PEU SENSIBLES A
+L'IRRADIATION.</p>
+</li>
+</ul>
+<p>Schématiquement on distingue :</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> Des tissus à faible capacité de réparation, donc
+relativement radiosensibles dans la courbe de survie est caractérisée
+avec un épaulement étroit (cf. figure 5): la plupart des tumeurs
+(carcinomes par exemple : un cancer développé à partir d'un tissu
+épithélial (peau, muqueuse)) et tissus sains à précoce réponses.</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> Des tissus à forte capacité de réparation, donc
+relativement radio-résistants, dont la courbe de survie est caractérisé
+par un épaulement large (cf. figure 5): tissus sains à réponse tardive
+et des tumeurs peu sensibles à l'irradiation (glioblastome, mélanome
+malin, etc.).</p>
+<h1 id="facteur-temps"><a class="header" href="#facteur-temps">Facteur temps</a></h1>
+<p>Toute irradiation se définit par trois paramètres :</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> La dose totale exprimée en Gy.</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> L'étalement, c'est-à-dire le nombre de jours écoulés
+entre la première et la dernière fraction.</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> Le fractionnement qui est le nombre de fractions</p>
+<p>La dose par fraction qui est égale à la dose totale divisée par le
+nombre de fractions est essentielle, car c'est d'elle dont dépond, en
+grande partie, l'effet différentiel que l'on peut obtenir entre tissus
+sains et malins.</p>
+<p>L'étalement et le fractionnement favorisent trois phénomènes biologiques
+:</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> La restauration cellulaire, à cause de la réparation des
+lésions sub-létales et potentiellement létales entre les fractions.</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> La repopulation, c'est-à-dire la multiplication des
+cellules survivantes.</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> La réoxygénation des cellules tumorales hypoxique</p>
+<p>L'étalement et le fractionnement protègent donc relativement plus les
+tissus qui ont une capacité de restauration et de la repopulation
+élevée. Par exemple, la multiplication des cellules de la peau et des
+muqueuses semble nettement plus active après l'irradiation que la
+plupart des cellules carcinomateuses. La restauration et la repopulation
+des cellules tumorales entre les fractions obligent en contre partie à
+augmenter la dose totale pour maintenir l'effet turnicidé (cf. figure
+7). L'expérience clinique a empiriquement conduit à adopter dans la
+plupart des cas le fractionnement dit classique, c'est-à-dire 5 semaines
+de 2 Gy par semaine.</p>
+<p><img src="../images/2022_08_14_a90853513f3cfee72250g-08.jpg" alt="image" /></p>
+<p>FIGURE 6.SURVIE DE POPULATIONS CELLULAIRES SOUMISES A UNE IRRADIATION
+FRACTIONNEE (2 GY PAR JOUR) :</p>
+<ul>
+<li>
+<p>tRAIT GRAS : CAS D'UNE POPULATION A FORTE CAPACITE DE RESTAURATION
+ET DE REPOPULATION ;</p>
+</li>
+<li>
+<p>TRAIT MAIGRE : CAS D'UNE POPULATION FAIBLE CAPACITE DE RESTAURATION
+ET DE REPOPULATION.</p>
+</li>
+</ul>
+<h1 id="effet-oxygène"><a class="header" href="#effet-oxygène">Effet oxygène</a></h1>
+<p>L'oxygène présent dans les cellules au moment de l'irradiation augmente
+l'effet de celle-ci en se combinant avec les radicaux libres pour former
+des molécules hyperoxygénées. La toxicité de ces substances s'ajoute à
+celle du rayonnement. Par exemple pour les photons ou les électrons la
+dose nécessaire pour stériliser les cellules en hypoxie est en pratique
+de 3 fois plus élevée que pour des cellules en normoxie. Les cellules
+saines sont bien oxygéné (vascularisation régulière). Il ne l'en est pas
+de même pour le cas d'une tumeur en raison de l'anarchie vasculaire
+(l'approvisionnement en oxygène est irrégulier). L'oxygénation d'une
+cellule donnés y est inversement proportionnelle à la distance qui
+s'épare de son capillaire nourrisseur, on trouve donc de celui-ci
+d'abord des cellules bien oxygénés, puis des cellules hypoxique, enfin
+des cellules nécrotiques (lysées). Le pourcentage des cellules
+hypoxiques varie dans les tumeurs entre $1 %) et (50 %$ selon le
+type histologique, cette proportion s'accroît avec le volume de la
+tumoral, mais toute tumeur cliniquement détectable contient en fait des
+cellules hypoxiques. L'hypoxie constitue ainsi un facteur important de
+radiorésistance, d'autant que l'irradiation est délivrée en une seule
+fois. L'étalement de la dose favorise la réoxygénation des cellules
+hypoxique ; le mécanisme le plus souvent invoque l'immigration des
+cellules hypoxiques vers les zones bien oxygénées, qui est favorisée par
+l'élimination des cellules qui s'y trouvaient (cf. figure 8<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mclose">)</span></span></span></span>.</p>
+<p><img src="../images/2022_08_14_a90853513f3cfee72250g-09.jpg" alt="image" /></p>
+<p>FIGURE 7.CELLULE SONT D'AUTANT MIEUX OXYGENEES QU'ELLES SONT PROCHES DES
+CAPILLAIRES. L'ETALEMENT DANS LE TEMPS FAVORISE LA REOXYGENATION DES
+CELLULE HYPOXIQUES QUI SE RAPPROCHENT DES CAPILLAIRES EN RAISON DE
+L'ELIMINATION DES CELLULES BIEN OXYGENEES, LA PLUS RADIOSENSIBLES.</p>
+<h1 id="la-qualité-du-rayonnement"><a class="header" href="#la-qualité-du-rayonnement">La qualité du rayonnement</a></h1>
+<p>L'effet biologique produit par une irradiation, à dose égale, dépond de
+la nature du rayonnement. L'efficacité biologique est le rapport des
+doses nécessaires pour obtenir un effet biologique donné (par exemple la
+mort de 50% des cellules), avec un rayonnement de référence (photon de
+haute énergie). L'EBR est principalement liée au (TEL), qui exprime le
+nombre d'ionisations par unité de longueur du parcours de la particule.
+On distingue des rayonnements à TEL faible (photons et électrons) et à
+TEL élevé (neutron et les ions lourds).</p>
+<h1 id="cycle-cellulaire"><a class="header" href="#cycle-cellulaire">Cycle cellulaire</a></h1>
+<p>Le cycle cellulaire se décompose en 4 phases : la phase G1, qui suit la
+mitose et dont la durée est la plus variable, la phase de synthèse
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathrm">S</span></span></span></span> pendant laquelle l'ADN est répliqué, puis la phase G2 et
+enfin la phase <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathrm">M</span></span></span></span>; les cellules qui temporairement ne se
+divise pas sont dites hors cycle ou G0. La radiosensibilité est maximale
+durant les phases G2 et <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathrm">M</span></span></span></span> et minimale en S. l'irradiation
+provoque un ralentissement de la synthèse de l'ADN, donc un allongement
+de la phase <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathrm">S</span></span></span></span>, est un blocage temporaire des cellules dans
+la phase <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathrm">G</span><span class="mord">2</span></span></span></span>, qui aboutit à un retard à la mitose
+synchronisation cellulaire (une population cellulaire homogène en
+transition G1/S).</p>
+<h1 id="débit-de-dose"><a class="header" href="#débit-de-dose">Débit de dose</a></h1>
+<p>En cas d'irradiation continue, la radiosensibilité cellulaire varie en
+fonction du débit de dose. Dans la plupart des lignées cellulaires, pour
+de hauts débits (12 Gy ou plus par heure), la radiosensibilité est
+indépendante du débit. Pour des valeurs inférieures, trois phénomènes
+biologiques expliquent l'influence du débit :</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> La restauration cellulaire, dont les effets sont
+notables pour des débits <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">6</span><span class="mord"><span class="mspace nobreak"> </span><span class="mord mathrm" style="margin-right:0.01389em;">Gy</span></span><span class="mord">/</span><span class="mord mathrm">h</span></span></span></span>.</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> La progression dans le cycle cellulaire peu fréquente
+au-dessus de <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0.3</span><span class="mord"><span class="mspace nobreak"> </span><span class="mord mathrm" style="margin-right:0.01389em;">Gy</span></span><span class="mord">/</span><span class="mord mathrm">h</span></span></span></span></p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> La division cellulaire, dont l'incidence n'est notable
+que pour des débits aussi bas que <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0.06</span><span class="mord"><span class="mspace nobreak"> </span><span class="mord mathrm" style="margin-right:0.01389em;">Gy</span></span><span class="mord">/</span><span class="mord mathrm">h</span></span></span></span>
+Dans le domaine de la curiethérapie à bas débit de dose (en dessous de
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mord"><span class="mspace nobreak"> </span><span class="mord mathrm" style="margin-right:0.01389em;">Gy</span></span><span class="mord">/</span><span class="mord mathrm">h</span></span></span></span> ), la restauration cellulaire et donc le
+phénomène prédominant ; lorsque le débit de dose est diminué sans
+modification de la dose, on observe peu d'effets sur les populations
+tumorales, mais une réduction parfois significative des effets tardifs
+sur les tissus sains.</p>
+<h1 id="température"><a class="header" href="#température">Température</a></h1>
+<p>La température à elle seule peut être létale pour la cellule à partir de
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6741em;"></span><span class="mord">4</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∘</span></span></span></span></span></span></span></span></span></span></span></span>. L'effet produit par une irradiation est de même augmenté
+si les tissues irradiés sont exposés à une hyperthermie. La chaleur
+inhibe la réparation des lésions sublétales. Pour obtenir en
+hyperthermie un effet donné, sur la population tumorale, la dose
+d'irradiation doit être réduite, amis que ceci et aussi vrai pour les
+tissus sains.</p>
+<h1 id="les-effets-des-rayonnements-sur-les-cellules-sains-et-tumorales"><a class="header" href="#les-effets-des-rayonnements-sur-les-cellules-sains-et-tumorales">Les effets des rayonnements sur les cellules sains et tumorales</a></h1>
+<h1 id="effet-sur-les-tumeurs"><a class="header" href="#effet-sur-les-tumeurs">Effet sur les tumeurs</a></h1>
+<p>La vitesse de croissance d'une tumeur est fonction :</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> De la durée du cycle cellulaire, en moyenne de 2 à 4
+jours, donc peu différente de celle observée dans les tissus sains, mais
+qui est en fait très variable d'une cellule à l'autre de même tumeur.</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> Du coefficient de prolifération, c'est-à-dire du
+pourcentage de cellules tumorales en division, qui varie entre
+$0,3 %) et (100 %$.</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> Du coefficient de pertes cellulaires, qui peut atteindre
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">90%</span></span></span></span> et est du à différenciation cellulaire, à la mort des cellules
+tumorales pendant la mitose.</p>
+<p>Les seules cellules tumorales vraiment préoccupante sont celle qui sont
+capable de se multipliées indéfiniment.</p>
+<h1 id="effet-sur-les-cellules-saines"><a class="header" href="#effet-sur-les-cellules-saines">Effet sur les cellules saines</a></h1>
+<p>Il est classique d'opposer :</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> Les réactions précoces, qui apparaissent dans les jours
+et semaines suivant l'irradiation, qui sont secondaires à la mort d'un
+grand nombre de cellules dans les tissus à renouvellement rapide, sont
+réversibles et s'estompent généralement en quelques semaines avec la
+repopulation cellulaire à partir des cellules souches résiduelles.</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> Les réactions tardives, ils apparaissent dans un délai
+de quelque mois à plusieurs années et qui sont le fait des tissus à
+renouvellement lent ; leur mécanisme est incomplètement élucidé et fait
+intervenir un déficit en cellules, secondaire à une reconstitution
+incomplète des cellules souches, et une perturbation de la
+vascularisation liée à des lésions de l'endothélium des artérioles ;
+l'approvisionnement cellulaire et la diminution du flux sanguin
+aboutissent ainsi à des dystrophies appelées fibroses, atrophies ou
+rétractions tissulaires.</p>
+<p>Les réactions précoces se sont les effets tardifs qui constituent le
+facteur limitant de la radiothérapie. Les paramètres qui définissent
+plus les effets des radiations ionisant sont le volume des tissus saints
+irradiés, la dose totale, l'étalement et le fractionnement. La dose par
+fraction influence beaucoup plus les réactions tardives que les
+réactions précoces. Les effets de la radiothérapie enfin, peuvent être
+franchement accentués par ceux de thérapeutiques combinées, en
+particulier chimiothérapie te chirurgie.</p>
+<h1 id="la-radiotherapie-externe"><a class="header" href="#la-radiotherapie-externe">LA RADIOTHERAPIE EXTERNE</a></h1>
+<p>Dans une certaine mesure, on pourrait dire que la radiothérapie est née
+avec la découverte quasi concomitante des rayons <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathrm">X</span></span></span></span> et de la
+radioactivité. Il a néanmoins fallu expérimenter l'effet des
+rayonnements sur les tissus (rayonnements émis par les tubes ou <code> curiethérapie</code> par radium, par exemple) pour que la radiothérapie
+prenne son essor, par une association entre médecins <code>pionniers</code> et
+physiciens, le couple le plus célèbre étant celui formé autour des
+années 20 par Marie Curie et Claudius Regaud.</p>
+<p>L'essor de la radiothérapie est lié à une double évolution dans les
+domaines :</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> Dans le domaine médical, la compréhension approfondie de
+l'effet des rayonnements sur les tissus, le fractionnement, l'étalement
+ainsi que bien sur l'accumulation d'expérience clinique dans les
+traitements (doses curatives pour certaines tumeurs, doses limites pour
+les organes critiques)</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../s2/1_bio.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../s3/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../s2/1_bio.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../s3/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

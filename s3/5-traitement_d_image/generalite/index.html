@@ -1,0 +1,676 @@
+<!DOCTYPE HTML>
+<html lang="fr" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Généralité - TRPM</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../../custom.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../../../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">TRPM</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/ayoubelmhamdi/TRPM" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/ayoubelmhamdi/TRPM/tree/master/src/s3/5-traitement_d_image/generalite/README.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="traitement-et-analyse-dimages"><a class="header" href="#traitement-et-analyse-dimages">Traitement et analyse d'images:</a></h1>
+<hr />
+<h3 id="plan"><a class="header" href="#plan">Plan:</a></h3>
+<ul>
+<li><a href="">Système de vision:</a>
+<ul>
+<li><a href="">Introduction, système visuel humain, couleur, perception,</a></li>
+<li><a href="">Acquisition et formats des images,</a></li>
+<li><a href="">Modélisation de la lumière et la colorimétrie.</a></li>
+</ul>
+</li>
+<li><a href="">Analyse des images:</a>
+<ul>
+<li><a href="">Histogramme : étirements, égalisation, manipulation, seuillage,</a></li>
+<li><a href="">Filtrage : lissage, rehaussement d'images, détection de contours</a></li>
+</ul>
+</li>
+<li><a href="">Applications:</a>
+<ul>
+<li><a href="">Compression d'images,</a></li>
+<li><a href="">Manipulation d'images,</a></li>
+<li><a href="">segmentation d'images.</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="introduction"><a class="header" href="#introduction">Introduction</a></h3>
+<p>Les êtres humains sont des créatures essentiellement visuelles:</p>
+<ul>
+<li>
+<p>On compte beaucoup sur notre vision pour donner un sens au monde qui nous entoure. Ainsi on peut:</p>
+<ul>
+<li>Identifier un visage en un instant,</li>
+<li>Distinguer les couleurs,</li>
+<li>Traiter une grande quantité d'informations visuelles très rapidement</li>
+</ul>
+</li>
+<li>
+<p>Ici, on va s'intéresser aux images simples : instantanés (snapshots) d'une scène visuelle.
+Bien que le traitement d'image peut utiliser des scènes (vidéo).</p>
+</li>
+</ul>
+<p>Pour notre cas, une image est une simple photo qui représente quelques choses (des objets).</p>
+<p>Elle peut être :</p>
+<ul>
+<li>
+<p>Une photo d'une personne,</p>
+</li>
+<li>
+<p>Une photo de plusieurs personnes,</p>
+</li>
+<li>
+<p>Une photo des animaux,</p>
+</li>
+<li>
+<p>Une scène en plein-air,</p>
+</li>
+<li>
+<p>Une microphotographie d'un composant électronique,</p>
+</li>
+<li>
+<p>Une image médicale.</p>
+</li>
+<li>
+<p>...</p>
+</li>
+</ul>
+<h1 id="cest-quoi-le-traitement-dimages"><a class="header" href="#cest-quoi-le-traitement-dimages">C'est quoi le <code>traitement d'images</code></a></h1>
+<p>Le traitement d'image consiste à changer la nature d'une image, afin de :</p>
+<ul>
+<li>
+<p>Améliorer de l'information contenue pour aider à l'interprétation par l'homme,</p>
+</li>
+<li>
+<p>La rendre plus adapté pour une perception autonome de la machine.</p>
+</li>
+</ul>
+<p>Ces deux aspects sont très différents, et sont, les deux, importants pour le traitement d'image:</p>
+<ul>
+<li>
+<p>Une procédure qui vérifie la condition <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∘</span></span></span></span></span></span></span></span></span><span class="mord">1</span></span></span></span> peut être la procédure la plus mauvaise pour satisfaire la condition <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∘</span></span></span></span></span></span></span></span></span></span></span></span>,</p>
+</li>
+<li>
+<p>Les êtres humains préfèrent leurs images pleines (d'informations), claires et détaillées; les machines préfèrent que leurs images soient très simples et claire.</p>
+</li>
+</ul>
+<h3 id="1-améliorer-de-linformation-contenue"><a class="header" href="#1-améliorer-de-linformation-contenue">1. Améliorer de l'information contenue</a></h3>
+<p>Améliorer les contours d'une image pour la rendre plus nette:</p>
+<p><img src="./images/2022_09_10_0d7a2c5f4cc81a90923ag-02.jpg" alt="image" /></p>
+<blockquote>
+<p>Notez comment la seconde image apparaît plus "claire`, c'est une image plus agréable.</p>
+</blockquote>
+<p>Sharpening (traitement de la netteté) les contours est une opération vitale pour l'impression des images.</p>
+<p>Suppression de <code>bruit</code> d'une image: le bruit étant des erreurs aléatoires dans l'image.</p>
+<p><img src="./images/2022_09_10_0d7a2c5f4cc81a90923ag-03.jpg" alt="image" /></p>
+<blockquote>
+<p>Notez comment la seconde imageapparaît plus <code>nette</code>, c'est une image plus claire</p>
+</blockquote>
+<p>Le bruit peut prendre de nombreuses formes différentes, chaque type de bruit nécessite une méthode différente pour sa suppression (réduction)</p>
+<p>Correction du <code>de la motion blur: l'effet visuel de flou</code> flou dans une image:</p>
+<p><img src="./images/2022_09_10_0d7a2c5f4cc81a90923ag-03(1).jpg" alt="image" /></p>
+<blockquote>
+<p>Notez que dans la deblurred image il est possible de lire la plaque ainsi que d'autres détails qui ne sont pas du tout clair dans l'image originale</p>
+</blockquote>
+<p>Ce flou appelé aussi flou cinétique ou flou de mouvement : dû au mouvement rapide du sujet photographié pendant l'enreqistrement (la capture) .</p>
+<h3 id="2-rendre-limage-plus-adaptée"><a class="header" href="#2-rendre-limage-plus-adaptée">2. Rendre l'image plus adaptée</a></h3>
+<p>Détection de contours dans une image: Cela peut être nécessaire pour la mesure des objets dans une image</p>
+<p><img src="./images/2022_09_10_0d7a2c5f4cc81a90923ag-03(2).jpg" alt="image" /></p>
+<blockquote>
+<p>Seuls les contour sont visible dans la deuxième image</p>
+</blockquote>
+<ul>
+<li>On remarque qu'il peut être nécessaire d'augmenter légèrement le contraste de l'image originale, pour rendre les contours plus clairs.</li>
+</ul>
+<p>Extraction (suppression) des détails d'une image:
+Pour des raisons de mesure ou de comptage</p>
+<p><img src="./images/2022_09_10_0d7a2c5f4cc81a90923ag-04.jpg" alt="image" /></p>
+<blockquote>
+<p>La deuxième image présente une version floue dans laquelle des détails non-pertinentes ont été supprimés.</p>
+</blockquote>
+<ul>
+<li>Les petits détails sont disparus, alors, on peut par exemple, mesurer la taille et la forme de l'animal (bison) sans être <code>influencé</code> par les détails inutiles.</li>
+</ul>
+<h3 id="3-applications"><a class="header" href="#3-applications">3. Applications</a></h3>
+<p>Le traitement d'images est utilisé dans plusieurs applications;</p>
+<p>Presque tous les domaines de la science et la technologie peuvent faire usage de méthodes de traitement d'images.</p>
+<ul>
+<li>
+<p><strong>Médecine</strong>:</p>
+<ul>
+<li>
+<p>Inspection et Interprétation des images obtenues à partir des rayons X, IRM ou CAT scan,</p>
+</li>
+<li>
+<p>l'analyse des cellules dans une image, des caryotypes (est l'arrangement standard de l'ensemble des chromosomes d'une cellule).</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Agriculture</strong>:</p>
+<ul>
+<li>
+<p>Satellite/vues aériennes de la terre, par exemple pour déterminer la quantité de terre utilisée à des fins différentes, ou pour enquêter sur l'adéquation des différentes régions pour différentes cultures,</p>
+</li>
+<li>
+<p>L'inspection des fruits et légumes; distinguer les produits bons et frais des produits mauvais.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Industrie:</strong></p>
+<ul>
+<li>
+<p>Inspection automatique d'objets sur une ligne de production,</p>
+</li>
+<li>
+<p>L'inspection des échantillons de papier.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Application de la loi:</strong></p>
+<ul>
+<li>Analyse des empreintes digitales,</li>
+<li>Sharpening (traitement de la netteté) ou suppression de flou (deblurring) des images radars.</li>
+</ul>
+</li>
+</ul>
+<h1 id="lacquisition-des-images-et-léchantillonnage"><a class="header" href="#lacquisition-des-images-et-léchantillonnage">L'acquisition des images et l'échantillonnage</a></h1>
+<h3 id="Échantillonnage"><a class="header" href="#Échantillonnage">Échantillonnage</a></h3>
+<p>L'échantillonnage se réfère au processus de numérisation d'une fonction continue.</p>
+<p>Exemple $1 ~D$
+$$y=\sin (x)+\frac{1}{3} \sin (3 x) .</p>
+<ul>
+<li>L'échantillonner à 10 valeurs espacées de $X$.</li>
+</ul>
+<blockquote>
+<p>Nous avons obtenu un sous-échantillonnage, car le nombre de points n'est pas suffisant pour reconstruire la fonction (d'origine).</p>
+</blockquote>
+<p><img src="./images/2022_09_10_0d7a2c5f4cc81a90923ag-05.jpg" alt="image" /></p>
+<ul>
+<li>L'échantillonné à 100 points,</li>
+</ul>
+<blockquote>
+<p>On peut reconstruire la fonction; toutes ses propriétés peuvent être déterminées à partir de cet échantillonnage</p>
+</blockquote>
+<p>Afin de veiller à ce que nous avons des points d'échantillonnage suffisant, il faut que la période d'échantillonnage ne soit pas supérieure à la moitié du moindre détail dans la fonction.</p>
+<blockquote>
+<p>C'est ce qu'on appelle le critère de Nyquist (énoncé comme étant le théorème d'échantillonnage)</p>
+</blockquote>
+<h3 id="images"><a class="header" href="#images">Images:</a></h3>
+<ul>
+<li>
+<p>Pour obtenir un échantillon (numérique) d'une image, on peut commencer par une représentation continue d'une scène.</p>
+</li>
+<li>
+<p>Pour représenter une scène, on enregistre l'énergie réfléchie par celle-ci.</p>
+</li>
+<li>
+<p>Il existe plusieurs énergie qui peuvent être utiliser:</p>
+<ul>
+<li>La lumière visible,</li>
+<li>La lumière invisible: Rayon X, lumière UV, l'infra rouge ....</li>
+</ul>
+</li>
+<li>
+<p>Lumière visible:</p>
+</li>
+</ul>
+<p>La lumière est la source d'énergie prédominante pour les images; simplement parce qu'elle est la source d'énergie utilisée par les êtres humains pour observer directement.</p>
+<blockquote>
+<p>Beaucoup d'images numériques sont capturées en utilisant la lumière visible comme source d'énergie, ce qui a l'avantage d'être sûre, bon marché, facilement détectées et traitées rapidement avec le matériel approprié.</p>
+</blockquote>
+<p>Deux méthodes, très populaires, pour produire une image numérique sont soit utilisant un appareil photo numérique ou un scanner à plat (flatbed scanner).</p>
+<p>$$Caméra CCD (Charge Coupled Device):$$</p>
+<ul>
+<li>
+<p>Le détecteur CCD assure la conversion d'un signal lumineux en un signal électrique,</p>
+</li>
+<li>
+<p>Une caméra CCD a, à la place du film d'habitude, une matrice de photosites: Ce sont des dispositifs électroniques en silicium dont la tension de sortie est proportionnelle à l'intensité de la lumière qui tombe sur eux (reçu)</p>
+</li>
+<li>
+<p>Pour une caméra reliée à un ordinateur (Webcam), des informations provenant des photosites sont ensuite acheminées vers un support de stockage approprié (disque dur)</p>
+</li>
+<li>
+<p>La capture d'image avec une caméra CCD</p>
+</li>
+</ul>
+<p><img src="./images/2022_09_10_0d7a2c5f4cc81a90923ag-06.jpg" alt="image" /></p>
+<blockquote>
+<ul>
+<li>La sortie est un tableau de valeurs, chacune représente un point d'échantillonnage de la scène originale.</li>
+<li>Les éléments de ce tableau sont appelés éléments de l'image (picture elements), ou plus simplement pixels.</li>
+</ul>
+</blockquote>
+<ul>
+<li>Scanner à plat (Flatbed scanner):</li>
+</ul>
+<p>Cela fonctionne sur un principe similaire à la caméra CCD,</p>
+<p>Au lieu de capturer à la fois l'image entière sur un grand tableau, une seule rangée (ligne) de photosites est déplacée à travers l'image, et capture ainsi ligne par ligne en se déplaçant.</p>
+<p><img src="./images/2022_09_10_0d7a2c5f4cc81a90923ag-07.jpg" alt="image" /></p>
+<ul>
+<li>Utilisant autres sources d'énergie:</li>
+</ul>
+<p>Bien que la lumière soit très populaire et facile à utiliser, autres sources d'énergie peuvent être utilisées pour créer une image numérique,</p>
+<p>La lumière visible est une partie du spectre électromagnétique: rayonnement dans lequel l'énergie prend la forme d'ondes de différentes longueurs d'onde.</p>
+<p><img src="./images/2022_09_10_0d7a2c5f4cc81a90923ag-07(1).jpg" alt="image" /></p>
+<ul>
+<li>Utilisant autres sources d'énergie:</li>
+</ul>
+<p><strong>Rayons $X$</strong>: ont une longueur d'onde plus courte que la lumière visible, et peuvent être utilisés pour résoudre des objets de petite taille que ceux traités avec la lumière visible.</p>
+<blockquote>
+<p>Les rayons $X$ sont bien entendu utilisés pour déterminer les structure d'objets qui sont cachés de la vue: comme les OS.</p>
+</blockquote>
+<h3 id="4-images-et-images-numériques"><a class="header" href="#4-images-et-images-numériques">4. Images et images numériques</a></h3>
+<p>Supposons que nous prenons une image, une photo, par exemple acquise par un appareil numérique CCD.</p>
+<p><img src="./images/2022_09_10_0d7a2c5f4cc81a90923ag-08.jpg" alt="image" /></p>
+<blockquote>
+<ul>
+<li>On suppose que la photo est monochromatique: c'est-à-dire des nuances gris seulement), donc pas de couleur.</li>
+<li>On peut considérer cette image comme étant une fonction à deux dimensions, où les valeurs de la fonction sont la luminosité de l'image à un moment donné,On peut supposer que les valeurs de la luminosité de l'image peuvent être des nombres réels dans l'intervalle o,o (noir) à 1,o (blanc)</li>
+</ul>
+</blockquote>
+<p>Une telle fonction peut être tracée:</p>
+<p><img src="./images/2022_09_10_0d7a2c5f4cc81a90923ag-08(1).jpg" alt="image" /></p>
+<p>Une image numérique diffère d'une photo en ce que le $x, y$, et $f(x, y)$ sont tous des valeurs discrètes (échantillonnées).</p>
+<ul>
+<li>Terminologie:</li>
+</ul>
+<p>Une image numérique peut être considérée comme un tableau (matrice 2D) de points échantillonnés à partir de l'image continu (photo), dont chacun a une luminosité particulière quantifiée;</p>
+<blockquote>
+<p>Ces points sont les pixels qui constituent l'image numérique.</p>
+</blockquote>
+<p>Les pixels qui entourent un pixel donné constituent son voisinage</p>
+<blockquote>
+<p>Un voisinage peut être caractérisé par sa forme qui est une matrice: par exemple, on peut parler d'un voisinage de $3 \times 3$, ou d'un d'un voisinage de $5 \times 5$.</p>
+</blockquote>
+<ul>
+<li>Image numérique et voisinage</li>
+</ul>
+<p><img src="./images/2022_09_10_0d7a2c5f4cc81a90923ag-09.jpg" alt="image" /></p>
+<blockquote>
+<p>les voisinages ont un nombre impair de lignes et de colonnes, ce qui garantit que le pixel courant est dans le centre de la zone ; voisinage $3 \times 3,9 \times 9$.[Sinon, il peut être nécessaire de spécifier quel pixel dans ce voisinage est le <code>pixel courant</code></p>
+</blockquote>
+<h3 id="les-aspects-du-traitement-dimages"><a class="header" href="#les-aspects-du-traitement-dimages">Les aspects du traitement d'images</a></h3>
+<p>Il est commode de subdiviser les différents algorithmes de traitement d'images en des sousclasses.</p>
+<p>Il existe différents algorithmes pour différentes tâches et problèmes</p>
+<blockquote>
+<p>Et souvent nous tenons à distinguer la nature de la tâche à accomplir.</p>
+<ul>
+<li>Amélioration d'images (image enhancement),</li>
+<li>Restauration d'images,</li>
+<li>Segmentation d'images .</li>
+</ul>
+</blockquote>
+<h4 id="amélioration-dimages-image-enhancement"><a class="header" href="#amélioration-dimages-image-enhancement">Amélioration d'images (image enhancement):</a></h4>
+<p>II s'agit du traitement d'une image de sorte que le résultat est plus approprié pour une application particulière.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>Sharpening (aiguiser) ou de la suppression de flou dans une image floue,</li>
+<li>Mètre en évidence les contours,</li>
+<li>Amélioration du contraste, ou de l'éclaircissement d'une image,</li>
+<li>Suppression de bruit,</li>
+<li>...</li>
+</ul>
+<h4 id="restauration-dimages-"><a class="header" href="#restauration-dimages-">Restauration d'images :</a></h4>
+<p>Cela peut être considéré comme inverser les dommages causés à une image par une cause connue,</p>
+<p><em><strong>Exemple:</strong></em></p>
+<ul>
+<li>Suppression de flou causé par le mouvement linéaire,</li>
+<li>Suppression des distorsions optiques,</li>
+<li>Suppression des interférences périodique,</li>
+<li>...</li>
+</ul>
+<h4 id="segmentation-dimages-"><a class="header" href="#segmentation-dimages-">Segmentation d'images :</a></h4>
+<p>II s'agit de diviser une image en des éléments distinctifs, ou d'isoler certains aspects d'une image.</p>
+<p><strong>Exemple:</strong></p>
+<ul>
+<li>
+<p>Trouver des lignes, des cercles ou des formes particulières dans une image,</p>
+</li>
+<li>
+<p>Sur une photographie aérienne, identifier des voitures, arbres, bâtiments, ou des routes.</p>
+</li>
+</ul>
+<p>Ces classes ne sont pas disjointes; un algorithme donné peut être utilisé à la fois pour l'amélioration d'images ou pour la restauration d'images.</p>
+<p>Toutefois, nous devrions être en mesure de décider ce que nous essayons de faire avec notre image:</p>
+<blockquote>
+<p>Simplement lui donner une meilleure apparence (amélioration), ou la suppression des dommages (restauration).</p>
+</blockquote>
+<h3 id="les-étapes-du-traitement-dimages"><a class="header" href="#les-étapes-du-traitement-dimages">Les étapes du traitement d'images</a></h3>
+<p>Nous allons examiner en détail une tâche particulière dans le monde réel, et de voir comment les classes cidessus peuvent être utilisés pour décrire les différentes étapes dans l'accomplissement de cette tâche.</p>
+<p><strong>Exemple:</strong></p>
+<p>La tache consiste en obtenir, par un processus automatique, les codes postaux dans les enveloppes.</p>
+<ul>
+<li><strong>L'acquisition de l'image:</strong> Caméra CCD ou scanner,</li>
+<li><strong>Prétraitement:</strong> Améliorer le contraste, la suppression du bruit, ou d'identifier les régions susceptibles de contenir le code postal.</li>
+<li><strong>Segmentation:</strong> Extraction de la partie qui ne contient que le code postal,</li>
+<li><strong>Représentation et description:</strong> Chercher des courbes, les trous et les coins qui nous permettrons de distinguer les différents chiffres qui constituent le code postal.</li>
+<li><strong>Reconnaissance et interprétation:</strong> Attribuer des étiquettes à des objets en fonction de leurs descripteurs (de l'étape précédente), et assigner des significations à ces labels.</li>
+</ul>
+<h3 id="types-dimages-numériques"><a class="header" href="#types-dimages-numériques">Types d'images numériques</a></h3>
+<p>En général, il existe quatre types de base des images:</p>
+<ul>
+<li>Images binaires,</li>
+<li>Images à niveau de gris,</li>
+<li>Images couleurs,</li>
+<li>Images indexées.</li>
+</ul>
+<h4 id="binaires"><a class="header" href="#binaires">Binaires</a></h4>
+<p>Chaque pixel est soit noir soit blanc.</p>
+<blockquote>
+<ul>
+<li>Nous avons seulement besoin d'un bit par pixel.</li>
+<li>Ces images peuvent donc être très efficaces en termes de stockage.</li>
+</ul>
+</blockquote>
+<p><strong>Exemple:</strong></p>
+<ul>
+<li>Les images contenant du texte (imprimé ou écrit à la main),</li>
+<li>Les empreintes digitales,</li>
+<li>Les plans d'architecture,</li>
+<li>Les images contenant des contours.</li>
+</ul>
+<p><img src="./images/2022_09_10_0d7a2c5f4cc81a90923ag-12.jpg" alt="image" /></p>
+<blockquote>
+<p>Nous n'avons que deux couleurs: blanc pour le contour et noir pour fond</p>
+</blockquote>
+<h4 id="a-niveau-de-gris"><a class="header" href="#a-niveau-de-gris">A niveau de gris</a></h4>
+<p>Chaque pixel est une nuance de gris, normalement de o (noir) à 255 (blanc)</p>
+<ul>
+<li>
+<p>Cette gamme signifie que chaque pixel peut être représenté par huit bits, soit exactement un octet,</p>
+</li>
+<li>
+<p>Il s'agit d'une gamme très naturelle pour le traitement d'images.</p>
+</li>
+</ul>
+<p><img src="./images/2022_09_10_0d7a2c5f4cc81a90923ag-13.jpg" alt="image" /></p>
+<blockquote>
+<p>255 niveaux de gris différents sont suffisants pour la reconnaissance (présentation) de la plupart des objets naturels.</p>
+</blockquote>
+<h4 id="couleurs"><a class="header" href="#couleurs">Couleurs</a></h4>
+<p>Appelées images couleurs vraies ou RVB</p>
+<p>Chaque pixel a une couleur particulière; cette couleur est décrite par la quantité de Rouge, Vert et de Bleu.</p>
+<blockquote>
+<ul>
+<li>Si chacune de ces composantes a un intervalle de o à 255 , ce qui donne un total de $255^{3}=16.777 .216$ couleurs différentes possibles dans l'image.</li>
+<li>C'est assez de couleurs pour une image.</li>
+</ul>
+</blockquote>
+<p>Puisque le nombre total de bits requis pour chaque pixel est de $24(8 \times 3)$, ces images sont aussi appelés images en couleur 24 -bit.</p>
+<p>Une image couleur peut être considérée comme étant composé d'une "pile` de trois matrices, représentant les valeurs de rouge, vert et bleu pour chaque pixel.</p>
+<blockquote>
+<p>Cela signifie que pour chaque pixel correspond trois valeurs.</p>
+</blockquote>
+<p>Types d'images numériques</p>
+<p>Couleurs</p>
+<!-- image error -->
+<p><img src="./images/2022_09_10_0d7a2c5f4cc81a90923ag-14.jpg" alt="image" /></p>
+<h3 id="indexées"><a class="header" href="#indexées">Indexées</a></h3>
+<p>Dans les images couleurs : beaucoup de pixels ont la même couleur.</p>
+<p>Pour plus de commodité de stockage et de manipulation de fichier image, une image indexée utilise une carte (map) de couleurs associée appelée palette de couleur:</p>
+<ul>
+<li>
+<p>Une palette est simplement une liste de toutes les couleurs utilisées dans cette image,</p>
+</li>
+<li>
+<p>La valeur des pixels ne présente pas la couleur (comme pour une image RVB) mais un indice de la couleur dans la palette.</p>
+</li>
+</ul>
+<p>Cette présentation est pratique pour le cas d'une image a 256 couleurs ou moins, car pour le stockage les valeurs des indices ne requiert qu'un octet chacun.</p>
+<p>Le format GIF ne permet que 256 couleurs ou moins dans chaque image</p>
+<p><img src="./images/2022_09_10_0d7a2c5f4cc81a90923ag-15.jpg" alt="image" /></p>
+<ul>
+<li>Deux matrice: Indices et Palette
+<ul>
+<li>Dans Indices: les valeurs sont des indices dans la palette</li>
+<li>Dans Palette: valeurs des couleurs rouge, vert et bleu</li>
+</ul>
+</li>
+<li>Sans cette palette, l'image serait très sombre et non-coloré.</li>
+<li>La modification d'une entrée de la palette entraîne la modification de la couleur de tous les pixels référant à cette entrée.</li>
+</ul>
+<h4 id="taille-des-fichiers-images"><a class="header" href="#taille-des-fichiers-images">Taille des fichiers images</a></h4>
+<p>La taille des fichiers d'image a tendance à être grande et ceci est directement liée à:</p>
+<ul>
+<li>la quantité d'information contenue</li>
+<li>et le type d'images.</li>
+</ul>
+<p><strong>Exemple:</strong>
+Calculer les tailles (en bits, octets, Ko, Mo)respectives de trois images (de taille <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">512</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">512</span></span></span></span> ); 1binaire, 2- à niveau de gris, 3-couleur.</p>
+<p>On suppose l'absence de compression, et on néglige les informations dans l'en-tête.</p>
+<h2 id="taille-des-fichiers-images-1"><a class="header" href="#taille-des-fichiers-images-1">Taille des fichiers images</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left"></th><th style="text-align: left">Binaire</th><th style="text-align: left">À niveau de gris</th><th style="text-align: left">Couleur</th></tr></thead><tbody>
+<tr><td style="text-align: left">bits</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">262144</span></span></span></span></td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">262144</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">8</span></span></span></span></td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">786432</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">8</span></span></span></span></td></tr>
+<tr><td style="text-align: left">octets</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">32768</span></span></span></span></td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">262144</span></span></span></span></td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">786432</span></span></span></span></td></tr>
+<tr><td style="text-align: left">Ko</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">32</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">768</span></span></span></span></td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">262</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">144</span></span></span></span></td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">786.432</span></span></span></span></td></tr>
+<tr><td style="text-align: left">Mo</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4831em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">033</span></span></span></span></td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4831em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">262</span></span></span></span></td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4831em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">786</span></span></span></span></td></tr>
+</tbody></table>
+</div>
+<p>Ils existent d'autres images qui ont une taille plus grande que celle présentée ici.</p>
+<p>Par exemple, les images satellitaires peuvent être de l'ordre de plusieurs milliers de pixels dans chaque direction.</p>
+<p>Perception des images</p>
+<p>Une grande partie des processus de traitement d'images sont utilisés pour améliorer la qualité des images pour les êtres humains.</p>
+<p>Nous devons donc être conscients des limites du système visuel humain.</p>
+<p>La perception d'images se compose de deux étapes de base:</p>
+<p>Capturer l'image avec l'œil,</p>
+<p>Reconnaître et d'interpréter l'image (les objets dans l'image) avec le cortex visuel dans le cerveau.</p>
+<p>La combinaison de ces étapes influence sur la façon dont nous percevons le monde autour de nous.</p>
+<p>Il y a un certain nombre de choses à garder à l'esprit !!!</p>
+<p>Perception des images</p>
+<p>Les intensités observées varient en fonction de l'arrière-plan:
+Un carré gris apparaît plus sombre s'il est placé sur un fond blanc que s'il était placé sur un fond noir.\</p>
+<p><img src="./images/2022_09_10_0d7a2c5f4cc81a90923ag-16.jpg" alt="image" />
+Ceci est par ce que nous ne percevons pas les niveaux de gris comme ils le sont, mais plutôt leur différences avec leur entourage.</p>
+<p>Perception des images</p>
+<p>On peut observer des intensités inexistantes en barre dans une variation continue de niveaux de gris
+l'intensité varie de façon continue du clair à l'obscurité si on la parcouru de gauche à droite.</p>
+<blockquote>
+<p>Toutefois, nos yeux vont voir des barres horizontales ( ou verticales) dans cette image</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../s3/5-traitement_d_image/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../../s3/5-traitement_d_image/generalite/CH3_A_000_system_de_vision.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../s3/5-traitement_d_image/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../../s3/5-traitement_d_image/generalite/CH3_A_000_system_de_vision.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../elasticlunr.min.js"></script>
+        <script src="../../../mark.min.js"></script>
+        <script src="../../../searcher.js"></script>
+
+        <script src="../../../clipboard.min.js"></script>
+        <script src="../../../highlight.js"></script>
+        <script src="../../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

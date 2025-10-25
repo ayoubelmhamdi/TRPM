@@ -1,0 +1,373 @@
+<!DOCTYPE HTML>
+<html lang="fr" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Anatomie Dentaire - TRPM</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../custom.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">TRPM</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/ayoubelmhamdi/TRPM" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/ayoubelmhamdi/TRPM/tree/master/src/s3/4-anatomie_dentaire/README.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="anatomie-dentaire"><a class="header" href="#anatomie-dentaire">Anatomie Dentaire</a></h1>
+<hr />
+<ul>
+<li><a href="./chapter_1.html">Chapter 1</a></li>
+<li><a href="./chapter_2.html">Chapter 2</a></li>
+<li><a href="./chapter_3.html">Chapter 3</a></li>
+</ul>
+<h1 id="ostéologie-de-la-face"><a class="header" href="#ostéologie-de-la-face">Ostéologie de la face</a></h1>
+<hr />
+<p>author: DR.</p>
+<p>ATTIYA NOURDINE\DMD, PHD STUDENT</p>
+<h1 id=""><a class="header" href="#"></a></h1>
+<h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<ul>
+<li>
+<p>Elle est formée de 13 os fixes soudés entre eux et au crâne et d'un seul os mobile (mandibule).</p>
+</li>
+<li>
+<p>Les os fixes sont pairs:</p>
+</li>
+<li>
+<p>Les os maxillaires,</p>
+</li>
+<li>
+<p>Les os zygomatique,</p>
+</li>
+<li>
+<p>Les os lacrymaux,</p>
+</li>
+<li>
+<p>Les os propres du nez,</p>
+</li>
+<li>
+<p>Les os palatins</p>
+</li>
+<li>
+<p>Les cornets nasaux inférieurs.</p>
+</li>
+</ul>
+<h1 id="introduction-1"><a class="header" href="#introduction-1">Introduction</a></h1>
+<ul>
+<li>
+<ul>
+<li>Deux sont impairs :</li>
+</ul>
+</li>
+<li>
+<p>La mandibule : étage inférieur de la face</p>
+</li>
+<li>
+<p>Le vomer : étage supérieur de la face.</p>
+</li>
+</ul>
+<p>Participe à la cloison osseuse des fosses nasales.
+N.</p>
+<p>B.: L'éthmoïde et le sphénoïde sont des os de la base du crâne qui participent à la formation du squelette de la face.</p>
+<h1 id="introduction-2"><a class="header" href="#introduction-2">Introduction</a></h1>
+<p><img src="./images/2022_09_09_2dc2dbcdfdd913e22088g-02.jpg" alt="image" />
+Os frontalGlabelle -Incisure supra-orbitaire forameFace orbitaire -Os nasalOs nasal -Os lacrymalOs zygomatiqueOs zvgomatiqueFace orbitaireProcessus temporalForamenzygomatico-facialMaxillaireFace orbitaire -Foramen infra-orbitProcessus frontal.</p>
+<p>Processus alvéolairÉpine nasaleantérieur alveolaire\</p>
+<p><img src="./images/2022_09_09_2dc2dbcdfdd913e22088g-02(1).jpg" alt="image" />
+Phènoïde</p>
+<p><img src="./images/2022_09_09_2dc2dbcdfdd913e22088g-02(2).jpg" alt="image" /></p>
+<h1 id="i-le-maxillaire-supérieur"><a class="header" href="#i-le-maxillaire-supérieur">I/ Le maxillaire (supérieur)</a></h1>
+<h1 id="os-pair-deux-os-maxillaires-formant-lessentiel-du-squelette-de-létage-moyen-de-la-face"><a class="header" href="#os-pair-deux-os-maxillaires-formant-lessentiel-du-squelette-de-létage-moyen-de-la-face">Os pair (deux os maxillaires) formant l'essentiel du squelette de l'étage moyen de la face.</a></h1>
+<p>Il est constitué d'un corps et de 4 processus : 1- le corps:
+C'est le principal élément de l'os maxillaire, il a la forme d'une pyramide et participe à la constitution de la cavité orbitaire, des fosses nasales, de la fosse infra-temporaleet de la face.</p>
+<h1 id="2---le-processus-zygomatique"><a class="header" href="#2---le-processus-zygomatique">2-- Le processus zygomatique:</a></h1>
+<p>Il s'étend latéralement pour s'unir avec le processus maxillaire de l'os zygomatique.</p>
+<h1 id="i-le-maxillaire-supérieur-1"><a class="header" href="#i-le-maxillaire-supérieur-1">I/ Le maxillaire (supérieur)</a></h1>
+<h1 id="3--le-processus-frontal"><a class="header" href="#3--le-processus-frontal">3- Le processus frontal:</a></h1>
+<p>Il se dirige vers le haut pour s'unir avec l'os nasal, l'os frontal, l'os ethmoïde et l'os lacrymal.</p>
+<h1 id="4-le-processus-palatin"><a class="header" href="#4-le-processus-palatin">4-Le processus palatin:</a></h1>
+<p>Il forme avec son homonyme controlatérall'essentiel du palais osseux (les lames horizontales de l'os palatin forment la partie postérieure du palais osseux).</p>
+<h1 id="5--le-processus-alvéolaire"><a class="header" href="#5--le-processus-alvéolaire">5- Le processus alvéolaire:</a></h1>
+<p>Il se situe à la partie inférieure de l'os et sert d'insertion à toutes les dents maxillaires ( 5 dents déciduales et 8 dents permanentes).</p>
+<h1 id="i-le-maxillaire-supérieur-2"><a class="header" href="#i-le-maxillaire-supérieur-2">I/ Le maxillaire (supérieur)</a></h1>
+<h1 id="le-maxillaire-est-pneumatisé-dune-grande-cavité-appelée-sinus-maxillaire"><a class="header" href="#le-maxillaire-est-pneumatisé-dune-grande-cavité-appelée-sinus-maxillaire">Le maxillaire est pneumatisé d'une grande cavité appelée sinus maxillaire.</a></h1>
+<h1 id="le-sinus-peut-être-le-siège-de-plusieurs-infections-à-lorigine-de-sinusites-maxillaires"><a class="header" href="#le-sinus-peut-être-le-siège-de-plusieurs-infections-à-lorigine-de-sinusites-maxillaires">Le sinus peut être le siège de plusieurs infections à l'origine de sinusites maxillaires.</a></h1>
+<p>Ces infections peuvent être d'origine dentaire.</p>
+<h1 id="les-racines-des-dents-postérieures-supérieures-peuvent-être-projetées-dans-le-sinus-maxillaire-communication-bucco-sinusienne-après-extraction"><a class="header" href="#les-racines-des-dents-postérieures-supérieures-peuvent-être-projetées-dans-le-sinus-maxillaire-communication-bucco-sinusienne-après-extraction">Les racines des dents postérieures supérieures peuvent être projetées dans le sinus maxillaire: communication bucco-sinusienne après extraction.</a></h1>
+<h1 id="le-maxillaire-sarticule-avec-tous-les-autres-os-fixes-de-la-face-du-côté-homolatéral-et-sunit-avec-los-maxillaire-controlatéral"><a class="header" href="#le-maxillaire-sarticule-avec-tous-les-autres-os-fixes-de-la-face-du-côté-homolatéral-et-sunit-avec-los-maxillaire-controlatéral">Le maxillaire s'articule avec tous les autres os fixes de la face du côté homolatéral et s'unit avec l'os maxillaire controlatéral.</a></h1>
+<p>Il s'unit également avec les os de la base du crâne: l'ethmoïde et le sphénoïde.</p>
+<h1 id="i-le-maxillaire-supérieur-3"><a class="header" href="#i-le-maxillaire-supérieur-3">I/ Le maxillaire (supérieur)</a></h1>
+<p>La face en vue latérale</p>
+<p><img src="./images/2022_09_09_2dc2dbcdfdd913e22088g-04.jpg" alt="image" /></p>
+<h1 id="i-le-maxillaire-supérieur-4"><a class="header" href="#i-le-maxillaire-supérieur-4">I/ Le maxillaire (supérieur)</a></h1>
+<p>La face en vue antérieure (de face)</p>
+<p><img src="./images/2022_09_09_2dc2dbcdfdd913e22088g-05.jpg" alt="image" /></p>
+<h1 id="iilos-zygomatique"><a class="header" href="#iilos-zygomatique">II/L'os zygomatique</a></h1>
+<h1 id="os-pair-cest-los-de-la-pommette"><a class="header" href="#os-pair-cest-los-de-la-pommette">Os pair, c'est l'os de la pommette.</a></h1>
+<p>Il possède 3 processus:</p>
+<h1 id="--les-processus-frontal-et-maxillaire-participent-à-la-construction-de-lorbite----le-processus-temporal-participe-à-la-formation-de-larcade-zygomatique"><a class="header" href="#--les-processus-frontal-et-maxillaire-participent-à-la-construction-de-lorbite----le-processus-temporal-participe-à-la-formation-de-larcade-zygomatique">- Les processus frontal et maxillaire participent à la construction de l'orbite;  - Le processus temporal participe à la formation de l'arcade zygomatique.</a></h1>
+<h1 id="de-chaque-côté-il-sunit-avec-los-frontal-et-les-os-temporal-et-maxillaire-homolatéraux"><a class="header" href="#de-chaque-côté-il-sunit-avec-los-frontal-et-les-os-temporal-et-maxillaire-homolatéraux">De chaque côté, il s'unit avec l'os frontal et les os temporal et maxillaire homolatéraux.</a></h1>
+<h1 id="iilos-zygomatique-malaire"><a class="header" href="#iilos-zygomatique-malaire">II/L'os zygomatique (malaire)</a></h1>
+<p><img src="./images/2022_09_09_2dc2dbcdfdd913e22088g-06.jpg" alt="image" /></p>
+<h1 id="iilos-zygomatique-1"><a class="header" href="#iilos-zygomatique-1">II/L'os zygomatique</a></h1>
+<p><img src="./images/2022_09_09_2dc2dbcdfdd913e22088g-06(1).jpg" alt="image" /></p>
+<h1 id="iii-los-lacrymal"><a class="header" href="#iii-los-lacrymal">III/ L'os lacrymal</a></h1>
+<h1 id="--os-pair-rectangulaire-mince-et-assez-fragile"><a class="header" href="#--os-pair-rectangulaire-mince-et-assez-fragile">- Os pair, rectangulaire, mince et assez fragile.</a></h1>
+<h1 id="il-constitue-un-élément-de-la-paroi-médiane-de-lorbite-et-sa-partie-inférieure-est-un-élément-de-la-paroi-latérale-des-fosses-nasales"><a class="header" href="#il-constitue-un-élément-de-la-paroi-médiane-de-lorbite-et-sa-partie-inférieure-est-un-élément-de-la-paroi-latérale-des-fosses-nasales">Il constitue un élément de la paroi médiane de l'orbite et sa partie inférieure est un élément de la paroi latérale des fosses nasales.</a></h1>
+<p>La région en rapport avec le processus frontal de l'os maxillaire représente la fosse lacrymale contenant le sac lacrymal.</p>
+<h1 id="iii-los-lacrymal-1"><a class="header" href="#iii-los-lacrymal-1">III/ L'os lacrymal</a></h1>
+<p><img src="./images/2022_09_09_2dc2dbcdfdd913e22088g-07.jpg" alt="image" /></p>
+<h1 id="iii-los-lacrymal-2"><a class="header" href="#iii-los-lacrymal-2">III/ L'os lacrymal</a></h1>
+<p><img src="./images/2022_09_09_2dc2dbcdfdd913e22088g-08.jpg" alt="image" /></p>
+<h1 id="iv-les-os-du-nez-propre-du-nez-cornet-inf"><a class="header" href="#iv-les-os-du-nez-propre-du-nez-cornet-inf">IV/ Les os du nez (propre du nez+ cornet inf)</a></h1>
+<h1 id="--os-pairs-qui-forment-la-racine-et-larête-du-nez"><a class="header" href="#--os-pairs-qui-forment-la-racine-et-larête-du-nez">- Os pairs qui forment la racine et l'arête du nez.</a></h1>
+<p>Sa
+portion inférieure donne insertion aux cartilages nasaux et au cartilage septal.</p>
+<p>De chaque côté, il s'unit avec l'os frontal et la lame perpendiculaire de l'os ethmoïde, l'os maxillaire homolatérale, et l'os nasal controlatéral.</p>
+<h1 id="les-os-nasaux-sont-à-distinguer-des-cornets-inférieures"><a class="header" href="#les-os-nasaux-sont-à-distinguer-des-cornets-inférieures">Les os nasaux sont à distinguer des cornets inférieures.</a></h1>
+<h1 id="le-cornet-nasal-inférieur-pair-est-une-lame-osseuse-recourbée-appartenant-à-la-paroi-latérale-des-fosses-nasales"><a class="header" href="#le-cornet-nasal-inférieur-pair-est-une-lame-osseuse-recourbée-appartenant-à-la-paroi-latérale-des-fosses-nasales">Le cornet nasal inférieur pair est une lame osseuse recourbée appartenant à la paroi latérale des fosses nasales.</a></h1>
+<p>De chaque côté, il s'unit avec les os maxillaires, palatin et lacrymal homolatéraux ainsi qu'à l'ethmoïde.</p>
+<h1 id="iv-les-os-du-nez-propre-du-nez-cornet-inf-1"><a class="header" href="#iv-les-os-du-nez-propre-du-nez-cornet-inf-1">IV/ Les os du nez (propre du nez+ cornet inf)</a></h1>
+<p><img src="./images/2022_09_09_2dc2dbcdfdd913e22088g-09.jpg" alt="image" /></p>
+<h1 id="v-les-os-du-nez-propre-du-nez-cornet-inf"><a class="header" href="#v-les-os-du-nez-propre-du-nez-cornet-inf">V/ Les os du nez (propre du nez+ cornet inf)</a></h1>
+<p><img src="./images/2022_09_09_2dc2dbcdfdd913e22088g-09(1).jpg" alt="image" />
+Right</p>
+<p><img src="./images/2022_09_09_2dc2dbcdfdd913e22088g-09(2).jpg" alt="image" />
+Left</p>
+<p><img src="./images/2022_09_09_2dc2dbcdfdd913e22088g-09(3).jpg" alt="image" /></p>
+<h1 id="iv-les-os-du-nez-propre-du-nez-cornet-inf-2"><a class="header" href="#iv-les-os-du-nez-propre-du-nez-cornet-inf-2">IV/ Les os du nez (propre du nez+ cornet inf)</a></h1>
+<p><img src="./images/2022_09_09_2dc2dbcdfdd913e22088g-10.jpg" alt="image" /></p>
+<h1 id="v-los-palatin"><a class="header" href="#v-los-palatin">V/ L'os palatin</a></h1>
+<h1 id="il-participe-à-la-formation-du-palais-osseux-partie-postérieure-et-des-parois-des-cavités-nasales"><a class="header" href="#il-participe-à-la-formation-du-palais-osseux-partie-postérieure-et-des-parois-des-cavités-nasales">Il participe à la formation du palais osseux (partie postérieure) et des parois des cavités nasales.</a></h1>
+<h1 id="il-a-la-forme-dun-l-majuscule-en-vue-latérale-avec-une-portion-verticale-dite-lame-perpendiculaire-participant-à-former-la-paroi-latérale-des-fosses-nasales-et-une-horizontale-qui-participe-à-la-formation-du-palais-osseux-postérieur"><a class="header" href="#il-a-la-forme-dun-l-majuscule-en-vue-latérale-avec-une-portion-verticale-dite-lame-perpendiculaire-participant-à-former-la-paroi-latérale-des-fosses-nasales-et-une-horizontale-qui-participe-à-la-formation-du-palais-osseux-postérieur">Il a la forme d'un L (majuscule) en vue latérale avec une portion verticale dite lame perpendiculaire participant à former la paroi latérale des fosses nasales et une horizontale qui participe à la formation du palais osseux postérieur.</a></h1>
+<h1 id="il-présente-également-une-petite-saillie-appelée-apophyse-pyramidale-sur-la-face-externe-de-la-lame-perpendiculaire"><a class="header" href="#il-présente-également-une-petite-saillie-appelée-apophyse-pyramidale-sur-la-face-externe-de-la-lame-perpendiculaire">Il présente également une petite saillie appelée apophyse pyramidale sur la face externe de la lame perpendiculaire.</a></h1>
+<h1 id="v-los-palatin-1"><a class="header" href="#v-los-palatin-1">V/ L'os palatin</a></h1>
+<h1 id="--un-petit-processus-pyramidal"><a class="header" href="#--un-petit-processus-pyramidal">- Un petit processus pyramidal:</a></h1>
+<p>Se dirige vers le bas et l'arrière à partir de la jonction des 2 parties perpendiculaire et horizontale.</p>
+<h1 id="il-sarticule-avec-los-sphénoïde-et-los-ethmoïde-avec-l-os-maxillaire-et-le-cornet-nasal-inférieur-homolatéral"><a class="header" href="#il-sarticule-avec-los-sphénoïde-et-los-ethmoïde-avec-l-os-maxillaire-et-le-cornet-nasal-inférieur-homolatéral">Il s'articule avec l'os sphénoïde et l'os ethmoïde, avec l' os maxillaire et le cornet nasal inférieur homolatéral.</a></h1>
+<h1 id="v-los-palatin-2"><a class="header" href="#v-los-palatin-2">V/ L'os palatin</a></h1>
+<p><img src="./images/2022_09_09_2dc2dbcdfdd913e22088g-11.jpg" alt="image" /></p>
+<h1 id="vi-le-vomer"><a class="header" href="#vi-le-vomer">VI Le vomer</a></h1>
+<h1 id="os-impair-qui-a-la-forme-dun-soc-de-charrue"><a class="header" href="#os-impair-qui-a-la-forme-dun-soc-de-charrue">Os impair, qui a la forme d'un soc de charrue.</a></h1>
+<p>Il constitue la partie postéro-inférieure du septum nasal.</p>
+<p>Os situé dans le plan médian, qui s'unit aux os sphénoïde et ethmoïde dans leurs portions médianes ainsi que sur la ligne médiane de la face supérieure du palais osseux, point de rencontre des deux os maxillaires et palatins.</p>
+<p>Son bord postérieur est libre, ne s'unissant avec aucun autre os.</p>
+<h1 id="vi-le-vomer-1"><a class="header" href="#vi-le-vomer-1">VI/ Le vomer</a></h1>
+<h1 id="vii-la-mandibule-maxillaire-inf"><a class="header" href="#vii-la-mandibule-maxillaire-inf">VII/ La mandibule (maxillaire inf)</a></h1>
+<p>Os impair qui constitue l'étage inférieure de la face, c'est le seul os mobile par l'action des muscles masticateurs.</p>
+<h1 id="elle-est-constituée-de-deux-parties-un-corps-et-une-branche-verticale-dite-branche-montante-et-des-processus"><a class="header" href="#elle-est-constituée-de-deux-parties-un-corps-et-une-branche-verticale-dite-branche-montante-et-des-processus">Elle est constituée de deux parties, un corps et une branche verticale dite branche montante, et des processus:</a></h1>
+<h1 id="corps-mandibulaire"><a class="header" href="#corps-mandibulaire">Corps mandibulaire:</a></h1>
+<p>En forme de fer à cheval, possède dans sa partie supérieure un processus alvéolaire qui supporte les dents mandibulaires ( 5 dents déciduales, et 8 dents permanentes de chaque côté).</p>
+<h1 id="vii-la-mandibule-maxillaire-inf-1"><a class="header" href="#vii-la-mandibule-maxillaire-inf-1">VII/ La mandibule (maxillaire inf)</a></h1>
+<h1 id="la-branche-verticale-dite-branche-montante-rejoint-le-corps-de-la-mandibule-de-chaque-côté-au-niveau-dun-angle-appelé-angle-goniaque-ou-gonion"><a class="header" href="#la-branche-verticale-dite-branche-montante-rejoint-le-corps-de-la-mandibule-de-chaque-côté-au-niveau-dun-angle-appelé-angle-goniaque-ou-gonion">La branche verticale dite branche montante: Rejoint le corps de la mandibule de chaque côté au niveau d'un angle appelé <code>angle goniaque</code> ou <code>gonion</code>.</a></h1>
+<p>Sa face médiale est percée par le foramen mandibulaire ( épine de spix) dans lequel passe le nerf mandibulaire, branche du nerf trijumeau.</p>
+<h1 id="la-partie-sup-de-la-bm-est-divisée-par-une-échancrure"><a class="header" href="#la-partie-sup-de-la-bm-est-divisée-par-une-échancrure">La partie sup de la BM est divisée par une échancrure:</a></h1>
+<h1 id="coroné-en-avant-insertion-muscle-temporal"><a class="header" href="#coroné-en-avant-insertion-muscle-temporal">Coroné en avant (insertion muscle temporal);</a></h1>
+<h1 id="col-surmonté-dun-condyle-qui-sarticule-avec-le-temporal-atm"><a class="header" href="#col-surmonté-dun-condyle-qui-sarticule-avec-le-temporal-atm">Col surmonté d'un condyle qui s'articule avec le temporal (ATM)</a></h1>
+<h1 id="vii-la-mandibule-maxillaire-inf-2"><a class="header" href="#vii-la-mandibule-maxillaire-inf-2">VII/ La mandibule (maxillaire inf)</a></h1>
+<p><img src="./images/2022_09_09_2dc2dbcdfdd913e22088g-14.jpg" alt="image" /></p>
+<h1 id="vii-la-mandibule-maxillaire-inf-3"><a class="header" href="#vii-la-mandibule-maxillaire-inf-3">VII/ La mandibule (maxillaire inf)</a></h1>
+<p><img src="./images/2022_09_09_2dc2dbcdfdd913e22088g-14(1).jpg" alt="image" /></p>
+<h1 id="récapitulation"><a class="header" href="#récapitulation">récapitulation</a></h1>
+<p><img src="./images/2022_09_09_2dc2dbcdfdd913e22088g-15.jpg" alt="image" /></p>
+<h1 id="récapitulation-1"><a class="header" href="#récapitulation-1">récapitulation</a></h1>
+<p><img src="./images/2022_09_09_2dc2dbcdfdd913e22088g-16.jpg" alt="image" /></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../s3/3-dosimetrie/chapter_3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../s3/4-anatomie_dentaire/chapter_1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../s3/3-dosimetrie/chapter_3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../s3/4-anatomie_dentaire/chapter_1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

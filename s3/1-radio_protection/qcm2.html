@@ -1,0 +1,743 @@
+<!DOCTYPE HTML>
+<html lang="fr" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>QCM 2 - TRPM</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../custom.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">TRPM</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/ayoubelmhamdi/TRPM" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/ayoubelmhamdi/TRPM/tree/master/src/s3/1-radio_protection/qcm2.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="epreuve-dévaluation-nationale-des-radiodiagnostic-et-imagerie-médicale"><a class="header" href="#epreuve-dévaluation-nationale-des-radiodiagnostic-et-imagerie-médicale">Epreuve d'évaluation Nationale DES Radiodiagnostic et Imagerie Médicale</a></h1>
+<hr />
+<h3 id="1-quel-est-le-nom-de-lorganisme-international-de-radioprotection"><a class="header" href="#1-quel-est-le-nom-de-lorganisme-international-de-radioprotection">1. Quel est le nom de l'organisme international de radioprotection?</a></h3>
+<p>Créé par la société internationale de radiologie en 1928 pour faire face à l'épidémie de leucémies chez les radiologues qui utilisaient la radioscopie sans faire attention à leur propre protection</p>
+<ul>
+<li>ICRU</li>
+<li>CIPR</li>
+<li>UNSCEAR</li>
+<li>AIEA</li>
+<li>ALARA</li>
+</ul>
+<p><strong>Commentaire</strong>:
+<code>CIPR</code> n'est pas le vrai nom, mais c'est l'ancêtre. L'idée de cette question est de rappeler aux jeunes radiologues qu'il y avait eu dans le passé une épidémie de leucémies chez les radiologues qui travaillaient <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span> importe comment, en espérant que cela fera tilt dans leur esprit = cela pourrait recommencer chez ceux qui feront la même chose en interventionnel</p>
+<blockquote>
+<p>REPONSES : B</p>
+</blockquote>
+<h3 id="2-parmi-les-principes-suivants-de-la-radioprotection-quel-est-celui-qui-nest-pas-applicable-aux-patients"><a class="header" href="#2-parmi-les-principes-suivants-de-la-radioprotection-quel-est-celui-qui-nest-pas-applicable-aux-patients">2. Parmi les principes suivants de la radioprotection, quel est celui qui n'est pas applicable aux patients?</a></h3>
+<ul>
+<li>Justification</li>
+<li>Optimisation</li>
+<li>Limitation des doses</li>
+<li>Responsabilité</li>
+<li>Substitution</li>
+</ul>
+<blockquote>
+<p>REPONSE : C</p>
+</blockquote>
+<h3 id="3-parmi-les-responsabilités-suivantes-quelle-est-celle-qui-nincombe-pas-directement-au-radiologue-du-fait-du-code-de-la-santé-publique-"><a class="header" href="#3-parmi-les-responsabilités-suivantes-quelle-est-celle-qui-nincombe-pas-directement-au-radiologue-du-fait-du-code-de-la-santé-publique-">3. Parmi les responsabilités suivantes, quelle est celle qui n'incombe pas directement au radiologue du fait du code de la santé publique ?</a></h3>
+<ul>
+<li>Rappel de la justification des actes dans les comptes rendus</li>
+<li>Rappel des paramètres de réalisation des actes dans les comptes rendus (paramètres présents dans l'identificateur DICOM)</li>
+<li>Mesure annuelle de niveaux de référence diagnostique pour un appareillage</li>
+<li>Demande d'autorisation ou de déclaration des appareils émetteurs de rayons X</li>
+<li>Catégorisation des travailleurs A ou B
+REPONSE : E</li>
+</ul>
+<h3 id="4-concernant-le-ctdi-idsv-au-scanner-quelles-sont-les-propositions-vraies-"><a class="header" href="#4-concernant-le-ctdi-idsv-au-scanner-quelles-sont-les-propositions-vraies-">4. Concernant le CTDI (IDSV) au scanner, quelles sont les propositions vraies ?</a></h3>
+<ul>
+<li>Il est calculé à partir de fantômes</li>
+<li>II est un bon reflet de l'irradiation reçue par un patient lors d'un examen</li>
+<li>Il tient compte de la radiosensibilité des différents organes</li>
+<li>II est affecté par les <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">kV</span></span></span></span> et les <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">A</span><span class="mord mathnormal">s</span></span></span></span></li>
+<li>Il est encadré par les niveaux de références de dose</li>
+</ul>
+<blockquote>
+<p>REPONSES : A-D-E</p>
+</blockquote>
+<h3 id="5-concernant-la-dose-au-scanner-quelles-sont-les-réponses-vraies"><a class="header" href="#5-concernant-la-dose-au-scanner-quelles-sont-les-réponses-vraies">5. Concernant la dose au scanner, quelles sont les réponses vraies</a></h3>
+<ul>
+<li>Une augmentation de <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">20%</span></span></span></span> des <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">kV</span></span></span></span> entraîne une irradiation beaucoup plus importante qu'une augmentation de <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">20%</span></span></span></span> des <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span></li>
+<li>La modulation des mAS en XY (dans le plan transversal) se fait à partir du scout view (topogramme)</li>
+<li>La modulation des <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span> en <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span></span></span></span> (dans le plan transversal) est surtout efficace au niveau du cou</li>
+<li>La modulation des mAS en Z (dans le plan longitudinal) est surtout efficace au niveau du thorax</li>
+<li>La modulation des <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">A</span><span class="mord mathnormal">s</span></span></span></span> en <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span></span></span></span> ne peut pas être combinée à une modulation des <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">A</span><span class="mord mathnormal">s</span></span></span></span> en <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span></span></span></span></li>
+</ul>
+<blockquote>
+<p>REPONSES : A-D</p>
+</blockquote>
+<h3 id="6-concernant-les-techniques-de-réduction-de-dose-au-scanner-quelles-sont-celles-accessibles-au-radiologue-à-la-console"><a class="header" href="#6-concernant-les-techniques-de-réduction-de-dose-au-scanner-quelles-sont-celles-accessibles-au-radiologue-à-la-console">6. Concernant les techniques de réduction de dose au scanner, quelles sont celles accessibles au radiologue à la console?</a></h3>
+<ul>
+<li>La modulation des <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span> en <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span></span></span></span></li>
+<li>La modulation des <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">kV</span></span></span></span> en <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span></span></span></span></li>
+<li>La modulation des <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">kV</span></span></span></span> en <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span></span></span></span></li>
+<li>Le filtrage des rayons <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> de faible énergie</li>
+<li>L'utilisation d'une technique de reconstruction itérative</li>
+</ul>
+<blockquote>
+<p>REPONSES : A-E</p>
+</blockquote>
+<h3 id="7-concernant-le-produit-dose-longueur-pdl-quelles-sont-les-réponses-vraies-"><a class="header" href="#7-concernant-le-produit-dose-longueur-pdl-quelles-sont-les-réponses-vraies-">7. Concernant le produit dose longueur (PDL), quelles sont les réponses vraies ?</a></h3>
+<ul>
+<li>II double si l'on double la longueur de l'hélice</li>
+<li>II double si l'on double les <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">A</span><span class="mord mathnormal">s</span></span></span></span></li>
+<li>II double si l'on double les <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">kV</span></span></span></span></li>
+<li>II double si l'on double le pitch</li>
+<li>II double si l'on répète une fois l'hélice</li>
+</ul>
+<blockquote>
+<p>REPONSES : A-B-E</p>
+</blockquote>
+<h3 id="8-concernant-la-dose-efficace-au-scanner-quelles-sont-les-réponses-vraies-"><a class="header" href="#8-concernant-la-dose-efficace-au-scanner-quelles-sont-les-réponses-vraies-">8. Concernant la dose efficace au scanner, quelles sont les réponses vraies ?</a></h3>
+<ul>
+<li>Elle tient compte de l'âge du patient</li>
+<li>Elle tient compte de la radiosensibilité des organes</li>
+<li>Elle peut être additionnée à la dose efficace d'un autre examen</li>
+<li>Elle doit figurer dans le compte rendu du radiologue</li>
+<li>Elle s'exprime en <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span></li>
+</ul>
+<blockquote>
+<p>REPONSES : B-C-E</p>
+</blockquote>
+<h3 id="9-concernant-les-niveaux-de-référence-de-dose-au-scanner-quelles-sont-les-réponses-vraies-"><a class="header" href="#9-concernant-les-niveaux-de-référence-de-dose-au-scanner-quelles-sont-les-réponses-vraies-">9. Concernant les niveaux de référence de dose au scanner, quelles sont les réponses vraies ?</a></h3>
+<ul>
+<li>Ils ne doivent en aucun cas être dépassés</li>
+<li>Ils peuvent être modifiés en fonction des progrès techniques</li>
+<li>Ils concernent le CTDI et le produit dose longueur</li>
+<li>Ils sont valables dans tous les pays</li>
+<li>II faut vérifier une fois par semaine que l'on respecte ces niveaux</li>
+</ul>
+<blockquote>
+<p>REPONSES : B-C</p>
+</blockquote>
+<h3 id="10-quels-artifices-techniques-contribuent-de-diminuer-la-dose-lors-dun-scanner-du-rachis-lombaire-"><a class="header" href="#10-quels-artifices-techniques-contribuent-de-diminuer-la-dose-lors-dun-scanner-du-rachis-lombaire-">10. Quels artifices techniques contribuent de diminuer la dose lors d'un scanner du rachis lombaire ?</a></h3>
+<ul>
+<li>Utiliser un filtrage des rayons <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> à la sortie du tube</li>
+<li>Utiliser des collimateurs de champs</li>
+<li>Utiliser des collimateurs de part et d'autre de la rangée de détecteurs</li>
+<li>Utiliser un protocole abdomen plutôt qu'un protocole rachis</li>
+<li>Utiliser une technique de modulation des mAs</li>
+</ul>
+<blockquote>
+<p>REPONSES :A-B-E</p>
+</blockquote>
+<h3 id="11-il-est-possible-dadditionner-les-produits-dose-longueur-de-"><a class="header" href="#11-il-est-possible-dadditionner-les-produits-dose-longueur-de-">11. Il est possible d'additionner les produits dose longueur de :</a></h3>
+<ul>
+<li>Une hélice abdominale et une hélice cervicale</li>
+<li>Une hélice cérébrale et une hélice cervicale</li>
+<li>Une hélice abdominale et une hélice pelvienne</li>
+<li>Une hélice thoracique, une hélice abdominale et une hélice pelvienne</li>
+<li>Une hélice cérébrale sans injection et une hélice cérébrale avec injection</li>
+</ul>
+<blockquote>
+<p>REPONSES : B-C-D-E</p>
+</blockquote>
+<h3 id="12-concernant-les-paramètres-dexposition-au-scanner-quelles-sont-les-réponses-vraies-"><a class="header" href="#12-concernant-les-paramètres-dexposition-au-scanner-quelles-sont-les-réponses-vraies-">12. Concernant les paramètres d'exposition au scanner, quelles sont les réponses vraies ?</a></h3>
+<ul>
+<li>Les <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">A</span><span class="mord mathnormal">s</span></span></span></span> déterminent l'énergie des rayons <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span></li>
+<li>Les <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">kV</span></span></span></span> déterminent l'énergie des rayons <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span></li>
+<li>La dose varie avec le carré des <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">A</span><span class="mord mathnormal">s</span></span></span></span></li>
+<li>La dose varie avec le carré des <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">kV</span></span></span></span></li>
+<li>Une dose trop élevée est signalée par une alarme</li>
+</ul>
+<blockquote>
+<p>REPONSES : B-D</p>
+</blockquote>
+<h3 id="13-en-radiologie-interventionnelle-si-la-distance-entre-le-faisceau-de-rayons-x-et-lopérateur-passe-de-50-centimètres-à-1-mètre-le-débit-de-dose-au-niveau-de-lopérateur-est-divisé-par-une-réponse-exacte-"><a class="header" href="#13-en-radiologie-interventionnelle-si-la-distance-entre-le-faisceau-de-rayons-x-et-lopérateur-passe-de-50-centimètres-à-1-mètre-le-débit-de-dose-au-niveau-de-lopérateur-est-divisé-par-une-réponse-exacte-">13. En radiologie interventionnelle, si la distance entre le faisceau de rayons <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> et l'opérateur passe de 50 centimètres à 1 mètre, le débit de dose au niveau de l'opérateur est divisé par (une réponse exacte) :</a></h3>
+<ul>
+<li>2</li>
+<li>4</li>
+<li>6</li>
+<li>8</li>
+<li>10</li>
+</ul>
+<blockquote>
+<p>REPONSE : B</p>
+</blockquote>
+<h3 id="14-radioprotection-des-opérateurs-en-ri"><a class="header" href="#14-radioprotection-des-opérateurs-en-ri">14. Radioprotection des opérateurs en RI.</a></h3>
+<ul>
+<li>Indiquer les réponses exactes (réponses multiples) :</li>
+<li>Le rayonnement primaire est 10 fois plus irradiant que le rayonnement diffusé</li>
+<li>L'utilisation de lunettes plombées et d'écrans de protection divise la dose au cristallin par 33 en moyenne</li>
+<li>L'utilisation de bas-volets divise par 2 à 3 la dose reçue aux membres inférieurs</li>
+<li>A <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">90</span><span class="mord mathnormal" style="margin-right:0.22222em;">kV</span></span></span></span>, la dose reçue par le diffusé sous un tablier de 0,50 mm d'équivalent plomb est divisée par 50</li>
+<li>II est recommandé à un opérateur se trouvant à moins d'un mètre du patient de porter un tablier offrant une protection de <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">35</span><span class="mspace nobreak"> </span><span class="mord mathnormal">mm</span></span></span></span> équivalent plomb en face avant</li>
+</ul>
+<blockquote>
+<p>REPONSES : B-C-D</p>
+</blockquote>
+<h3 id="15-en-radiologie-interventionnelle-pour-diminuer-lexposition-de-lopérateur-il-faut-réponses-multiples"><a class="header" href="#15-en-radiologie-interventionnelle-pour-diminuer-lexposition-de-lopérateur-il-faut-réponses-multiples">15. En radiologie interventionnelle, pour diminuer l'exposition de l'opérateur il faut (réponses multiples)</a></h3>
+<ul>
+<li>Placer le tube au-dessus de la table en incidence de face</li>
+<li>Placer le tube du côté de l'opérateur en incidence de profil</li>
+<li>Etre le plus éloigné possible du couple tube-détecteur</li>
+<li>Utiliser une filtration additionnelle</li>
+<li>Travailler avec une tension plus basse</li>
+</ul>
+<blockquote>
+<p>REPONSES : C-D</p>
+</blockquote>
+<h3 id="16-en-radiologie-interventionnelle-quel-est-le-dispositif-de-radioprotection-de-lopérateur-qui-nest-plus-actuellement-recommandé-une-réponse-exacte-"><a class="header" href="#16-en-radiologie-interventionnelle-quel-est-le-dispositif-de-radioprotection-de-lopérateur-qui-nest-plus-actuellement-recommandé-une-réponse-exacte-">16. En radiologie interventionnelle, quel est le dispositif de radioprotection de l'opérateur qui n'est plus actuellement recommandé (une réponse exacte) :</a></h3>
+<ul>
+<li>Utilisation de bas-volets</li>
+<li>Port de lunettes de protection</li>
+<li>Port d'un protège-thyroïde</li>
+<li>Utilisation d'un paravent plombé</li>
+<li>Port de gants plombés de protection</li>
+</ul>
+<blockquote>
+<p>REPONSE : E</p>
+</blockquote>
+<h3 id="17-en-radiologie-interventionnelle-en-tenant-compte-de-lactuelle-et-de-la-future-norme-réglementaire-dexposition-un-opérateur-qui-recevrait-un-équivalent-de-dose-moyen-au-cristallin-de-2-msv-par-procédure-rapprochée-serait-autorisé-à-réaliser-réponses-multiples-"><a class="header" href="#17-en-radiologie-interventionnelle-en-tenant-compte-de-lactuelle-et-de-la-future-norme-réglementaire-dexposition-un-opérateur-qui-recevrait-un-équivalent-de-dose-moyen-au-cristallin-de-2-msv-par-procédure-rapprochée-serait-autorisé-à-réaliser-réponses-multiples-">17. En radiologie interventionnelle, en tenant compte de l'actuelle et de la future norme réglementaire d'exposition, un opérateur qui recevrait un équivalent de dose moyen au cristallin de 2 mSv par procédure rapprochée serait autorisé à réaliser (réponses multiples) :</a></h3>
+<ul>
+<li>50 procédures rapprochées avec la norme actuelle\B. 75 procédures rapprochées avec la norme actuelle\C. 150 procédures rapprochées avec la norme actuelle\D. 10 procédures rapprochées avec la nouvelle norme\E. 50 procédures rapprochées avec la nouvelle norme</li>
+</ul>
+<p>REPONSES : B-D</p>
+<h3 id="18-pour-une-exposition-de-1sv-lapplication-du-principe-de-relation-linéaire-sans-seuil-permet-dévaluer-un-excès-théorique-de-cancers-radio-induits-de-choix-simple-"><a class="header" href="#18-pour-une-exposition-de-1sv-lapplication-du-principe-de-relation-linéaire-sans-seuil-permet-dévaluer-un-excès-théorique-de-cancers-radio-induits-de-choix-simple-">18. Pour une exposition de 1Sv, l'application du principe de relation linéaire sans seuil permet d'évaluer un excès théorique de cancers radio-induits de (choix simple) :</a></h3>
+<ul>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9444em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">05</span><span class="mspace nobreak"> </span><span class="mord">%</span></span></span></span></li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9444em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">5</span><span class="mspace nobreak"> </span><span class="mord">%</span></span></span></span></li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">5</span><span class="mspace nobreak"> </span><span class="mord">%</span></span></span></span></li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">15</span><span class="mspace nobreak"> </span><span class="mord">%</span></span></span></span></li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">25</span><span class="mspace nobreak"> </span><span class="mord">%</span></span></span></span></li>
+</ul>
+<p>REPONSES : <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span></p>
+<h3 id="19-parmi-les-propositions-suivantes-lesquelles-caractérisent-la-position-de-lacadémie-de-médecine-2006-sur-la-radioprotection-choix-multiple-"><a class="header" href="#19-parmi-les-propositions-suivantes-lesquelles-caractérisent-la-position-de-lacadémie-de-médecine-2006-sur-la-radioprotection-choix-multiple-">19. Parmi les propositions suivantes, lesquelles caractérisent la position de l'Académie de Médecine (2006) sur la radioprotection (choix multiple) :</a></h3>
+<ul>
+<li>Le risque de cancers radio-induits à faible dose est sous estimé par le modèle linéaire sans seuil</li>
+<li>Le principe de précaution doit bannir tout risque dans la pratique médicale</li>
+<li>II convient d'évaluer le coût et les risques des différents examens d'imagerie</li>
+<li>La population pédiatrique mérite une attention particulière</li>
+<li>L'effort dans le domaine de la radioprotection devrait se concentrer sur les examens délivrant plus de <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">5</span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span>.</li>
+</ul>
+<blockquote>
+<p>REPONSES : C-D-E</p>
+</blockquote>
+<h3 id="20-parmi-les-propositions-suivantes-quelle-est-celle-qui-ne-concerne-pas-la-radioprotection-des-patients-choix-simple-"><a class="header" href="#20-parmi-les-propositions-suivantes-quelle-est-celle-qui-ne-concerne-pas-la-radioprotection-des-patients-choix-simple-">20. Parmi les propositions suivantes, quelle est celle qui ne concerne pas la radioprotection des patients (choix simple) :</a></h3>
+<ul>
+<li>Est fondée sur le code de santé publique</li>
+<li>Est fondée sur le droit du travail</li>
+<li>Impose le contrôle de la justification des actes</li>
+<li>Comporte le recours à la substitution</li>
+<li>Repose sur la mise en œurre de l'optimisation</li>
+</ul>
+<blockquote>
+<p>REPONSE : B</p>
+</blockquote>
+<h3 id="21-cochez-la-réponse-exacte-parmi-les-propositions-suivantes-concernant-la-législation-stipulant-la-dose-individuelle-dans-une-zone-contrôlée-1-seule-réponse-"><a class="header" href="#21-cochez-la-réponse-exacte-parmi-les-propositions-suivantes-concernant-la-législation-stipulant-la-dose-individuelle-dans-une-zone-contrôlée-1-seule-réponse-">21. Cochez la réponse exacte parmi les propositions suivantes concernant la législation stipulant la dose individuelle dans une zone contrôlée (1 seule réponse) :</a></h3>
+<ul>
+<li>Susceptible de dépasser 2,3 mSv pour le travailleur</li>
+<li>Susceptible de dépasser <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">6</span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> pour le travailleur</li>
+<li>Susceptible de dépasser <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">60</span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> pour le travailleur</li>
+<li>Comprise entre 1 et <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">6</span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> pour le travailleur</li>
+<li>Susceptible de dépasser <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">1</span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> pour le patient</li>
+</ul>
+<blockquote>
+<p>REPONSE : B</p>
+</blockquote>
+<h3 id="22-selon-la-législation-du-travail-la-dose-efficace-cumulée-à-ne-pas-dépasser-est-de-choix-multiple-"><a class="header" href="#22-selon-la-législation-du-travail-la-dose-efficace-cumulée-à-ne-pas-dépasser-est-de-choix-multiple-">22. Selon la législation du travail, la dose efficace cumulée à ne pas dépasser est de (choix multiple) :</a></h3>
+<ul>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2</span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord">/</span><span class="mord mathnormal">an</span></span></span></span> pour un personnel\B. <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord">/</span><span class="mord mathnormal">an</span></span></span></span> pour un personnel\C. <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">20</span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord">/</span><span class="mord mathnormal">an</span></span></span></span> pour un personnel\D. <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">10</span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> pour un patient\E. <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">1</span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> pour le fœtus d'une manipulatrice enceinte</li>
+</ul>
+<blockquote>
+<p>REPONSES : C-E</p>
+</blockquote>
+<h3 id="23-parmi-des-propositions-suivantes-cochez-les-réponses-exactes-en-ce-qui-concerne-la-formation-des-personnels-sur-la-radioprotection-des-patients-choix-multiple-"><a class="header" href="#23-parmi-des-propositions-suivantes-cochez-les-réponses-exactes-en-ce-qui-concerne-la-formation-des-personnels-sur-la-radioprotection-des-patients-choix-multiple-">23. Parmi des propositions suivantes cochez les réponses exactes en ce qui concerne la formation des personnels sur la <code>radioprotection des patients</code> (choix multiple) :</a></h3>
+<ul>
+<li>Est obligatoire pour un manipulateur de médecine nucléaire</li>
+<li>Est obligatoire pour un chirurgien utilisant un appareil de radiologie au bloc opératoire</li>
+<li>Doit être renouvelée tous les 3 ans</li>
+<li>Doit être renouvelée tous les 10 ans</li>
+<li>Est obligatoire pour la secrétaire d'un service de radiologie</li>
+</ul>
+<blockquote>
+<p>REPONSES : A-B-D</p>
+</blockquote>
+<h3 id="24-parmi-les-propositions-suivantes-cochez-les-réponses-exactes-en-ce-qui-concerne-le-contrôle-de-la-justification-dun-acte-de-tomodensitométrie-choix-multiple-"><a class="header" href="#24-parmi-les-propositions-suivantes-cochez-les-réponses-exactes-en-ce-qui-concerne-le-contrôle-de-la-justification-dun-acte-de-tomodensitométrie-choix-multiple-">24. Parmi les propositions suivantes cochez les réponses exactes en ce qui concerne le contrôle de la justification d'un acte de tomodensitométrie (choix multiple) :</a></h3>
+<ul>
+<li>Doit être effectué par le radiologue avant tout examen</li>
+<li>Repose sur un échange préalable oral d'informations entre le demandeur et le radiologue</li>
+<li>S'appui sur le guide du bon usage des examens radiologiques</li>
+<li>Doit apparaître dans le compte rendu</li>
+<li>Est en dernier recours de la responsabilité du radiologue</li>
+</ul>
+<blockquote>
+<p>REPONSES : A-C-D-E</p>
+</blockquote>
+<h3 id="25-parmi-les-propositions-suivantes-quelles-sont-les-domaines-qui-engagent-la-responsabilité-du-médecin-demandeur-dun-examen-dimagerie-médicale-choix-multiple-"><a class="header" href="#25-parmi-les-propositions-suivantes-quelles-sont-les-domaines-qui-engagent-la-responsabilité-du-médecin-demandeur-dun-examen-dimagerie-médicale-choix-multiple-">25. Parmi les propositions suivantes, quelles sont les domaines qui engagent la responsabilité du médecin demandeur d'un examen d'imagerie médicale (choix multiple) :</a></h3>
+<ul>
+<li>Domaine de la justification</li>
+<li>Domaine de la substitution</li>
+<li>Domaine de l'optimisation</li>
+<li>Domaine de l'information du patient</li>
+<li>Contrôle de la qualité des équipements</li>
+</ul>
+<blockquote>
+<p>REPONSES : A-B-D</p>
+</blockquote>
+<h3 id="26-parmi-les-propositions-suivantes-cochez-les-réponses-exactes-en-ce-qui-concerne-la-dose-efficace-délivrée-lors-dun-examen-tomodensitométrique-choix-multiple-"><a class="header" href="#26-parmi-les-propositions-suivantes-cochez-les-réponses-exactes-en-ce-qui-concerne-la-dose-efficace-délivrée-lors-dun-examen-tomodensitométrique-choix-multiple-">26. Parmi les propositions suivantes cochez les réponses exactes en ce qui concerne la dose efficace délivrée lors d'un examen tomodensitométrique (choix multiple) :</a></h3>
+<ul>
+<li>Est un indicateur de dose mesurée par l'équipement</li>
+<li>Doit figurer sur le compte rendu</li>
+<li>Peut être utilisé comme outil d'informations et de communication destinés aux patients</li>
+<li>Permet de comparer cet examen à un autre examen en termes de risque</li>
+<li>S'exprime en \href{http://mGy.cm}{mGy.cm}</li>
+</ul>
+<blockquote>
+<p>REPONSES : C-D</p>
+</blockquote>
+<h3 id="27-cocher-les-propositions-exactes-en-ce-qui-concerne-le-produit-de-surface-en-radiologie-conventionnelle-choix-multiple"><a class="header" href="#27-cocher-les-propositions-exactes-en-ce-qui-concerne-le-produit-de-surface-en-radiologie-conventionnelle-choix-multiple">27. Cocher les propositions exactes en ce qui concerne le produit de surface en radiologie conventionnelle (choix multiple):</a></h3>
+<ul>
+<li>S'exprime en \href{http://mGy.cm}{mGy.cm}</li>
+<li>Doit figurer dans le compte rendu d'une radiographie du poignet</li>
+<li>Est utilisé pour la définition du NRD d'une radiographie du thorax</li>
+<li>Permet d'évaluer de façon indirecte la dose d'entrée</li>
+<li>N'apporte aucune information quant à la dose efficace associée à l'acte</li>
+</ul>
+<blockquote>
+<p>REPONSES : A-C-D</p>
+</blockquote>
+<h3 id="28-concernant-la-dose-efficace-des-examens-tomodensitométriques-quelles-sont-les-propositions-vraies-choix-multiple-"><a class="header" href="#28-concernant-la-dose-efficace-des-examens-tomodensitométriques-quelles-sont-les-propositions-vraies-choix-multiple-">28. Concernant la dose efficace des examens tomodensitométriques, quelles sont les propositions vraies (choix multiple) :</a></h3>
+<ul>
+<li>Peut être mesurée directement par l'équipement</li>
+<li>Dépend de la zone anatomique explorée</li>
+<li>Doit être reportée sur le compte rendu</li>
+<li>Peut être comparée à l'irradiation naturelle</li>
+<li>Permet de la comparer à l'irradiation d'une scintigraphie myocardique</li>
+</ul>
+<blockquote>
+<p>REPONSES : B-D-E</p>
+</blockquote>
+<h3 id="29-concernant-la-dose-efficace-annuelle-moyenne-par-individu-liée-à-limagerie-médicale-en-france-en-2012-quelles-sont-les-propositions-vraies-choix-multiple-"><a class="header" href="#29-concernant-la-dose-efficace-annuelle-moyenne-par-individu-liée-à-limagerie-médicale-en-france-en-2012-quelles-sont-les-propositions-vraies-choix-multiple-">29. Concernant la dose efficace annuelle moyenne par individu liée à l'imagerie médicale en France en 2012, quelles sont les propositions vraies (choix multiple) :</a></h3>
+<ul>
+<li>Elle est supérieure à celle des USA</li>
+<li>Elle est inférieure à l'irradiation naturelle</li>
+<li>Elle est estimée à <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">16</span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span></li>
+<li>Elle a diminué par rapport à 2007</li>
+<li>Elle est majoritairement liée au scanner</li>
+</ul>
+<blockquote>
+<p>REPONSES : B-E</p>
+</blockquote>
+<h3 id="30-parmi-les-propositions-suivantes-cochez-les-réponses-exactes-concernant-la-comparaison-en-dose-efficace-de-certains-examens-dimagerie-en-regard-de-lirradiation-naturelle-en-france-choix-multiple-"><a class="header" href="#30-parmi-les-propositions-suivantes-cochez-les-réponses-exactes-concernant-la-comparaison-en-dose-efficace-de-certains-examens-dimagerie-en-regard-de-lirradiation-naturelle-en-france-choix-multiple-">30. Parmi les propositions suivantes cochez les réponses exactes concernant la comparaison, en dose efficace, de certains examens d'imagerie en regard de l'irradiation naturelle en France (choix multiple) :</a></h3>
+<ul>
+<li>Abdomen sans préparation : 6 à 9 mois d'irradiation naturelle</li>
+<li>Rachis lombaire : 1 mois d'irradiation naturelle</li>
+<li>Radiographie du thorax : quelques jours à 2 semaines d'irradiation naturelle</li>
+<li>Tomodensitométrie du crâne : 1 an d'irradiation naturelle</li>
+<li>Scanner thoraco-abdomino-pelvien : 6 mois d'irradiation naturelle</li>
+</ul>
+<blockquote>
+<p>REPONSES : A-C-D</p>
+</blockquote>
+<h3 id="31-dans-le-domaine-de-la-radiologie-interventionnelle-quelles-sont-les-propositions-vraies-choix-multiple-"><a class="header" href="#31-dans-le-domaine-de-la-radiologie-interventionnelle-quelles-sont-les-propositions-vraies-choix-multiple-">31. Dans le domaine de la radiologie interventionnelle, quelles sont les propositions vraies (choix multiple) :</a></h3>
+<ul>
+<li>Certains NRD ont été publiés au Journal Officiel</li>
+<li>II n'existe aucun guide de bonne pratique</li>
+<li>La dose efficace pour un acte peut dépasser <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">30</span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span></li>
+<li>La dose peau pour un acte peut dépasser le Gray</li>
+<li>II a été décrit des effets déterministes sur les patients</li>
+</ul>
+<blockquote>
+<p>REPONSES : C-D-E</p>
+</blockquote>
+<h3 id="32-en-ce-qui-concerne-la-dose-efficace-correspondant-à-lirradiation-naturelle-moyenne-de-la-population-en-france-cochez-la-proposition-exacte-choix-simple-"><a class="header" href="#32-en-ce-qui-concerne-la-dose-efficace-correspondant-à-lirradiation-naturelle-moyenne-de-la-population-en-france-cochez-la-proposition-exacte-choix-simple-">32. En ce qui concerne la dose efficace correspondant à l'irradiation naturelle moyenne de la population en France, cochez la proposition exacte (choix simple) :</a></h3>
+<ul>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">12</span><span class="mspace nobreak"> </span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span></li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2</span><span class="mspace nobreak"> </span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span></li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">3</span><span class="mspace nobreak"> </span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span></li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2</span><span class="mspace nobreak"> </span><span class="mord mathnormal">m</span><span class="mord mathnormal">G</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span></li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">12</span><span class="mspace nobreak"> </span><span class="mord mathnormal">m</span><span class="mord mathnormal">G</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span></li>
+</ul>
+<blockquote>
+<p>REPONSE : C</p>
+</blockquote>
+<h3 id="33-la-filtration-du-tube-choix-multiple"><a class="header" href="#33-la-filtration-du-tube-choix-multiple">33. La filtration du tube (choix multiple)</a></h3>
+<ul>
+<li>Augmente l'énergie moyenne des photons non absorbé</li>
+<li>Diminue l'énergie globale du faisceau</li>
+<li>Diminue le rapport signal sur bruit</li>
+<li>Est obligatoire</li>
+<li>Diminue la dose absorbée par le patient</li>
+</ul>
+<blockquote>
+<p>REPONSES : A-B-C-D-E</p>
+</blockquote>
+<h3 id="34-la-filtration-minimale-obligatoire-du-tube-est-réalisée-par-choix-simple"><a class="header" href="#34-la-filtration-minimale-obligatoire-du-tube-est-réalisée-par-choix-simple">34. La filtration minimale obligatoire du tube est réalisée par (choix simple)</a></h3>
+<ul>
+<li>Un filtre de 0,1 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">mm</span></span></span></span> de Cuivre</li>
+<li>Un filtre de <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace nobreak"> </span><span class="mord mathnormal">mm</span></span></span></span> de Cuivre</li>
+<li>Un filtre de 0,2 mm d'Aluminium</li>
+<li>Un filtre de <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mspace nobreak"> </span><span class="mord mathnormal">mm</span></span></span></span> d'Aluminium</li>
+<li>Un filtre <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mspace nobreak"> </span><span class="mord mathnormal">mm</span></span></span></span> de Cuivre et <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mspace nobreak"> </span><span class="mord mathnormal">mm</span></span></span></span> d'Aluminium</li>
+</ul>
+<blockquote>
+<p>REPONSE : D</p>
+</blockquote>
+<h3 id="35--lors-de-la-réalisation-dune-radiographie-de-thorax-la-protection-des-gonades-choix-simple"><a class="header" href="#35--lors-de-la-réalisation-dune-radiographie-de-thorax-la-protection-des-gonades-choix-simple">35.  Lors de la réalisation d'une radiographie de thorax, la protection des gonades (choix simple)</a></h3>
+<ul>
+<li>Doit être réalisée chez le garçon</li>
+<li>Doit être réalisée chez la fille</li>
+<li>Est systématique pour tous les enfants</li>
+<li>N'est réalisée que pour les nourrissons de sexe masculin</li>
+<li>Est inutile</li>
+</ul>
+<blockquote>
+<p>REPONSE : E</p>
+</blockquote>
+<h3 id="36-la-réalisation-dune-radiographie-de-thorax-chez-une-adolescente-seffectue-choix-multiple"><a class="header" href="#36-la-réalisation-dune-radiographie-de-thorax-chez-une-adolescente-seffectue-choix-multiple">36. La réalisation d'une radiographie de thorax chez une adolescente s'effectue (choix multiple)</a></h3>
+<ul>
+<li>En incidence antéro-postérieure</li>
+<li>En incidence postéro-antérieure</li>
+<li>Sans l'utilisation d'un exposeur automatique</li>
+<li>En utilisant la cellule centrale</li>
+<li>En utilisant les cellules latérales</li>
+</ul>
+<blockquote>
+<p>REPONSES : B-E</p>
+</blockquote>
+<h3 id="37-en-tomodensitométrie-lors-de-lacquisition-avec-un-logiciel-de-modulation-lutilisation-dun-cache-en-bismuth-choix-multiple"><a class="header" href="#37-en-tomodensitométrie-lors-de-lacquisition-avec-un-logiciel-de-modulation-lutilisation-dun-cache-en-bismuth-choix-multiple">37. En tomodensitométrie, lors de l'acquisition avec un logiciel de modulation l'utilisation d'un cache en bismuth (choix multiple)</a></h3>
+<ul>
+<li>Peut permettre de diminuer la dose à un organe cible de <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">30%</span></span></span></span></li>
+<li>Peut générer des artéfacts</li>
+<li>Doit être placé avant la réalisation du topogramme</li>
+<li>Peut être substitué par un cache en plomb</li>
+<li>Diminue le rayonnement rétrodiffusé</li>
+</ul>
+<blockquote>
+<p>REPONSES : A-B</p>
+</blockquote>
+<h3 id="38-les-guides-à-destination-des-professionnels-de-limagerie-visent-à--choix-multiple"><a class="header" href="#38-les-guides-à-destination-des-professionnels-de-limagerie-visent-à--choix-multiple">38. Les guides à destination des professionnels de l'imagerie visent à : (choix multiple)</a></h3>
+<ul>
+<li>Justifier la réalisation d'actes d'imagerie quels qu'ils soient</li>
+<li>Justifier la réalisation d'actes exposant aux rayonnements ionisants</li>
+<li>Optimiser les doses reçues par les patients</li>
+<li>Limiter les doses reçues par les travailleurs</li>
+</ul>
+<blockquote>
+<p>REPONSES : B-C</p>
+</blockquote>
+<h3 id="39-les-guides-à-destination-des-professionnels-de-limagerie-concernent-choix-multiple"><a class="header" href="#39-les-guides-à-destination-des-professionnels-de-limagerie-concernent-choix-multiple">39. Les guides à destination des professionnels de l'imagerie concernent (choix multiple)</a></h3>
+<ul>
+<li>La radiologie conventionnelle</li>
+<li>L'art dentaire</li>
+<li>L'échographie</li>
+<li>La radiothérapie</li>
+</ul>
+<blockquote>
+<p>REPONSES : A-B</p>
+</blockquote>
+<h3 id="40-les-guides-à-destination-des-professionnels-de-limagerie-sont--choix-multiple"><a class="header" href="#40-les-guides-à-destination-des-professionnels-de-limagerie-sont--choix-multiple">40. Les guides à destination des professionnels de l'imagerie sont : (choix multiple)</a></h3>
+<ul>
+<li>Etablis par les autorités de santé</li>
+<li>Opposables en cas de d'incident d'exposition d'un patient</li>
+<li>Des outils d'homogénéisation des pratiques en imagerie</li>
+<li>Des outils d'information pour les prescripteurs et réalisateurs d'examens d'imagerie</li>
+</ul>
+<blockquote>
+<p>REPONSES : C-D</p>
+</blockquote>
+<h3 id="41-le-guide-du-bon-usage-des-examens-est--choix-multiple"><a class="header" href="#41-le-guide-du-bon-usage-des-examens-est--choix-multiple">41. Le guide du bon usage des examens est : (choix multiple)</a></h3>
+<ul>
+<li>À destination du demandeur de l'examen</li>
+<li>À destination du réalisateur de l'examen</li>
+<li>Lié au principe de justification</li>
+<li>Lié au principe d'optimisation</li>
+</ul>
+<blockquote>
+<p>REPONSES A-C</p>
+</blockquote>
+<h3 id="42-le-guide-du-bon-usage-des-examens-choix-simple"><a class="header" href="#42-le-guide-du-bon-usage-des-examens-choix-simple">42. Le guide du bon usage des examens (choix simple)</a></h3>
+<ul>
+<li>Fournit des informations sur le niveau de preuve apporté par différents examens pour une indication</li>
+<li>Doit être obligatoirement appliqué par les praticiens pour tous leurs patients</li>
+<li>Fournit la valeur de dose exacte délivrée par examen</li>
+<li>Ne tient pas compte des techniques non exposantes aux rayonnements ionisants</li>
+</ul>
+<blockquote>
+<p>REPONSE : A</p>
+</blockquote>
+<h3 id="43-le-guide-des-procédures-radiologiques-choix-simple"><a class="header" href="#43-le-guide-des-procédures-radiologiques-choix-simple">43. Le guide des procédures radiologiques (choix simple):</a></h3>
+<ul>
+<li>Répond au principe d'optimisation</li>
+<li>Répond au principe de justification</li>
+<li>Doit être impérativement respecté quel que soit le poids du patient</li>
+<li>Contient les valeurs de dose à ne pas dépasser</li>
+</ul>
+<blockquote>
+<p>REPONSE : A</p>
+</blockquote>
+<h3 id="44-le-guide-des-procédures-radiologiques-choix-multiple"><a class="header" href="#44-le-guide-des-procédures-radiologiques-choix-multiple">44. Le guide des procédures radiologiques (choix multiple):</a></h3>
+<ul>
+<li>Fournit des indications sur les caractéristiques techniques communément utilisées pour réaliser des examens d'imagerie</li>
+<li>N'a pas de lien avec les NRD</li>
+<li>Ne tient pas compte de l'âge du patient</li>
+<li>Tient compte des précautions particulières qu'implique la connaissance ou la possibilité d'une grossesse</li>
+</ul>
+<blockquote>
+<p>REPONSES : A-D</p>
+</blockquote>
+<h3 id="45-le-nrd-dun-examen-de-radiodiagnostic-donné-choix-simple-"><a class="header" href="#45-le-nrd-dun-examen-de-radiodiagnostic-donné-choix-simple-">45. Le NRD d'un examen de radiodiagnostic donné (choix simple) :</a></h3>
+<ul>
+<li>correspond à la moyenne de la dose peau pour cet examen au plan national</li>
+<li>Est un outil d'optimisation</li>
+<li>Est une valeur à ne pas dépasser quel que soit le patient</li>
+<li>Est une valeur affichée à la console de l'appareil</li>
+</ul>
+<blockquote>
+<p>REPONSE : B</p>
+</blockquote>
+<h3 id="46-les-nrd-sont-choix-simple"><a class="header" href="#46-les-nrd-sont-choix-simple">46. Les NRD sont (choix simple):</a></h3>
+<ul>
+<li>Élaborés à partir d'études à grande échelle,</li>
+<li>Définis pour un service de radiologie,</li>
+<li>Définis pour les examens les plus courants,</li>
+<li>Définis pour les examens les plus irradiants.</li>
+</ul>
+<blockquote>
+<p>REPONSES : A-C-D</p>
+</blockquote>
+<h3 id="47-le-concept-des-nrd-est-issu-choix-simple-"><a class="header" href="#47-le-concept-des-nrd-est-issu-choix-simple-">47. Le concept des NRD est issu (choix simple ):</a></h3>
+<ul>
+<li>Des recommandations internationales de la CIPR,</li>
+<li>Des obligations réglementaires européennes,</li>
+<li>De la réglementation française,</li>
+<li>De recommandations de la Société française de radiologie.</li>
+</ul>
+<blockquote>
+<p>REPONSE : A</p>
+</blockquote>
+<h3 id="48-la-mise-à-jour-des-valeurs-numériques-des-nrd-en-fonction-des-pratiques-choix-multiple-"><a class="header" href="#48-la-mise-à-jour-des-valeurs-numériques-des-nrd-en-fonction-des-pratiques-choix-multiple-">48. La mise à jour des valeurs numériques des NRD en fonction des pratiques (choix multiple) :</a></h3>
+<ul>
+<li>N'est pas envisageable,</li>
+<li>Est réalisée par les autorités,</li>
+<li>Est réalisée par l'IRSN,</li>
+<li>Est réalisée en concertation avec les professionnels de l'imagerie.</li>
+</ul>
+<blockquote>
+<p>REPONSES : B-D</p>
+</blockquote>
+<h3 id="49-les-valeurs-de-nrd-en-radiologie-classique-sont-définies-choix-simple-"><a class="header" href="#49-les-valeurs-de-nrd-en-radiologie-classique-sont-définies-choix-simple-">49. Les valeurs de NRD en radiologie classique sont définies (choix simple) :</a></h3>
+<ul>
+<li>À partir de la moyenne des doses collectées en France pour un type d'examen,</li>
+<li>À partir du <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8491em;"></span><span class="mord">7</span><span class="mord"><span class="mord">5</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord accent mtight"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord mtight">e</span></span><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord mtight">ˋ</span></span></span></span></span></span></span><span class="mord mtight">me </span></span></span></span></span></span></span></span></span></span></span></span></span> centile de la distribution des doses collectées en France pour un type d'examen,</li>
+<li>Pour un type d'examen quel que soit l'âge du patient,</li>
+<li>Pour un type d'examen et un type de détecteur</li>
+</ul>
+<blockquote>
+<p>REPONSE : B</p>
+</blockquote>
+<h3 id="50-les-valeurs-de-nrd-en-scanographie-sont-définies-"><a class="header" href="#50-les-valeurs-de-nrd-en-scanographie-sont-définies-">50. Les valeurs de NRD en scanographie sont définies :</a></h3>
+<ul>
+<li>A partir du <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8491em;"></span><span class="mord">2</span><span class="mord"><span class="mord">5</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord accent mtight"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord mtight">e</span></span><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord mtight">ˋ</span></span></span></span></span></span></span><span class="mord mtight">me </span></span></span></span></span></span></span></span></span></span></span></span></span> centile de la distribution des doses collectées en France pour un type d'examen,</li>
+<li>A partir de la médiane de la distribution des doses collectées en France pour un type d'examen,</li>
+<li>Pour une région anatomique unique,</li>
+<li>Pour des examens couvrant une ou plusieurs régions anatomiques.</li>
+</ul>
+<blockquote>
+<p>REPONSE : D</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../s3/1-radio_protection/qcm1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../s3/1-radio_protection/expose.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../s3/1-radio_protection/qcm1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../s3/1-radio_protection/expose.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

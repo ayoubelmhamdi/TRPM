@@ -1,0 +1,620 @@
+<!DOCTYPE HTML>
+<html lang="fr" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>QCM 1 - TRPM</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../custom.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">TRPM</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/ayoubelmhamdi/TRPM" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/ayoubelmhamdi/TRPM/tree/master/src/s3/1-radio_protection/qcm1.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="evaluation-module-national-radiodiagnostic-et-imagerie-medicale"><a class="header" href="#evaluation-module-national-radiodiagnostic-et-imagerie-medicale">EVALUATION MODULE NATIONAL RADIODIAGNOSTIC ET IMAGERIE MEDICALE</a></h1>
+<hr />
+<h3 id="1-quelles-sont-les-propositions-exactes--les-rayons-x-résultent-"><a class="header" href="#1-quelles-sont-les-propositions-exactes--les-rayons-x-résultent-">1. Quelles sont les propositions exactes ? Les rayons <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> résultent :</a></h3>
+<ul>
+<li>De l'interaction des électrons avec les noyaux des atomes de l'anode</li>
+<li>De l'interaction des électrons avec les électrons des atomes de l'anode</li>
+<li>De la désexcitation des noyaux des atomes de l'anode</li>
+<li>De la décélération des protons</li>
+<li>De l'interaction d'un photon avec l'anode</li>
+</ul>
+<h3 id="2-quelle-est-la-proposition-exacte--dans-le-corps-du-patient-les-rayons-x-interagissent-principalement-"><a class="header" href="#2-quelle-est-la-proposition-exacte--dans-le-corps-du-patient-les-rayons-x-interagissent-principalement-">2. Quelle est la proposition exacte ? Dans le corps du patient, les rayons <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> interagissent principalement :</a></h3>
+<ul>
+<li>Par effet photoélectrique</li>
+<li>Par diffusion Compton</li>
+<li>Par production de paires</li>
+<li>Par annihilation</li>
+<li>Par rayonnement de freinage</li>
+</ul>
+<h3 id="3-quelles-sont-les-propositions-exactes-la-dose-absorbée-"><a class="header" href="#3-quelles-sont-les-propositions-exactes-la-dose-absorbée-">3. Quelles sont les propositions exactes? La dose absorbée :</a></h3>
+<ul>
+<li>A pour unité le Gray (Gy)</li>
+<li>A pour unité le Sievert (Sv)</li>
+<li>Est utilisée pour les niveaux de référence diagnostiques</li>
+<li>Est accessible par la mesure</li>
+<li>Permet d'estimer les effets stochastiques</li>
+</ul>
+<h3 id="4-quelles-sont-les-propositions-exactes--la-dose-efficace-"><a class="header" href="#4-quelles-sont-les-propositions-exactes--la-dose-efficace-">4. Quelles sont les propositions exactes ? La dose efficace :</a></h3>
+<ul>
+<li>A pour unité le Gray (Gy)</li>
+<li>A pour unité le Sievert (Sv)</li>
+<li>Est utilisée pour les niveaux de référence diagnostiques</li>
+<li>Est accessible par la mesure</li>
+<li>Permet d'estimer les effets stochastiques</li>
+</ul>
+<h3 id="5-quelles-sont-les-propositions-exactes--augmenter-les-kilovolts-kv-"><a class="header" href="#5-quelles-sont-les-propositions-exactes--augmenter-les-kilovolts-kv-">5. Quelles sont les propositions exactes ? Augmenter les kilovolts (kV) :</a></h3>
+<ul>
+<li>Améliore le contraste naturel du corps humain</li>
+<li>Permet de diminuer du même coup les <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">A</span><span class="mord mathnormal">s</span></span></span></span> donc la dose</li>
+<li>Est sans impact sur la qualité image</li>
+<li>Doit entraîner une augmentation de la filtration</li>
+<li>Améliore le contraste par injection d'iode 6.</li>
+</ul>
+<h3 id="6-quelles-propositions-vraies-caractérisent-les-effets-déterministes-des-rayonnements-ionisants-"><a class="header" href="#6-quelles-propositions-vraies-caractérisent-les-effets-déterministes-des-rayonnements-ionisants-">6. Quelles propositions vraies caractérisent les effets déterministes des rayonnements ionisants ?</a></h3>
+<ul>
+<li>Ce sont des effets dits `obligatoires "</li>
+<li>Leur fréquence augmente avec la dose</li>
+<li>Leurs effets apparaissent au-delà d'un seuil</li>
+<li>Plus la cellule est différenciée, plus elle est radiosensible</li>
+<li>Toutes les réponses sont exactes</li>
+</ul>
+<h3 id="7-concernant-les-effets-déterministes-quelles-propositions-sont-vraies-"><a class="header" href="#7-concernant-les-effets-déterministes-quelles-propositions-sont-vraies-">7. Concernant les effets déterministes, quelles propositions sont vraies ?</a></h3>
+<ul>
+<li>On parle d'exposition car c'est l'effet biologique des rayonnements ionisants qui est recherché</li>
+<li>Le compartiment souche est très radiosensible car il présente de nombreuses mitoses</li>
+<li>Pendant la phase des symptômes, le compartiment souche a complètement disparu</li>
+<li>Plus la dose reçue est importante, plus la phase de latence est courte</li>
+<li>En phase de latence, il n'y a pas d'effet clinique observable</li>
+</ul>
+<h3 id="8-parmi-les-propositions-suivantes-laquelle-caractérise-leffet-déterministe-des-radiations-ionisantes-une-réponse-exacte-"><a class="header" href="#8-parmi-les-propositions-suivantes-laquelle-caractérise-leffet-déterministe-des-radiations-ionisantes-une-réponse-exacte-">8. Parmi les propositions suivantes, laquelle caractérise l'effet déterministe des radiations ionisantes (une réponse exacte) :</a></h3>
+<ul>
+<li>La fréquence d'apparition est indépendante de la dose</li>
+<li>L'induction de mutations génétiques a été observée cliniquement chez les descendants des sujets irradiés par la bombe atomique</li>
+<li>La modification induite par cet effet est létale pour la cellule</li>
+<li>Chez l'homme l'effet cancérigène à long terme constitue le risque principal</li>
+</ul>
+<h3 id="9-concernant-lirradiation-et-lexposition-aiguë-quelles-propositions-sont-vraies-"><a class="header" href="#9-concernant-lirradiation-et-lexposition-aiguë-quelles-propositions-sont-vraies-">9. Concernant l'irradiation et l'exposition aiguë, quelles propositions sont vraies ?</a></h3>
+<ul>
+<li>La dose létale 50 correspond à une dose de 5 à $10 ~Gy$</li>
+<li>Au-delà de $10 ~Gy$, c'est le syndrome neurologique qui prédomine</li>
+<li>Pour une dose comprise entre $1 ~Gy$ et $6 ~Gy$, le syndrome hématopoiétique prédomine avec disparition des lymphocytes</li>
+<li>Concernant l'exposition aiguë de la peau, on note un érythème pour une dose comprise entre 3 et $5 ~Gy$</li>
+<li>On n'observe pas de télangiectasie dans la radiodermite chronique 10.</li>
+</ul>
+<h3 id="10-parmi-les-propositions-concernant-la-cataracte-radio-induite-laquelle-est-fausse-"><a class="header" href="#10-parmi-les-propositions-concernant-la-cataracte-radio-induite-laquelle-est-fausse-">10. Parmi les propositions concernant la cataracte radio-induite, laquelle est FAUSSE ?</a></h3>
+<ul>
+<li>Le cristallin est avasculaire</li>
+<li>La cataracte radio-induite est postérieure, dans l'axe visuel</li>
+<li>C'est l'un des risques de la radiologie interventionnelle</li>
+<li>La valeur limite d'exposition des travailleurs pour la cataracte est passée à $100 mSv$ par an</li>
+<li>La cataracte radio-induite est différente de celle liée au tabac ou aux Ultra-Violets</li>
+</ul>
+<h3 id="11-parmi-les-propositions-suivantes-laquelle-est-vraie-concernant-une-exposition-in-utero-à-un-mois-de-grossesse-par-un-scanner-du-pelvis-"><a class="header" href="#11-parmi-les-propositions-suivantes-laquelle-est-vraie-concernant-une-exposition-in-utero-à-un-mois-de-grossesse-par-un-scanner-du-pelvis-">11. Parmi les propositions suivantes, laquelle est vraie concernant une exposition in utero à un mois de grossesse par un scanner du pelvis ?</a></h3>
+<ul>
+<li>La dose reçue par l'enfant à naître est calculée à partir du seul PDL (produit dose.</li>
+<li>Longueur)</li>
+<li>On ne peut garantir aux parents que l'enfant sera indemne de toute malformation</li>
+<li>Le risque de cancer entre 1 et 15 ans pour l'enfant à naître est doublé</li>
+<li>Le risque spontané d'affection maligne chez l'enfant de 1 à 15 ans est de $3 %$</li>
+<li>A cette période de la grossesse, la loi du <code>tout ou rien</code> est la seule applicable</li>
+</ul>
+<h3 id="12-quelles-propositions-sont-vraies-concernant-les-phases-de-la-grossesse-"><a class="header" href="#12-quelles-propositions-sont-vraies-concernant-les-phases-de-la-grossesse-">12. Quelles propositions sont vraies concernant les phases de la grossesse ?</a></h3>
+<ul>
+<li>La phase dite <code>pré-implantatoire</code> de $J 0$ à $J 9$ est régie par la règle des 10 jours</li>
+<li>Pendant la phase " pré-implantatoire`, les cellules sont totipotentes</li>
+<li>Pendant la phase d'organogénèse, le risque est la perte du capital cellulaire</li>
+<li>II existe des risques de dysmaturation pendant la phase fœale</li>
+<li>On ne fait pas d'angioscanner thoracique à la recherche d'une embolie pulmonaire chez la mère lors de la phase fœtale.</li>
+</ul>
+<h3 id="13-parmi-les-propositions-suivantes-une-seule-est-fausse-laquelle"><a class="header" href="#13-parmi-les-propositions-suivantes-une-seule-est-fausse-laquelle">13. Parmi les propositions suivantes, une seule est FAUSSE, laquelle?</a></h3>
+<ul>
+<li>Le problème d'une grossesse irradiée ne se pose que si le fœetus est dans le champ de rayonnement</li>
+<li>La mise en place d'un tablier plombé sur le pelvis pour la réalisation d'un scanner cérébral chez une femme enceinte diminue l'irradiation du fœetus</li>
+<li>Un scanner thoracique correctement réalisé délivre moins de <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mord mathnormal">m</span><span class="mord mathnormal">G</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> au fœetus</li>
+<li>La collimation permet de réduire la dose au fœtus</li>
+<li>En médecine nucléaire, la dose délivrée au fœtus varie selon l'âge de la grossesse</li>
+</ul>
+<h3 id="14-concernant-les-personnels-soignants-présentant-une-grossesse-quelles-propositions-sont-vraies-"><a class="header" href="#14-concernant-les-personnels-soignants-présentant-une-grossesse-quelles-propositions-sont-vraies-">14. Concernant les personnels soignants présentant une grossesse, quelles propositions sont vraies ?</a></h3>
+<ul>
+<li>Il y a obligation de retrait de poste pour la radiologie interventionnelle</li>
+<li>Il y a retrait de poste du scanner pendant la phase d'organogénèse</li>
+<li>La limite de dose d'exposition pour le fœtus est de <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mord mathnormal">m</span><span class="mord mathnormal">G</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span></li>
+<li>La personne portera un dosimètre opérationnel</li>
+</ul>
+<h3 id="15-concernant-les-cancers-radio-induits-quelle-est-la-réponse-fausse-"><a class="header" href="#15-concernant-les-cancers-radio-induits-quelle-est-la-réponse-fausse-">15. Concernant les cancers radio-induits, quelle est la réponse FAUSSE ?</a></h3>
+<ul>
+<li>Les caractéristiques histologiques sont les mêmes que les cancers <code>spontanés</code></li>
+<li>Le pronostic d'une leucémie <code>commune</code> n'est pas différent d'une leucémie radio-induite</li>
+<li>Les cancers thyroïdiens en surnombre des enfants exposés au voisinage de la centrale de Tchernobyl ont pu bénéficier de traitement par iode radioactif (IRA thérapie)</li>
+<li>La radiothérapie est contre-indiquée pour le traitement des cancers radio-induits</li>
+<li>Le traitement d'une leucémie radio-induite est le même qu'une leucémie " commune`</li>
+</ul>
+<h3 id="16-concernant-la-projection-du-risque-après-exposition-ponctuelle-dprime-u-n-adulte-à-une-dose-de-240000-mu-sv-quelle-est-la-surface-sous-la-courbe-risque-de-cancer-f-âge-la-moins-importante-"><a class="header" href="#16-concernant-la-projection-du-risque-après-exposition-ponctuelle-dprime-u-n-adulte-à-une-dose-de-240000-mu-sv-quelle-est-la-surface-sous-la-courbe-risque-de-cancer-f-âge-la-moins-importante-">16. Concernant la projection du risque après exposition ponctuelle $d^{\prime} u n$ adulte à une dose de $240000 \mu Sv$, quelle est la surface sous la courbe [Risque de cancer $=f$ (âge)] la moins importante ?</a></h3>
+<ul>
+<li>Risque spontané vie entière</li>
+<li>Modèle additif de risque</li>
+<li>Modèle multiplicatif de risque</li>
+<li>Modèle comportant un risque au retour spontané</li>
+<li>Les surfaces sont les mêmes car la dose est trop faible pour augmenter le risque</li>
+</ul>
+<h3 id="17--concernant-lextrapolation-aux-faibles-doses-des-observations-aux-fortes-doses-quelles-sont-les-propositions-exactesa"><a class="header" href="#17--concernant-lextrapolation-aux-faibles-doses-des-observations-aux-fortes-doses-quelles-sont-les-propositions-exactesa">17.  Concernant l'extrapolation aux faibles doses des observations aux fortes doses, quelles sont les propositions exactes?A.</a></h3>
+<ul>
+<li>Cette extrapolation pallie les insuffisances de l'épidémiologie, compte tenu des effectifs qu'il conviendrait d'observer pour mettre en évidence une différence significative (exposés/non exposés)B.</li>
+<li>Pour une dose de $30 mSv$, le risque est inférieur dans le modèle quadratique, à celui du modèle linéaireC.</li>
+<li>Cette extrapolation permet de prédire de façon fiable l'excès attendu de cancer pour une dose de $0,0005 ~Sv$D.</li>
+<li>En radioprotection, elle a permis de déterminer les limites de doses pour les travailleurs exposés, afin de leur garantir un risque d'effet stochastique négligeableE.</li>
+<li>L'excès de risque du modèle <code>hormésis</code> est plus important à $10 mSv$ que celui du modèle quadratique</li>
+</ul>
+<h3 id="18-concernant-le-débit-de-dose-quelles-sont-les-propositions-vraies"><a class="header" href="#18-concernant-le-débit-de-dose-quelles-sont-les-propositions-vraies">18. Concernant le débit de dose, quelles sont les propositions vraies?</a></h3>
+<p>A.</p>
+<ul>
+<li>L'effet cancérigène est diminué lorsque le débit de dose est bas, et que la dose est reçue sur une longue périodeB.</li>
+<li>Plus le débit de dose est élevé, moins les mécanismes de réparation sont efficacesC.</li>
+<li>Les études n'ont pas montré d'effet du débit de dose sur le risque des effets stochastiquesD.</li>
+<li>Le fractionnement dans le temps de dose pourrait diminuer l'effet cancérigène d'un facteur 2 à 10E.</li>
+<li>Des études ont montré qu'une pré-irradiation à faible dose d'une population cellulaire réduit les effets d'une irradiation ultérieure</li>
+</ul>
+<h3 id="19-concernant-les-mécanismes-de-réparation-cellulaire-quelles-sont-les-propositions-vraies"><a class="header" href="#19-concernant-les-mécanismes-de-réparation-cellulaire-quelles-sont-les-propositions-vraies">19. Concernant les mécanismes de réparation cellulaire, quelles sont les propositions vraies?</a></h3>
+<p>A.</p>
+<ul>
+<li>Le système de réparation de l'ADN est actif, car chaque jour de nombreuses lésions surviennent dans une cellule, essentiellement du fait du métabolisme oxydatifB.</li>
+<li>L'apoptose est une mort cellulaire programmée qui peut être déclenchée lorsque le matériel génétique n'est pas correctement réparéC.</li>
+<li>II serait très difficile de justifier éthiquement un protocole d'étude visant à démontrer le phénomène d'hormésis chez l'homme (étude cas-témoin par exemple)D.</li>
+<li>La qui19.escence cellulaire favorise la réparation de l'ADN en stoppant momentanément le cycle cellulaireE. À faible dose d'irradiation, il existe de nombreuses morts cellulaires dans un tissu et la prolifération des cellules restantes est stimulée</li>
+</ul>
+<h3 id="20-concernant-les-effets-stochastiques-quelles-sont-les-propositions-vraies-"><a class="header" href="#20-concernant-les-effets-stochastiques-quelles-sont-les-propositions-vraies-">20. Concernant les effets stochastiques, quelles sont les propositions vraies ?</a></h3>
+<ul>
+<li>La probabilité d'occurrence de ces effets augmente proportionnellement à la dose selon une fonction linéaire</li>
+<li>Ces effets sont liés à mortalité des cellules induite par les rayonnements ionisants</li>
+<li>La relation linéaire sans seuil permet de calculer aisément le nombre de cancers en excès après exposition des patients aux examens d'imagerie médicale</li>
+<li>On n'a pas observé d'anomalies génétiques en excès chez les descendants des irradiés d'Hiroshima et de Nagasaki même pour de très fortes doses</li>
+<li>Des mutations génétiques transmises à la descendance ont été observées après exposition expérimentale de drosophiles aux rayonnements ionisants</li>
+</ul>
+<h3 id="21-exposition-moyenne-de-la-population-française-aux-radiations-ionisantes--quelles-sont-les-propositions-exactes--réponses-multiples-"><a class="header" href="#21-exposition-moyenne-de-la-population-française-aux-radiations-ionisantes--quelles-sont-les-propositions-exactes--réponses-multiples-">21. Exposition moyenne de la population française aux radiations ionisantes : quelles sont les propositions exactes ? (Réponses multiples) :</a></h3>
+<ul>
+<li>L'exposition aux radiations cosmiques représente $30 %$ de la dose totale (naturelle et non naturelle) reçue par individu</li>
+<li>L'exposition due à la pratique médicale est la première cause d'exposition non naturelle</li>
+<li>L'exposition d'origine tellurique est variable selon les régions géographiques</li>
+<li>Le radon est essentiellement apporté par l'alimentation</li>
+<li>L'exposition moyenne/habitant due à la pratique médicale est de l'ordre de 1,6 mSv/an</li>
+</ul>
+<h3 id="22-le-produit-dose-surface-se-caractérise-par-les-propositions-suivantes-réponses-multiples-"><a class="header" href="#22-le-produit-dose-surface-se-caractérise-par-les-propositions-suivantes-réponses-multiples-">22. Le produit dose-surface se caractérise par les propositions suivantes (Réponses multiples) :</a></h3>
+<ul>
+<li>II tient compte de la zone anatomique exposée</li>
+<li>Compte-tenu de son mode de calcul, il dépend de la distance entre le foyer radiogène et le patient</li>
+<li>II doit figurer dans le compte rendu du radiologue pour toutes les explorations intéressant la tête, le cou et le tronc</li>
+<li>II s'exprime en mGy.cm2, multiples ou sous multiples</li>
+<li>Son recueil en fin d'examen permet une estimation de la dose efficace délivrée par cet examen</li>
+</ul>
+<h3 id="23-un-examen-tomodensitométrique-du-thorax-chez-un-adulte-de-70-kg-comprenant-une-seule-acquisition-hélicoïdale-a-permis-de-relever-les-paramètres-suivants--idsp-ctdiw--16-mgy-pdl--420-mgy-cdot-cm"><a class="header" href="#23-un-examen-tomodensitométrique-du-thorax-chez-un-adulte-de-70-kg-comprenant-une-seule-acquisition-hélicoïdale-a-permis-de-relever-les-paramètres-suivants--idsp-ctdiw--16-mgy-pdl--420-mgy-cdot-cm">23. Un examen tomodensitométrique du thorax chez un adulte de $70 ~kg$, comprenant une seule acquisition hélicoïdale, a permis de relever les paramètres suivants : IDSP (CTDIw) = 16 mGy, PDL = $420 mGy \cdot cm$.</a></h3>
+<ul>
+<li>Quelles sont les propositions exactes (Réponses multiples) :</li>
+<li>La dose efficace peut être estimée à partir du PDL</li>
+<li>Un second passage avec les mêmes paramètres à la console va se traduire par un IDSP additionnel de 32 mGy pour cette seconde acquisition</li>
+<li>Un second passage avec les mêmes paramètres va se traduire par une dose efficace totale multipliée par 2</li>
+<li>Un second passage avec les mêmes paramètres ne va pas avoir d'influence sur le PDL total</li>
+<li>Les paramètres proposés ici : IDSP, PDL sont aberrantes car largement surestimés</li>
+</ul>
+<h3 id="24-une-seule-réponse-est-exacte"><a class="header" href="#24-une-seule-réponse-est-exacte">24. Une seule réponse est exacte.</a></h3>
+<ul>
+<li>La fonction de transfert de modulation (FTM) :</li>
+<li>Mesure la résolution en contraste à partir d'une mire</li>
+<li>Correspond au rapport du signal sur bruit</li>
+<li>Caractérise le pouvoir séparateur d'un détecteur</li>
+<li>Est défini par la variance du bruit dans l'image</li>
+<li>Caractérise la résolution en contraste et le bruit d'un système</li>
+</ul>
+<h3 id="25-une-seule-réponse-est-exacte"><a class="header" href="#25-une-seule-réponse-est-exacte">25. Une seule réponse est exacte.</a></h3>
+<ul>
+<li>La filtration du faisceau de rayons $X$ en sortie de tube :</li>
+<li>Est recommandée mais facultative</li>
+<li>Est habituellement assuré par une couche de 2,3 mm de $Pb$</li>
+<li>Permet d'éliminer les photons de haute énergie</li>
+<li>Le Cu peut être utilisé pour réaliser une filtration additionnelle</li>
+<li>N'influence pas le rapport signal sur bruit</li>
+</ul>
+<h3 id="26-quelles-sont-les-réponses-exactes--la-diminution-des-kilovolts-à-dose-délivrée-équivalente-au-patient-"><a class="header" href="#26-quelles-sont-les-réponses-exactes--la-diminution-des-kilovolts-à-dose-délivrée-équivalente-au-patient-">26. Quelles sont les réponses exactes ? La diminution des KiloVolts à dose délivrée équivalente au patient :</a></h3>
+<ul>
+<li>Augmente le contraste de l'image</li>
+<li>Augmente le diffusé</li>
+<li>Impose d'augmenter les mAs (milliampères-secondes)</li>
+<li>Est toujours la meilleure option en termes de radioprotection</li>
+<li>Est à recommander en imagerie thoracique</li>
+</ul>
+<h3 id="27-quelles-sont-les-réponses-exactes--la-filtration-en-sortie-de-tube-"><a class="header" href="#27-quelles-sont-les-réponses-exactes--la-filtration-en-sortie-de-tube-">27. Quelles sont les réponses exactes ? La filtration en sortie de tube :</a></h3>
+<ul>
+<li>Est obligatoire</li>
+<li>Est de 2,3 mm de plomb</li>
+<li>Peut être diminuée en pédiatrie</li>
+<li>A pour objet de diminuer le rayonnement de faible énergie
+E.</li>
+<li>Diminue la dose reçue par le patient</li>
+</ul>
+<h3 id="28-quelles-sont-les-réponses-exactes--quelles-mesures-contribuent-à-diminuer-la-dose-reçue-en-scopie"><a class="header" href="#28-quelles-sont-les-réponses-exactes--quelles-mesures-contribuent-à-diminuer-la-dose-reçue-en-scopie">28. Quelles sont les réponses exactes ? Quelles mesures contribuent à diminuer la dose reçue en scopie?</a></h3>
+<ul>
+<li>Utilisation de la scopie pulsée</li>
+<li>Diminution de la taille du champ avec un amplificateur de luminance</li>
+<li>Diaphragmer le plus possible sur la zone d'intérêt</li>
+<li>Augmenter la distance tube patient</li>
+<li>Augmenter la distance patient-détecteur</li>
+</ul>
+<h3 id="29-quelles-sont-les-réponses-exactes-concernant-le-ctdi-idsv-au-scanner-"><a class="header" href="#29-quelles-sont-les-réponses-exactes-concernant-le-ctdi-idsv-au-scanner-">29. Quelles sont les réponses exactes concernant le CTDI (IDSV) au scanner ?</a></h3>
+<ul>
+<li>II est calculé à partir de fantômes</li>
+<li>II est un bon reflet de l'irradiation reçue par un patient lors d'un examen</li>
+<li>Il tient compte de la radiosensibilité des différents organes</li>
+<li>II est affecté par les $k V$ et les $m A s$</li>
+<li>Les niveaux de références de dose tiennent compte de ce paramètre</li>
+</ul>
+<h3 id="30-quelles-sont-les-réponses-exactes-concernant-la-dose-au-scanner-"><a class="header" href="#30-quelles-sont-les-réponses-exactes-concernant-la-dose-au-scanner-">30. Quelles sont les réponses exactes concernant la dose au scanner ?</a></h3>
+<ul>
+<li>Une augmentation de $20 %$ des $k V$ entraîne une irradiation beaucoup plus importante qu'une augmentation de $20 %$ des $mAs$</li>
+<li>La modulation des $mAs$ en $XY$ (dans le plan transversal) se fait à partir du scout view (topogramme)</li>
+<li>La modulation des $mAs$ en $XY$ (dans le plan transversal) est surtout efficace au niveau du cou</li>
+<li>La modulation des $mAs$ en $Z$ (dans le plan longitudinal) est surtout efficace au niveau du thorax</li>
+<li>La modulation des $mAs$ en $XY$ ne peut pas être combinée à une modulation des $mAs$ en $Z$</li>
+</ul>
+<h3 id="31-concernant-les-techniques-de-réduction-de-dose-au-scanner-quelles-sont-celles-accessibles-au-radiologue-à-la-console-"><a class="header" href="#31-concernant-les-techniques-de-réduction-de-dose-au-scanner-quelles-sont-celles-accessibles-au-radiologue-à-la-console-">31. Concernant les techniques de réduction de dose au scanner, quelles sont celles accessibles au radiologue à la console ?</a></h3>
+<ul>
+<li>La modulation des $mAs$ en $XY$</li>
+<li>La modulation des $k V$ en $XY$</li>
+<li>La modulation des $kV$ en $Z$</li>
+<li>La filtration des rayons $X$ de faible énergie</li>
+<li>L'utilisation d'une technique de reconstruction itérative</li>
+</ul>
+<h3 id="32-concernant-le-produit-dose-longueur-pdl-quelles-sont-les-réponses-vraies-"><a class="header" href="#32-concernant-le-produit-dose-longueur-pdl-quelles-sont-les-réponses-vraies-">32. Concernant le produit dose longueur (PDL), quelles sont les réponses vraies ?</a></h3>
+<ul>
+<li>II double si l'on double la longueur de l'hélice</li>
+<li>II double si l'on double les $mAs$</li>
+<li>II double si l'on double les $KV$</li>
+<li>II double si l'on double le pitch</li>
+<li>II double si l'on répète une fois l'hélice</li>
+</ul>
+<h3 id="33-concernant-la-dose-efficace-au-scanner-quelles-sont-les-réponses-vraies-"><a class="header" href="#33-concernant-la-dose-efficace-au-scanner-quelles-sont-les-réponses-vraies-">33. Concernant la dose efficace au scanner, quelles sont les réponses vraies ?</a></h3>
+<ul>
+<li>Elle tient compte de la taille du patient</li>
+<li>Elle tient compte de la radiosensibilité des organes</li>
+<li>Elle peut être additionnée à la dose efficace d'un autre examen</li>
+<li>Elle doit figurer dans le compte rendu du radiologue</li>
+<li>Elle s'exprime en $mSv$ (milliSievert)</li>
+</ul>
+<h3 id="34-concernant-les-niveaux-de-référence-de-dose-au-scanner-quelles-sont-les-réponses-vraies-"><a class="header" href="#34-concernant-les-niveaux-de-référence-de-dose-au-scanner-quelles-sont-les-réponses-vraies-">34. Concernant les niveaux de référence de dose au scanner, quelles sont les réponses vraies ?</a></h3>
+<ul>
+<li>Ils ne doivent en aucun cas être dépassés</li>
+<li>Ils peuvent être modifiés en fonction des progrès techniques</li>
+<li>Ils concernent le CTDI et le produit dose longueur</li>
+<li>Ils sont de valeur égale dans tous les pays</li>
+<li>II faut vérifier une fois par semaine que l'on respecte ces niveaux</li>
+</ul>
+<h2 id="35-quels-artifices-techniques-contribuent-de-diminuer-la-dose-lors-dun-scanner-du-rachis-iombaire-"><a class="header" href="#35-quels-artifices-techniques-contribuent-de-diminuer-la-dose-lors-dun-scanner-du-rachis-iombaire-">35. Quels artifices techniques contribuent de diminuer la dose lors d'un scanner du rachis Iombaire ?</a></h2>
+<ul>
+<li>Utiliser un filtrage des rayons $X$ à la sortie du tube</li>
+<li>Utiliser des collimateurs de champs</li>
+<li>Utiliser des collimateurs de part et d'autre de la rangée de détecteurs</li>
+<li>Utiliser un protocole abdomen plutôt qu'un protocole rachis</li>
+<li>Utiliser une technique de modulation des $mAs$</li>
+</ul>
+<h3 id="36-ii-est-possible-dadditionner-les-produits-dose-longueur-de-choix-multiples"><a class="header" href="#36-ii-est-possible-dadditionner-les-produits-dose-longueur-de-choix-multiples">36. II est possible d'additionner les produits dose longueur de (Choix multiples):</a></h3>
+<ul>
+<li>Une hélice abdominale et une hélice cervicale</li>
+<li>Une hélice cérébrale et une hélice cervicale</li>
+<li>Une hélice abdominale et une hélice pelvienne</li>
+<li>Une hélice thoracique, une hélice abdominale et une hélice pelvienne</li>
+<li>Une hélice cérébrale sans injection et une hélice cérébrale avec injection</li>
+</ul>
+<h3 id="37-concernant-les-paramètres-dexposition-au-scanner-quelles-sont-les-réponses-vraies"><a class="header" href="#37-concernant-les-paramètres-dexposition-au-scanner-quelles-sont-les-réponses-vraies">37. Concernant les paramètres d'exposition au scanner, quelles sont les réponses vraies</a></h3>
+<ul>
+<li>Les $m$ As déterminent l'énergie des rayons $X$</li>
+<li>Les $kV$ déterminent l'énergie des rayons $X$</li>
+<li>La dose varie avec le carré des $mAs$</li>
+<li>La dose varie avec le carré des Kv</li>
+<li>Une dose trop élevée est signalée par une alarme</li>
+</ul>
+<h3 id="38-un-scanner-abdominal-est-effectué-chez-un-enfant-de-2-ans"><a class="header" href="#38-un-scanner-abdominal-est-effectué-chez-un-enfant-de-2-ans">38. Un scanner abdominal est effectué chez un enfant de 2 ans.</a></h3>
+<ul>
+<li>Le CTDIvol affiché à la console est de 4 mGy pour un fantôme <code>Body 32</code>.</li>
+<li>Parmi les affirmations suivantes, lesquelles sont vraies :</li>
+<li>C'est la dose recommandée à cet âge</li>
+<li>La dose moyenne absorbée réelle est environ 2 fois plus élevée</li>
+<li>La dose moyenne absorbée réelle est environ 4 fois plus faible</li>
+<li>II n'existe pas encore en France de Niveaux de Référence Diagnostique réglementaire en scanographie pédiatrique</li>
+<li>II existe des Recommandations de Bonne Pratique en scanographie pédiatrique incluant des niveaux de dose.</li>
+</ul>
+<h3 id="39-parmi-ces-choix-de-valeurs-de-haute-tension-lequel-ou-lesquels-vous-paraissent-adaptés-"><a class="header" href="#39-parmi-ces-choix-de-valeurs-de-haute-tension-lequel-ou-lesquels-vous-paraissent-adaptés-">39. Parmi ces choix de valeurs de Haute Tension, lequel ou lesquels vous paraissent adaptés ?</a></h3>
+<ul>
+<li>Scanographie du thorax à 1 an : $120 kV$</li>
+<li>Scanographie de l'abdomen à 14 ans : $140 kV$</li>
+<li>Scanographie du rocher à 10 ans : $80 kV$</li>
+<li>Scanographie de l'abdomen à 10 ans : $100 kV$</li>
+<li>Scanographie des sinus à 15 ans : $140 kV$</li>
+</ul>
+<h3 id="40--les-affirmations-suivantes-concernent-les-paramètres-dacquisition-en-scanner-pédiatrique"><a class="header" href="#40--les-affirmations-suivantes-concernent-les-paramètres-dacquisition-en-scanner-pédiatrique">40.  Les affirmations suivantes concernent les paramètres d'acquisition en scanner pédiatrique.</a></h3>
+<ul>
+<li>Lesquelles sont vraies?</li>
+<li>Le réglage de la tension modifie peu la dose moyenne absorbée</li>
+<li>Une augmentation isolée du pitch réduit la dose moyenne absorbée</li>
+<li>L'adaptation du champ de vue (FOV) d'acquisition au diamètre d'un enfant ne modifie pas la dose moyenne absorbée</li>
+<li>Le réglage du pitch a un effet sur la résolution spatiale</li>
+<li>Le réglage du temps de rotation du tube a un effet direct et proportionnel sur la dose moyenne absorbée</li>
+</ul>
+<h3 id="41-les-affirmations-suivantes-concernent-la-préparation-des-enfants-avant-un-scanner"><a class="header" href="#41-les-affirmations-suivantes-concernent-la-préparation-des-enfants-avant-un-scanner">41. Les affirmations suivantes concernent la préparation des enfants avant un scanner.</a></h3>
+<ul>
+<li>Lesquelles sont vraies?</li>
+<li>Le sirop de saccharose a un effet antalgique chez le nourrisson</li>
+<li>Le gaz MEOPA (02-NO2) a un effet sédatif rapide</li>
+<li>Le gaz MEOPA (02-NO2) a un effet antalgique et peut être utilisé à partir de l'âge de 4 ans</li>
+<li>L'hydrate de chloral est habituellement employé comme sédatif chez le nourrisson de moins de 4 mois</li>
+<li>Le jeûne est inutile, sauf en cas de prémédication sédative</li>
+</ul>
+<h3 id="42-les-affirmations-suivantes-concernent-la-mise-en-place-dune-voie-dabord-veineuse-chez-un-enfant-de-1-an-pour-réaliser-un-scanner-abdominal"><a class="header" href="#42-les-affirmations-suivantes-concernent-la-mise-en-place-dune-voie-dabord-veineuse-chez-un-enfant-de-1-an-pour-réaliser-un-scanner-abdominal">42. Les affirmations suivantes concernent la mise en place d'une voie d'abord veineuse chez un enfant de 1 an pour réaliser un scanner abdominal.</a></h3>
+<ul>
+<li>Laquelle est vraie ?\A. À cet âge, l'emploi de patch d'Emla est inutile</li>
+<li>Le site de ponction préféré est le pli du coude</li>
+<li>La voie veineuse est placée sur table, entre les acquisitions sans et avec injection</li>
+<li>L'injecteur automatique est contre-indiqué</li>
+<li>Les réactions d'hypersensibilité aux PDC iodés sont exceptionnelles à cet âge.</li>
+</ul>
+<h3 id="43-parmi-les-installations-suivantes-quelles-sont-celles-qui-sont-soumises-à-autorisation-de-lasn-"><a class="header" href="#43-parmi-les-installations-suivantes-quelles-sont-celles-qui-sont-soumises-à-autorisation-de-lasn-">43. Parmi les installations suivantes, quelles sont celles qui sont soumises à autorisation de l'ASN ?</a></h3>
+<ul>
+<li>Mammographie</li>
+<li>Appareil de radiologie mobile</li>
+<li>Scanner</li>
+<li>TEP
+E.</li>
+<li>Appareil de radiologie interventionnelle</li>
+</ul>
+<h3 id="44-parmi-les-principes-suivants-de-la-radioprotection-quel-est-celui-qui-nest-pas-applicable-aux-patients-"><a class="header" href="#44-parmi-les-principes-suivants-de-la-radioprotection-quel-est-celui-qui-nest-pas-applicable-aux-patients-">44. Parmi les principes suivants de la radioprotection, quel est celui qui n'est pas applicable aux patients ?</a></h3>
+<ul>
+<li>Justification</li>
+<li>Optimisation</li>
+<li>Limitation des doses</li>
+<li>Responsabilité</li>
+<li>Substitution</li>
+</ul>
+<h3 id="45-les-guides-à-destination-des-professionnels-de-limagerie-visent-à--choix-multiple"><a class="header" href="#45-les-guides-à-destination-des-professionnels-de-limagerie-visent-à--choix-multiple">45. Les guides à destination des professionnels de l'imagerie visent à : (choix multiple)</a></h3>
+<ul>
+<li>Limiter la réalisation d'actes d'imagerie quels qu'ils soient</li>
+<li>Justifier la réalisation d'actes exposant aux rayonnements ionisants</li>
+<li>Optimiser les doses reçues par les patients</li>
+<li>Limiter les doses reçues par les travailleurs</li>
+</ul>
+<h3 id="46-le-guide-du-bon-usage-des-examens-dimagerie-est--choix-multiple"><a class="header" href="#46-le-guide-du-bon-usage-des-examens-dimagerie-est--choix-multiple">46. Le guide du bon usage des examens d'imagerie est : (choix multiple)</a></h3>
+<ul>
+<li>À destination du demandeur de l'examen</li>
+<li>À destination du réalisateur de l'examen</li>
+<li>Lié au principe de justification</li>
+<li>Lié au principe d'optimisation</li>
+</ul>
+<h3 id="47-le-guide-des-procédures-radiologiques-choix-simple-"><a class="header" href="#47-le-guide-des-procédures-radiologiques-choix-simple-">47. Le guide des procédures radiologiques (choix simple) :</a></h3>
+<ul>
+<li>Répond au principe d'optimisation</li>
+<li>Répond au principe de justification</li>
+<li>Doit être impérativement respecté quel que soit le poids du patient</li>
+<li>Contient les valeurs de dose à ne pas dépasser</li>
+</ul>
+<h3 id="48-les-valeurs-de-nrd-en-radiologie-classique-sont-définies-choix-simple"><a class="header" href="#48-les-valeurs-de-nrd-en-radiologie-classique-sont-définies-choix-simple">48. Les valeurs de NRD en radiologie classique sont définies (choix simple):</a></h3>
+<ul>
+<li>À partir de la moyenne des doses collectées en France pour un type d'examen,</li>
+<li>À partir du 75ème centile de la distribution des doses collectées en France pour un type d'examen,</li>
+<li>Pour un type d'examen quel que soit l'âge du patient,</li>
+<li>Pour un type d'examen et un type de détecteur</li>
+</ul>
+<h3 id="49-en-radiologie-interventionnelle-si-la-distance-entre-le-faisceau-de-rayons-x-et-lopérateur-passe-de-50-centimètres-à-1-mètre-la-dose-reçue-par-lopérateur-est-divisée-par-choix-simple-"><a class="header" href="#49-en-radiologie-interventionnelle-si-la-distance-entre-le-faisceau-de-rayons-x-et-lopérateur-passe-de-50-centimètres-à-1-mètre-la-dose-reçue-par-lopérateur-est-divisée-par-choix-simple-">49. En radiologie interventionnelle, si la distance entre le faisceau de rayons $X$ et l'opérateur passe de 50 centimètres à 1 mètre, la dose reçue par l'opérateur est divisée par (choix simple) :</a></h3>
+<ul>
+<li>2</li>
+<li>4</li>
+<li>6</li>
+<li>8</li>
+<li>10</li>
+</ul>
+<h3 id="50-en-radiologie-interventionnelle-pour-diminuer-lexposition-de-lopérateur-il-faut-réponses-multiples-"><a class="header" href="#50-en-radiologie-interventionnelle-pour-diminuer-lexposition-de-lopérateur-il-faut-réponses-multiples-">50. En radiologie interventionnelle, pour diminuer l'exposition de l'opérateur il faut (réponses multiples) :</a></h3>
+<ul>
+<li>Placer le tube au-dessus de la table en incidence de face</li>
+<li>Placer le tube du côté de l'opérateur en incidence de profil\C. Être le plus éloigné possible du couple tube-détecteur</li>
+<li>Utiliser une filtration additionnelle</li>
+<li>Travailler avec une tension plus basse</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../s3/1-radio_protection/td2-cor.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../s3/1-radio_protection/qcm2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../s3/1-radio_protection/td2-cor.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../s3/1-radio_protection/qcm2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

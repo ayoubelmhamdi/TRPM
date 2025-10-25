@@ -1,0 +1,394 @@
+<!DOCTYPE HTML>
+<html lang="fr" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Législation marocaine - TRPM</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../custom.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">TRPM</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/ayoubelmhamdi/TRPM" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/ayoubelmhamdi/TRPM/tree/master/src/s3/1-radio_protection/legislation.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="législation-marocaine"><a class="header" href="#législation-marocaine">Législation marocaine</a></h1>
+<hr />
+<h1 id="utilisation-rx-dans-le-domaine-médical"><a class="header" href="#utilisation-rx-dans-le-domaine-médical">Utilisation RX dans le domaine médical</a></h1>
+<h3 id="règlement-de-lautorisation-appliqué-par-le-cnrp-centre-national-de-radioprotection"><a class="header" href="#règlement-de-lautorisation-appliqué-par-le-cnrp-centre-national-de-radioprotection">Règlement de l'autorisation appliqué par le CNRP (Centre National de Radioprotection)</a></h3>
+<ul>
+<li>
+<p>L'autorisation d'utilisation des appareils RX et de ceux de type scanographe à des fins diagnostiques n'est accordée qu'aux médecins radiologues;</p>
+</li>
+<li>
+<p>L'autorisation d'utilisation des appareils de type rétro-alvéolaire est accordée aux chirurgiens dentistes et aux orthodontistes;</p>
+</li>
+<li>
+<p>L'autorisation d'utilisation du panoramique dentaire n'est accordée qu'aux orthodontistes et aux médecin radiologues ;</p>
+</li>
+<li>
+<p>Les cliniques sont autorisées à utiliser la Radio-Mobile et l'Amplificateur de Brillance sans qu'il y ait exigence d'établir une convention avec un médecin radiologue;</p>
+</li>
+<li>
+<p>Une convention avec un radiologue est exigée pour les cliniques utilisant des appareils <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">RX</span></span></span></span> autres que la radio-mobile et l'amplificateur de brillance;</p>
+</li>
+</ul>
+<h3 id="règlement-de-lautorisation-appliqué-par-la-loi-142-12"><a class="header" href="#règlement-de-lautorisation-appliqué-par-la-loi-142-12">Règlement de l'autorisation appliqué par la loi 142-12</a></h3>
+<p><strong>Article 100</strong></p>
+<p>La manipulation des sources de rayonnements ionisants à des fins médicales ou dentaires par du personnel non médical ne peut être effectuée que sur prescription et sous la responsabilité du médecin ou médecin dentiste autorisés à utiliser ces sources conformément aux dispositions de la présente loi.</p>
+<p>On entend par personnel non médical au sens du présent article, les techniciens en électroradiologie justifiant de la formation correspondante par un diplôme d'adjoint de santé diplômé d'Etat au moins, option radiologie, ou d'un titre équivalent.</p>
+<p><strong>Article 101</strong></p>
+<p>Est interdite à tout médecin non spécialiste en radiologie, médecine nucléaire ou radiothérapie, l'utilisation de sources de rayonnements ionisants à des fins thérapeutiques ou de diagnostic.</p>
+<p>Est interdite à tout médecin non spécialiste en radiothérapie, l'utilisation des sources de rayonnements ionisants à des fins thérapeutiques.</p>
+<p>Seuls les médecins spécialistes en médecine nucléaire, peuvent administrer à des patients des radioéléments à des fins thérapeutiques ou de diagnostic.</p>
+<p>Dans les communes où il n'existe pas de médecin radiologue spécialiste en radiodiagnostic ou de service public de même nature, les médecins non spécialistes en électroradiologie peuvent utiliser, sous réserve d'une autorisation spéciale délivrée par l'Agence, des appareils de radiographie permettant d'effectuer des examens standards sans préparation.</p>
+<h3 id="refonte-du-cadre-réglementaire-de-lutilisation-des-ri-à-des-fins-médicales"><a class="header" href="#refonte-du-cadre-réglementaire-de-lutilisation-des-ri-à-des-fins-médicales">Refonte du cadre réglementaire de l'utilisation des RI à des fins médicales</a></h3>
+<p>Les articles <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">98</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">100</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">101</span></span></span></span> de loi 142-12 sur la sûreté et la sécurité nucléaires et radiologiques.</p>
+<p>Traitent de la formation initiale en radioprotection aux fins des pratiques radiologiques et de formation continue.</p>
+<p>Instituent l'obligation de formation en matière de radioprotection des patients de tous les professionnels utilisateurs de rayonnements ionisants à des fins diagnostiques ou thérapeutiques.</p>
+<p>Instaurent la co-responsabilité du prescripteur et de celui qui effectue l'examen.</p>
+<p>Autorisent les médecins spécialistes en radiologie, en médecine nucléaire ou en radiothérapie, ainsi que les médecins, les médecins dentistes, les pharmaciens, les spécialistes en biophysiques et les docteurs vétérinaires, chacun dans la limite de ses compétences, à utiliser des sources de rayonnements ionisants à des fins de diagnostics, de traitement ou de recherche.</p>
+<p>Prévoient l'établissement d'une liste des sources de rayonnements pouvant être utilisées par chaque catégorie de profession citée ci-dessus</p>
+<p><strong>Article 98</strong></p>
+<p>Afin de garantir la protection du patient, des travailleurs et de la population, l'utilisation des sources de rayonnements ionisants à des fins médicales ou dentaires ne peut être effectuée que par un personnel qualifié, formé en radioprotection du patient et dans des locaux spécialement aménagés et équipés à cet effet conformément aux dispositions fixées par voie réglementaire.</p>
+<p>Les modalités de formation des professionnels de la santé portant sur la radioprotection des patients exposés aux sources de rayonnements ionisants sont fixées par voie réglementaire.</p>
+<h1 id="12-la-protection-contre-les-rayonnements-ionisants"><a class="header" href="#12-la-protection-contre-les-rayonnements-ionisants"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.2</span></span></span></span> La protection contre les rayonnements ionisants</a></h1>
+<p>Dahir <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6741em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∘</span></span></span></span></span></span></span></span></span></span></span></span> 1-14-149 du 25 chaoual 1435 (22 août 2014) portant promulgation de la loi <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6741em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∘</span></span></span></span></span></span></span></span></span></span></span></span> 142-12 relative à la sûreté et à la sécurité nucléaires et radiologiques et à la création de l'Agence marocaine de sûreté et de sécurité nucléaires et radiologiques.</p>
+<p><strong>Article 94</strong></p>
+<p>Pour toute exposition aux sources de rayonnements ionisants, l'exploitant est tenu de prendre les mesures et moyens nécessaires pour assurer la protection du travailleur, du patient, du public et de l'environnement conformément aux dispositions de la présente loi.</p>
+<p><strong>Article 96</strong></p>
+<p>L'exploitant est responsable de l'évaluation et de l'application des mesures de prévention nécessaires à la protection de son personnel, notamment de la fourniture, de la maintenance ainsi que du contrôle des appareils et des équipements de protection individuelle et collective et des instruments de mesure de l'exposition aux rayonnements ionisants, lequel concerne les contrôles techniques de radioprotection et les contrôles de l'efficacité des moyens techniques de radioprotection, tels que définis par voie réglementaire.</p>
+<p>L'exploitant est également tenu d'assurer l'étalonnage des équipements de détection de rayonnements ionisants.</p>
+<p><strong>Article 97</strong></p>
+<p>L'exploitant est tenu d'assurer un suivi médical et une surveillance dosimétrique individuelle des travailleurs exposés aux rayonnements ionisants, prenant en compte les risques d'exposition externe et interne, et ce conformément à la réglementation en vigueur.</p>
+<p>Décret <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6741em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∘</span></span></span></span></span></span></span></span></span></span></span></span> 2-97-30 du 25 joumada II 1418 (28 octobre 1997) pris pour l'application de la loi <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7574em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∘</span></span></span></span></span></span></span></span></span><span class="mord">005</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">71</span></span></span></span> du 21 chaabane 1391 (12 octobre 1971) relative à la protection contre les rayonnements ionisants.</p>
+<p><strong>Article 8</strong></p>
+<p>Les installations doivent être dotées, au minimum, du matériel de radioprotection portatif suivant :</p>
+<ul>
+<li>
+<p>Appareil permettant de mesurer les débits de doses avec sensibilité suffisante;</p>
+</li>
+<li>
+<p>Détecteurs portatifs de la contamination des surfaces, de sensibilité suffisante, avec sondes adaptées aux émetteurs utilisés;</p>
+</li>
+<li>
+<p>La maintenance mensuelle de ces matériels devra figurer sur le registre de contrôle;</p>
+</li>
+</ul>
+<p><strong>Article 27</strong></p>
+<p>L'exploitant doit disposer du matériel et du personnel compétent nécessaires à la radioprotection.</p>
+<p>Il est tenu également, en fonction de l'importance du risque, d'assurer la formation en radioprotection du personnel et de prendre toute mesure de nature à restreindre la radio exposition, conformément aux normes de limitation de doses prévues par le présent décret et par ses arrêtés d'application, ainsi que la surveillance physique et médicale et la mise en place d'un système d'enregistrement des résultats..</p>
+<h1 id="la-formation-des-travailleurs"><a class="header" href="#la-formation-des-travailleurs">La formation des travailleurs</a></h1>
+<p><strong>Article 7</strong></p>
+<p>Sans préjudice des dispositions législatives ou réglementaires soumettant à autorisation ou à déclaration préalable l'exercice de certaines activités ou professions, doivent faire l'objet, selon le cas, d'autorisation de l'Agence ou de déclaration auprès de cette dernière, selon les modalités fixées par voie réglementaire, les activités, installations et sources de rayonnements ionisants y associées, relevant de la catégorie II.</p>
+<p>Catégorie II : Cette catégorie regroupe les installations et activités mettant en oeuvre des sources radioactives, des matières radioactives à l'exception des matières nucléaires, des dispositifs contenant ces matières radioactives, des dispositifs émettant des rayonnements ionisants ou des accélérateurs de particules.</p>
+<p>Les installations et activités de la catégorie Il sont réparties en classes par voie réglementaire, en fonction notamment des risques radiologiques qu'elles présentent.</p>
+<p><strong>Article 45</strong> de loi 142-12 sur la sûreté et la sécurité nucléaires et radiologiquesLes autorisations visées à l'article 7 de la présente loi ne sont accordées que si sont remplies les conditions requises relatives :</p>
+<ul>
+<li>
+<p>à la qualification en matière de radioprotection du personnel chargé de manipuler les sources de rayonnements ionisants, objet de la demande d'autorisation, et de la personne compétente en radioprotection;</p>
+</li>
+<li>
+<p>aux mesures de protection des travailleurs exposés, de la population et l'environnement contre les effets de rayonnements ionisants ;</p>
+</li>
+</ul>
+<p><strong>Article 28</strong> du Décret <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7574em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∘</span></span></span></span></span></span></span></span></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">97</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">30</span><span class="mord mathnormal">d</span><span class="mord mathnormal">u</span><span class="mord">28</span></span></span></span> octobre 1997relatif à la protection contre les dangers des rayonnements ionisants stipulent que : <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">≪</span></span></span></span> Tout travailleur susceptible d'être exposé aux rayonnements ionisants doit recevoir une formation adaptée à la nature du risque`Objectif : connaitre, reconnaitre et éviter les risques.</p>
+<p><strong>Approche d'application des dispositions de la loi 142-12</strong></p>
+<ul>
+<li>
+<p>Elaborer des documents clairs et parfaitement compréhensibles aussi bien pour l'employeur que pour le travailleur sur les aspects pratiques d'application des textes réglementaires en matière de radioprotection et de sécurité radiologique.</p>
+</li>
+<li>
+<p>Veiller à ce que soit effective l'obligation de l'employeur en matière de formation interne adaptée telle que l'impose l'article 45 de la loi 142-12.</p>
+</li>
+</ul>
+<h1 id="la-formation-de-la-personne-compétente-en-radioprotection"><a class="header" href="#la-formation-de-la-personne-compétente-en-radioprotection">La formation de la personne compétente en radioprotection</a></h1>
+<p><strong>L'article 67 de la loi 142-12</strong></p>
+<p>La <code>PCR</code> doit avoir suivi au préalable avec succès une formation en radioprotection, dispensée par un organisme agréé en la matière Les qualifications requises de la <code>PCR</code> ainsi que les modalités d'exercice de ses missions sont fixées par voie réglementaires.</p>
+<p>Mission principale (<code>PCR</code>).</p>
+<ul>
+<li>
+<p>Procéder à l'analyse des postes de travail (le personnel, les locaux, le matériel, l'optimisation,..)</p>
+</li>
+<li>
+<p>Veiller au respect des mesures de protection contre les rayonnements ionisants par :</p>
+<ul>
+<li>
+<p>l'application et le suivi des prescriptions réglementaires,</p>
+</li>
+<li>
+<p>la gestion des déchets le cas échéant,</p>
+</li>
+<li>
+<p>la rédaction de divers documents mis à la disposition de l 'autorité.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Dispenser la formation continue et l'information en radioprotection des travailleurs.</p>
+</li>
+</ul>
+<p><strong>Approche d'application des dispositions de la loi 142-12</strong></p>
+<p>Elaboration d'un cadre réglementaire pour instaurer et formaliser l'encadrement de la formation de la personne compétente en radioprotection.</p>
+<h1 id="formation-et-mission-du-radiophysicien-médical"><a class="header" href="#formation-et-mission-du-radiophysicien-médical">Formation et Mission du Radiophysicien Médical</a></h1>
+<p><strong>Article 102</strong> de loi 142-12 sur la sûreté et la sécurité nucléaire et radiologique</p>
+<ul>
+<li>
+<p>Tout centre de médecine nucléaire ou de radiothérapie doit disposer d'un radio physicien chargé de suivre les problèmes de physique médicale.</p>
+</li>
+<li>
+<p>Les qualifications requises de la personne spécialisée en radio physique médicale, les modalités de sa formation, ainsi que les modalités d'exercice de ses missions sont fixées par voie réglementaire.</p>
+</li>
+<li>
+<p>Les critères s'appliquant aux centres de radiologie devant disposer d'un radiophysicien, sont fixés par voie réglementaire.</p>
+</li>
+</ul>
+<p><strong>Article 12 du décret $n^{\circ} 2-97-132 du 28$ Octobre 1997 en vigueur</strong></p>
+<ul>
+<li>
+<p>Tout centre de médecine nucléaire ou de radiothérapie doit disposer d'un radiophysicien chargé de suivre les problèmes de physique médicale. Les critères s'appliquant aux centres de radiologie devant disposer d'un radiophysicien, sont fixés par voie réglementaire.</p>
+</li>
+<li>
+<p>Les qualifications requises de la personne spécialisée en radiophysique médicale, les modalités de sa formation, ainsi que les modalités d'exercice de ses missions sont fixées par voie réglementaire</p>
+</li>
+</ul>
+<p><strong>Missions du Radiophysicien Médical (normes internationales) :</strong></p>
+<ul>
+<li>
+<p>La dosimétrie liée à l'appareil ;</p>
+</li>
+<li>
+<p>la dosimétrie liée au patient;</p>
+</li>
+<li>
+<p>La sûreté des sources de rayonnements;</p>
+</li>
+<li>
+<p>Le contrôle qualité ;</p>
+</li>
+<li>
+<p>La sélection des équipements ;</p>
+</li>
+<li>
+<p>La collaboration à l'optimisation de la dose au patient.</p>
+</li>
+</ul>
+<h1 id="de-la-formation-et-de-la-qualification-des-pro--fessionnels-de-santé-pour-lutilisation-des-ri"><a class="header" href="#de-la-formation-et-de-la-qualification-des-pro--fessionnels-de-santé-pour-lutilisation-des-ri">De la Formation et de la Qualification des Pro- fessionnels de Santé pour l'Utilisation des RI</a></h1>
+<p>Le décret $n^{\circ}$ 2-97- 132 du 28 Octobre 1997 relatif à l'utilisation des rayonnements à des fins médicales ou dentaires :</p>
+<ul>
+<li>
+<p><strong>Article 1</strong> : Limite l'utilisation des rayonnements ionisants à des fins médicales au personnel qualifié .</p>
+</li>
+<li>
+<p><strong>Article 10</strong> : l'utilisation de sources de rayonnements ionisants à des fins thérapeutiques est limitée aux radiothérapeutes.</p>
+</li>
+<li>
+<p><strong>Article 11</strong> : seuls les médecins nucléaires sont autorisés à administrer aux patients des radio-isotopes à des fins diagnostiques ou thérapeutiques.</p>
+</li>
+<li>
+<p><strong>Article 13</strong> : l'utilisation d'équipements radiologiques (rayons X) est limitée aux médecins radiologues.</p>
+</li>
+<li>
+<p>**Article 8 et 13 **: Les techniciens en électroradiologie (trois années d'études IFCS option radiologie) sont autorisés à utiliser l'équipement radiologique, sous la supervision du médecin qualifié à cet effet .</p>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../s3/1-radio_protection/expose.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../s3/1-radio_protection/loi-de-securite.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../s3/1-radio_protection/expose.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../s3/1-radio_protection/loi-de-securite.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

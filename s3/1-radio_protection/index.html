@@ -1,0 +1,322 @@
+<!DOCTYPE HTML>
+<html lang="fr" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Radioprotection - TRPM</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../custom.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">TRPM</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/ayoubelmhamdi/TRPM" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/ayoubelmhamdi/TRPM/tree/master/src/s3/1-radio_protection/README.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="radioprotection"><a class="header" href="#radioprotection">Radioprotection</a></h1>
+<hr />
+<ul>
+<li>Cours:
+<ul>
+<li><a href="./chapter_1.html">Chapter 1</a></li>
+<li><a href="./chapter_2.html">Chapter 2</a></li>
+<li><a href="./chapter_3.html">Chapter 3</a></li>
+</ul>
+</li>
+<li>Exercices:
+<ul>
+<li><a href="./td1.html">TD 1</a></li>
+<li><a href="./td2.html">TD 2</a></li>
+<li><a href="./qcm1.html">QCM 1</a></li>
+</ul>
+</li>
+<li>Corrigé
+<ul>
+<li><a href="./td1-cor.html">Correction TD1</a></li>
+<li><a href="./td2-cor.html">Correction TD2</a></li>
+<li><a href="./qcm2.html">QCM 2: Énonce + Corrigé</a></li>
+</ul>
+</li>
+<li><a href="./expose.html">Exposé</a></li>
+</ul>
+<h1 id="radioprotection-1"><a class="header" href="#radioprotection-1">RADIOPROTECTION</a></h1>
+<hr />
+<h2 id="11-principes-de-radioprotection"><a class="header" href="#11-principes-de-radioprotection">1.1 Principes de radioprotection</a></h2>
+<p>La radioprotection repose sur trois principes fondamentaux :</p>
+<ul>
+<li>
+<p><strong>Justification</strong>: Les avantages doivent dépasser les risques engendrés
+par l'exposition.</p>
+</li>
+<li>
+<p><strong>Optimisation</strong> : L'exposition est à maintenir à un niveau aussi faible que possible, Dans le cadre de cette optimisation on applique le principe <code>ALARA</code> qui vise à maintenir l'exposition aux rayonnements au niveau le plus faible qu'il soit raisonnablement possible
+d'atteindre</p>
+</li>
+<li>
+<p><strong>Limites de dose</strong> : Les limites de dose définies par le législateur ne doivent pas être dépassées.</p>
+<ul>
+<li>Ceci inclut des <u>limites de dose <em>efficace</em></u> aux organes pour éviter <code>les effets déterministes</code></li>
+<li>et des <u>limites de dose équivalente</u> au corps pour éviter <code>les effets stochastiques</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="12-principe-alara--as-low-as-reasonably-achievable"><a class="header" href="#12-principe-alara--as-low-as-reasonably-achievable">1.2 Principe ALARA : As Low As Reasonably Achievable</a></h2>
+<ul>
+<li>Des mesures comme le contrôle de la contamination</li>
+<li>Une diminution de la durée d'exposition</li>
+<li>L'augmentation de la distance</li>
+<li>et l'utilisation de blindage pendant le travail avec des <em>radio-isotopes</em></li>
+</ul>
+<p>sont importantes pour respecter le principe <code>ALARA</code>, qui vise à maintenir les doses de rayonnement reçues par les personnes <code>au niveau le plus faible qu'il soit raisonnablement possible d'atteindre</code> compte tenu des facteurs économiques et sociaux</p>
+<h1 id="2-historique"><a class="header" href="#2-historique">2 HISTORIQUE</a></h1>
+<hr />
+<ul>
+<li><strong>1895:</strong> 1ère <code>RADIOGRAPHIE</code>
+<ul>
+<li>Temps de pose : 15 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">mn</span></span></span></span></li>
+<li>Bertha Roentgen</li>
+</ul>
+</li>
+<li><strong>1902:</strong> Premiere effets radio induits</li>
+<li><strong>1928:</strong> <code>CIPR</code> International de Protection Contre les Rayonnements</li>
+</ul>
+<p><img src="./images/2022_09_10_64c1a943a8bd11ba89f4g-02.jpg" alt="image" />
+<img src="./images/2022_09_10_64c1a943a8bd11ba89f4g-02-1.jpg" alt="image" /></p>
+<h1 id="radioactivite"><a class="header" href="#radioactivite">RADIOACTIVITE</a></h1>
+<hr />
+<h2 id="21-radioactivite-naturel"><a class="header" href="#21-radioactivite-naturel">2.1. RADIOACTIVITE NATUREL</a></h2>
+<h3 id="211-quelques-valeurs-moyennes-relatives-à-la-radioactivité-naturelle"><a class="header" href="#211-quelques-valeurs-moyennes-relatives-à-la-radioactivité-naturelle">2.1.1. Quelques valeurs moyennes relatives à la radioactivité naturelle</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Active</th><th style="text-align: left">mesure</th></tr></thead><tbody>
+<tr><td style="text-align: left">Activite moyen de la coute terrestre</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">2000</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.03588em;">Bq</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></td></tr>
+<tr><td style="text-align: left">Activite des engrais phoshates</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">5000</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.03588em;">Bq</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></td></tr>
+<tr><td style="text-align: left">Activite des pommes de terres</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">150</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.03588em;">Bq</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></td></tr>
+<tr><td style="text-align: left">Activite de l'eau de mer</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">12</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.03588em;">Bq</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></td></tr>
+<tr><td style="text-align: left">Activite du lait</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">80</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.03588em;">Bq</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></td></tr>
+<tr><td style="text-align: left">Activite du corps humain</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">4000</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.03588em;">Bq</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></td></tr>
+</tbody></table>
+</div>
+<p><img src="./images/2022_09_10_64c1a943a8bd11ba89f4g-03.jpg" alt="image" /></p>
+<h1 id="rayonnement-dorigine-cosmique"><a class="header" href="#rayonnement-dorigine-cosmique">Rayonnement d’origine cosmique</a></h1>
+<p>L'exposition augmente avec l’altitude <code>vols en avion</code></p>
+<ul>
+<li>Rayonnements cosmiques sont:
+<ul>
+<li><strong>noyaux d'hydrogène</strong>: protons</li>
+<li><strong>hélium</strong>: particules <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span></li>
+<li><strong>noyaux d'atomes plus lourds</strong> (fer, nickel)</li>
+<li><strong>les électrons</strong></li>
+</ul>
+</li>
+<li>Ce rayonnement interagit avec l'atmosphère et crée des particules secondaires (<code>neutrons</code>, <code>ions</code>, <code>électrons</code>) qui peuvent atteindre la surface de la terre</li>
+</ul>
+<h1 id="radioactivite-artificiele"><a class="header" href="#radioactivite-artificiele">RADIOACTIVITE ARTIFICIELE</a></h1>
+<p><img src="./images/2022_09_10_64c1a943a8bd11ba89f4g-04.jpg" alt="image" />
+la <code>période biologique</code> ou <code>demi-vie biologique</code> d'un élément chimique est de temps au bout duquel la moitie d'une quantité ingérée ou inhalé telle une drogue ou un r (radioisotope) est éliminée de l'organisme, ou a perdu son activité biologique par des processes purement biologiques (,métabolisé excretion)
+<img src="./images/2022_09_10_64c1a943a8bd11ba89f4g-05.jpg" alt="image" /></p>
+<p>Pour les examens radiologiques, les données sont tirees de:</p>
+<ul>
+<li>Radiation Exposure in Computed Tomography, Éditeur H. D. NAGEL. COCIR. 2000 [17]</li>
+<li>Radiation Protection 118.</li>
+</ul>
+<p>Referral Guidelines for Imaging.</p>
+<p>European Commission, 2000 [18]</p>
+<p>Pour les examens scintigraphiques, les activités administrées sont données à titre indicatif.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../s3/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../s3/1-radio_protection/chapter_1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../s3/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../s3/1-radio_protection/chapter_1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

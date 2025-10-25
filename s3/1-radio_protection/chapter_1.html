@@ -1,0 +1,904 @@
+<!DOCTYPE HTML>
+<html lang="fr" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Chapitre 1 - TRPM</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../custom.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">TRPM</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/ayoubelmhamdi/TRPM" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/ayoubelmhamdi/TRPM/tree/master/src/s3/1-radio_protection/chapter_1.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="radioprotection"><a class="header" href="#radioprotection">RADIOPROTECTION</a></h1>
+<hr />
+<h2 id="table-des-matières"><a class="header" href="#table-des-matières">Table des matières</a></h2>
+<ul>
+<li><a href="">Principes de radioprotection</a></li>
+<li><a href="">Principe ALARA</a></li>
+<li><a href="">HISTORIQUE</a></li>
+<li><a href="#RADIOACTIVITE">RADIOACTIVITE</a>
+<ul>
+<li><a href="">RADIOACTIVITE NATUREL</a></li>
+<li><a href="">RADIOACTIVITE ARTIFICIELLE</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="1-principes-de-radioprotection"><a class="header" href="#1-principes-de-radioprotection">1. Principes de radioprotection</a></h1>
+<hr />
+<p>La radioprotection repose sur trois principes fondamentaux :</p>
+<h2 id="11-principes-de-radioprotection"><a class="header" href="#11-principes-de-radioprotection">1.1 Principes de radioprotection</a></h2>
+<p>La radioprotection repose sur trois principes fondamentaux :</p>
+<ul>
+<li>
+<p><strong>Justification</strong>: Les avantages doivent dépasser les risques engendrés
+par l'exposition.</p>
+</li>
+<li>
+<p><strong>Optimisation</strong> : L'exposition est à maintenir à un niveau aussi faible que possible, Dans le cadre de cette optimisation on applique le principe <code>ALARA</code> qui vise à maintenir l'exposition aux rayonnements au niveau le plus faible qu'il soit raisonnablement possible
+d'atteindre</p>
+</li>
+<li>
+<p><strong>Limites de dose</strong> : Les limites de dose définies par le législateur ne doivent pas être dépassées.</p>
+<ul>
+<li>Ceci inclut des <u>limites de dose <em>efficace</em></u> aux organes pour éviter <code>les effets déterministes</code></li>
+<li>et des <u>limites de dose équivalente</u> au corps pour éviter <code>les effets stochastiques</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="12-principe-alara--as-low-as-reasonably-achievable"><a class="header" href="#12-principe-alara--as-low-as-reasonably-achievable">1.2 Principe ALARA : As Low As Reasonably Achievable</a></h2>
+<ul>
+<li>Des mesures comme le contrôle de la contamination</li>
+<li>Une diminution de la durée d'exposition</li>
+<li>L'augmentation de la distance</li>
+<li>et l'utilisation de blindage pendant le travail avec des <em>radio-isotopes</em></li>
+</ul>
+<p>sont importantes pour respecter le principe <code>ALARA</code>, qui vise à maintenir les doses de rayonnement reçues par les personnes <code>au niveau le plus faible qu'il soit raisonnablement possible d'atteindre</code> compte tenu des facteurs économiques et sociaux</p>
+<h1 id="2-historique"><a class="header" href="#2-historique">2 HISTORIQUE</a></h1>
+<hr />
+<ul>
+<li><strong>1895:</strong> 1ère <code>RADIOGRAPHIE</code>
+<ul>
+<li>Temps de pose : 15 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">mn</span></span></span></span></li>
+<li>Bertha Roentgen</li>
+</ul>
+</li>
+<li><strong>1902:</strong> Premiere effets radio induits</li>
+<li><strong>1928:</strong> <code>CIPR</code> International de Protection Contre les Rayonnements</li>
+</ul>
+<p><img src="./images/2022_09_10_64c1a943a8bd11ba89f4g-02.jpg" alt="image" />
+<img src="./images/2022_09_10_64c1a943a8bd11ba89f4g-02-1.jpg" alt="image" /></p>
+<h1 id="radioactivite"><a class="header" href="#radioactivite">RADIOACTIVITE</a></h1>
+<hr />
+<h2 id="21-radioactivite-naturel"><a class="header" href="#21-radioactivite-naturel">2.1. RADIOACTIVITE NATUREL</a></h2>
+<h3 id="211-quelques-valeurs-moyennes-relatives-à-la-radioactivité-naturelle"><a class="header" href="#211-quelques-valeurs-moyennes-relatives-à-la-radioactivité-naturelle">2.1.1. Quelques valeurs moyennes relatives à la radioactivité naturelle</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Active</th><th style="text-align: left">mesure</th></tr></thead><tbody>
+<tr><td style="text-align: left">Activite moyen de la coute terrestre</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">2000</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.03588em;">Bq</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></td></tr>
+<tr><td style="text-align: left">Activite des engrais phoshates</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">5000</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.03588em;">Bq</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></td></tr>
+<tr><td style="text-align: left">Activite des pommes de terres</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">150</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.03588em;">Bq</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></td></tr>
+<tr><td style="text-align: left">Activite de l'eau de mer</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">12</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.03588em;">Bq</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></td></tr>
+<tr><td style="text-align: left">Activite du lait</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">80</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.03588em;">Bq</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></td></tr>
+<tr><td style="text-align: left">Activite du corps humain</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">4000</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.03588em;">Bq</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></td></tr>
+</tbody></table>
+</div>
+<p><img src="./images/2022_09_10_64c1a943a8bd11ba89f4g-03.jpg" alt="image" /></p>
+<h1 id="rayonnement-dorigine-cosmique"><a class="header" href="#rayonnement-dorigine-cosmique">Rayonnement d’origine cosmique</a></h1>
+<p>L'exposition augmente avec l’altitude <code>vols en avion</code></p>
+<ul>
+<li>Rayonnements cosmiques sont:
+<ul>
+<li><strong>noyaux d'hydrogène</strong>: protons</li>
+<li><strong>hélium</strong>: particules <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span></li>
+<li><strong>noyaux d'atomes plus lourds</strong> (fer, nickel)</li>
+<li><strong>les électrons</strong></li>
+</ul>
+</li>
+<li>Ce rayonnement interagit avec l'atmosphère et crée des particules secondaires (<code>neutrons</code>, <code>ions</code>, <code>électrons</code>) qui peuvent atteindre la surface de la terre</li>
+</ul>
+<h1 id="radioactivite-artificiele"><a class="header" href="#radioactivite-artificiele">RADIOACTIVITE ARTIFICIELE</a></h1>
+<p><img src="./images/2022_09_10_64c1a943a8bd11ba89f4g-04.jpg" alt="image" />
+<img src="./images/2022_09_10_64c1a943a8bd11ba89f4g-05.jpg" alt="image" /></p>
+<p>Pour les examens radiologiques, les données sont tirees de:</p>
+<ul>
+<li>Radiation Exposure in Computed Tomography, Éditeur H. D. NAGEL. COCIR. 2000 [17]</li>
+<li>Radiation Protection 118.</li>
+</ul>
+<p>Referral Guidelines for Imaging.</p>
+<p>European Commission, 2000 [18]</p>
+<p>Pour les examens scintigraphiques, les activités administrées sont données à titre indicatif.</p>
+<h2 id="letude-de-la-radioprotection-consiste"><a class="header" href="#letude-de-la-radioprotection-consiste">L'ETUDE DE LA RADIOPROTECTION CONSISTE:</a></h2>
+<ul>
+<li>Dans un premier temps:
+<ul>
+<li>Schématiser la séquence des effets des radiations sur la matière vivante</li>
+<li>discuter les paramètres d'influence.</li>
+</ul>
+</li>
+<li>Différencier les effets déterministes et les effets stochastiques</li>
+<li>Évaluer les effets et les risques d'une irradiation dans une situation donnée.</li>
+</ul>
+<h1 id="effets-des-radiations"><a class="header" href="#effets-des-radiations">Effets des radiations</a></h1>
+<hr />
+<p>Les effets des radiations sur <u>la matière vivante</u> et <u>les paramètres d'influence</u></p>
+<h2 id="les-effets-physique-chimique-et-biologique"><a class="header" href="#les-effets-physique-chimique-et-biologique">Les effets physique, chimique et biologique</a></h2>
+<ul>
+<li>
+<p><strong>transfert d'énergie par ionisation ou par excitation</strong> sont instantanés de l'ordre de <code>10-15 secondes</code>.</p>
+</li>
+<li>
+<p><strong>l'activation ou à la modification de réactions chimiques</strong>.</p>
+</li>
+</ul>
+<p>Cette étape dure environ <code>10-6 secondes</code>.</p>
+<h2 id="changements-biochimiques"><a class="header" href="#changements-biochimiques">changements biochimiques:</a></h2>
+<p>Modifications sur les structures et sur les fonctions vitales qui s'étendent sur une période allant de la seconde à plusieurs années.</p>
+<p>Dans certain cas, ces modifications peuvent être corrigées par des mécanismes <code>moléculaires</code> ou <code>Cellulaires</code>, pour récupération des fonctions normales.</p>
+<p>L'effet des radiations peut aller: de <em>la réparation</em> d'une cellule Jusqu'à sa mort</p>
+<h2 id="a--effets-sur-lorganisme"><a class="header" href="#a--effets-sur-lorganisme">A- Effets sur l'organisme</a></h2>
+<p>En fonction de la dose délivrée, les effets des radiations sur l'organisme peuvent être:</p>
+<ul>
+<li><strong>effets déterministes</strong>: réactions tissulaires</li>
+<li><strong>effets stochastiques</strong>: aléatoires</li>
+</ul>
+<h2 id="effets-déterministes"><a class="header" href="#effets-déterministes">Effets déterministes:</a></h2>
+<p>On parle la dose absorbée (en <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>), Lorsque la dose absorbée est supérieure à <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">5</span><span class="mspace nobreak"> </span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace nobreak"> </span></span></span></span>,</p>
+<ul>
+<li>On observe une réduction transitoire</li>
+<li>voire permanente</li>
+<li>des cellules assurant le fonctionnement de l'organe.</li>
+</ul>
+<p>Quelques exemples sont donnés dans le Tableau suivant.<br />
+La sévérité des réactions tissulaires augmente avec la dose</p>
+<h2 id="effets-stochastiques"><a class="header" href="#effets-stochastiques">Effets stochastiques</a></h2>
+<ul>
+<li>
+<p><strong>Les effets stochastiques</strong> (ou aléatoires) sont associes à une probabilité de manifestations de conséquences suite à l'irradiation.</p>
+</li>
+<li>
+<p><em>La quantification</em> du risque des effets stochastiques n'est pas possible au niveau <code>individuel</code>, mais uniquement au niveau <strong>d'une population:</strong></p>
+</li>
+</ul>
+<blockquote>
+<p>toutes les estimations de risque sur les impacts sanitaires des radiations ionisantes sont basées sur des études épidémiologiques.</p>
+</blockquote>
+<h2 id="les-effets-stochastiques-ont-une-manifestation-tardive"><a class="header" href="#les-effets-stochastiques-ont-une-manifestation-tardive">Les effets stochastiques ont une manifestation tardive:</a></h2>
+<p>Ils peuvent apparaître <strong>plusieurs années ou décennies</strong> après l'irradiation des cellules somatiques<br />
+et même plusieurs générations plus tard en cas de mutations dans les cellules germinales.</p>
+<p>La relation entre <u>la dose</u> et <u>l'effet</u> n'est moins bien établie que pour <em>les fortes doses</em> engendrant des réactions tissulaires.</p>
+<p>Tous les effets stochastiques sont la conséquence de <code>mutations</code>. <strong>La sévérité</strong> de ces effets ne dépend pas de la dose reçue, mais uniquement du <strong>type de cellule et du gène muté</strong>.</p>
+<h3 id="21"><a class="header" href="#21">2.1.</a></h3>
+<p>Types d'effets stochastiques</p>
+<ol>
+<li>
+<p><strong>cancers chez l'individu irradié</strong>, si la mutation est induite dans certains gènes des <code>cellules somatiques</code>.</p>
+</li>
+<li>
+<p><strong>maladies génétiques</strong> dans la descendance, si la mutation est induite dans les <code>cellules germinales</code></p>
+</li>
+<li>
+<p>maladies cardiovasculaire.</p>
+</li>
+</ol>
+<p><strong>L'estimation</strong> du risque sanitaire dû exclusivement aux <em>radiations ionisantes</em>, est difficile, <code>car</code> il est impossible d'isoler <u>les symptômes provoqués</u> par une irradiation de ceux <u>induits</u> par d'autres sources.</p>
+<p><strong>L'estimation</strong> du risque se base donc sur l'étude de l'augmentation de cancers et maladies dans des populations irradiées, comme celles de Hiroshima, Nagasaki et de Tchernobyl.</p>
+<h2 id="autres-effets-somatiques"><a class="header" href="#autres-effets-somatiques">Autres effets somatiques</a></h2>
+<p>Mis-à-part le cancer, les rayonnements ionisants peuvent provoquer d'autres maladies:</p>
+<ul>
+<li>maladies cardiaques</li>
+<li>des attaques cérébrales,</li>
+<li>des affections digestives,</li>
+<li>respiratoires et <code>hématopoiétiques</code> et surtout la cataracte.</li>
+</ul>
+<h2 id="exposition-prénatale"><a class="header" href="#exposition-prénatale">Exposition prénatale</a></h2>
+<p>Pendant <code>l'embryogenèse</code> la plupart des cellules sont en phase de réplication et de différenciation.</p>
+<p>Elles ont donc une <u> radiosensibilité élevée </u>.</p>
+<p>Des précautions particulières doivent être prises pendant le période prénatale afin de réduire l'irradiation in <code>utero</code>.</p>
+<p><strong>Les effets embryologiques</strong> dépendent du stade de développement:</p>
+<ul>
+<li>
+<p><strong>Avant la nidation</strong> <u>0-10 jours</u>: l'œuf est soit <u>éliminé</u> soit il <u>se développe</u> normalement <code>loi du tout ou rien</code>.</p>
+</li>
+<li>
+<p><strong>Pendant l'embryogenèse</strong> <u>10 jours à 9 semaines</u>: le risque est maximal en raison de l'intense organogenèse.</p>
+</li>
+</ul>
+<p>Le seuil d'apparition des réactions tissulaires est estimé à $100 ~Gy}$.</p>
+<ul>
+<li><u> Dès 3 semaines après la conception et jusqu'à la naissance</u>: l'exposition aux radiations augmente le taux de cancers chez l'enfant.</li>
+</ul>
+<p>Le risque est supérieur à celui de la population en général, mais similaire à celui qui existe après une exposition pendant la petite enfance (facteur 2 à 3 ).</p>
+<ul>
+<li><strong>Pendant la phase</strong> fotale le risque de migration neuronale anormal  persiste et peut aboutir à un retard mental.</li>
+</ul>
+<p>Le seuil d'apparitions des réactions tissulaires après la roème semaine est estimé a 300 mGy.</p>
+<h1 id="dosimètre-biologique"><a class="header" href="#dosimètre-biologique">dosimètre biologique</a></h1>
+<ul>
+<li>
+<p>La dosimètre biologique est l'application à l'échelle moléculaire et cellulaire des connaissances des effets biologiques.</p>
+</li>
+<li>
+<p>Elle permet, en absence d'information de dosimètre physique, d'estimer la dose reçue.</p>
+</li>
+<li>
+<p>La dosimètre biologique est essentielle en cas d'accident et d'exposition à de faibles doses</p>
+</li>
+</ul>
+<h1 id="risque-radiologique"><a class="header" href="#risque-radiologique">Risque radiologique</a></h1>
+<h2 id="notion-de-détriment"><a class="header" href="#notion-de-détriment">Notion de détriment</a></h2>
+<ul>
+<li>
+<p>Pour les besoins de la radioprotection, la <code>CIPR</code> a introduit la notion de <code>détriment</code> pour <u>identifier</u> et <u>quantifier</u> (lorsque cela est possible) les mauvais effets des radiations.</p>
+</li>
+<li>
+<p><strong>la notion de détriment</strong> est limitée au préjudice sur la santé, excluant ainsi les autres formes de préjudice (social, économique, environnemental, etc).</p>
+</li>
+<li>
+<p><strong>Le détriment</strong> est conçu comme une combinaison de <em>la probabilité d'incidence</em> de tous les effets nuisibles des radiations et de <em>la gravité de ces effets</em>.</p>
+</li>
+</ul>
+<h2 id="en-considération-des-niveaux-de-dose-mis-en-cause-en-radioprotection"><a class="header" href="#en-considération-des-niveaux-de-dose-mis-en-cause-en-radioprotection">En considération des niveaux de dose mis en cause en radioprotection</a></h2>
+<ul>
+<li>
+<p>Seuls <strong>les effets stochastiques</strong> sont pris en compte.</p>
+</li>
+<li>
+<p>Ceci comprend notamment:</p>
+<ul>
+<li>la probabilité d'un cancer mortel attribuable aux rayonnements<br />
+la probabilité pondérée d'un cancer non mortel attribuable aux rayonnements</li>
+<li>la probabilité pondérée d'effets héréditaires grave et la durée de vie perdue, si le préjudice a lieu</li>
+</ul>
+</li>
+</ul>
+<h1 id="notion-de-dose-effective-ou-efficace"><a class="header" href="#notion-de-dose-effective-ou-efficace">Notion de dose effective ou efficace</a></h1>
+<p>Pour évaluer <u>l'importance</u> de l'impact biologique <strong>d'une exposition aux rayonnements ionisants</strong> et <u>comparer</u> les expositions entre elles, la radioprotection utilise la dose efficace :</p>
+<p><strong>La dose efficace:</strong> c'est une grandeur calculée, exprimée en <em>millisieverts</em> $mv}$</p>
+<p>Elle prend en compte non seulement <u>la quantité d'énergie</u> absorbée par le corps, mesurée en grays <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">G</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> (cède), mais aussi <u>la nature</u> des rayonnements émis et <u>la sensibilité biologique</u> aux rayonnements des tissus et <u>organes exposés</u>.</p>
+<blockquote>
+<p>Dose équivalente <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> : dose absorbée par le tissu ou l'organe <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span>, pondérée suivant le type et la qualité du rayonnement R.</p>
+</blockquote>
+<p>Elle est donnée par la formule :</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></span>
+Où :</p>
+<ul>
+<li>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> est la moyenne pour l'organe ou le tissu <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span> de la dose absorbée du rayonnement <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span></p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> est le facteur de pondération radiologique.</p>
+</li>
+</ul>
+<p><u>Valeurs du facteur de pondération radiologique <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></u></p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Type de rayonnement</th><th style="text-align: left">Energie</th><th style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></th></tr></thead><tbody>
+<tr><td style="text-align: left">Photons</td><td style="text-align: left">toutes énergies</td><td style="text-align: left">1</td></tr>
+<tr><td style="text-align: left">Electrons, muons</td><td style="text-align: left">toutes énergies</td><td style="text-align: left">1</td></tr>
+<tr><td style="text-align: left">Neutrons</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">10</span><span class="mord mathnormal">Ke</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></td><td style="text-align: left">5</td></tr>
+<tr><td style="text-align: left"></td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6835em;vertical-align:-0.0391em;"></span><span class="mord">10</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">100</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></td><td style="text-align: left">10</td></tr>
+<tr><td style="text-align: left"></td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord">100</span><span class="mspace nobreak"> </span><span class="mord mathnormal">Ke</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">2</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></td><td style="text-align: left">20</td></tr>
+<tr><td style="text-align: left"></td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord">2</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">20</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></td><td style="text-align: left">10</td></tr>
+<tr><td style="text-align: left"></td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">20</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></td><td style="text-align: left">5</td></tr>
+<tr><td style="text-align: left">Protons</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">2</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></td><td style="text-align: left">5</td></tr>
+<tr><td style="text-align: left">Particules*</td><td style="text-align: left"></td><td style="text-align: left">20</td></tr>
+</tbody></table>
+</div>
+<p>Particules: alpha, fragments de fission, noyaux lourds</p>
+<p>Lorsque le champ de rayonnement comprend des rayonnements de <u>types</u> et <u>d'énergies</u> correspondant à des valeurs différentes de <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, <code>la dose équivalente</code> totale <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> est donnée par la formule :
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.6em;vertical-align:-0.55em;"></span><span class="mop op-symbol large-op" style="position:relative;top:0em;">∑</span><span class="mspace nobreak"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace nobreak"> </span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></span>
+L'unité de dose équivalente est le sievert <code>Sv</code>.</p>
+<p><strong>Dose efficace E:</strong> somme des doses équivalentes pondérées délivrées aux différents tissus et organes du corps mentionnés à l'annexe II par l'irradiation interne et externe.</p>
+<p>Elle est définie par la formule:</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.6em;vertical-align:-0.55em;"></span><span class="mop op-symbol large-op" style="position:relative;top:0em;">∑</span><span class="mspace nobreak"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace nobreak"> </span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.6em;vertical-align:-0.55em;"></span><span class="mop op-symbol large-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace nobreak"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol large-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace nobreak"> </span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p>Où :</p>
+<ul>
+<li>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> est la moyenne pour l'organe ou le tissu <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span> de la dose absorbée du rayonnement <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span>;</p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> est le facteur de pondération radiologique</p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> est le facteur de pondération tissulaire valable pour le
+tissu ou l'organe <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span>.</p>
+</li>
+</ul>
+<p><u>Valeurs du facteur de pondération tissulaires</u> <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Tissu ou organe</th><th style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></th></tr></thead><tbody>
+<tr><td style="text-align: left">Gonades</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.20</span></span></span></span></td></tr>
+<tr><td style="text-align: left">Moelle rouge</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.12</span></span></span></span></td></tr>
+<tr><td style="text-align: left">Colon</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.12</span></span></span></span></td></tr>
+<tr><td style="text-align: left">Poumons</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.12</span></span></span></span></td></tr>
+<tr><td style="text-align: left">Estomac</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.12</span></span></span></span></td></tr>
+<tr><td style="text-align: left">Vessie</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.05</span></span></span></span></td></tr>
+<tr><td style="text-align: left">Seins</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.05</span></span></span></span></td></tr>
+<tr><td style="text-align: left">Foie</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.05</span></span></span></span></td></tr>
+<tr><td style="text-align: left">Esophage</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.05</span></span></span></span></td></tr>
+<tr><td style="text-align: left">Thyroïde</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.05</span></span></span></span></td></tr>
+<tr><td style="text-align: left">Peau</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.01</span></span></span></span></td></tr>
+<tr><td style="text-align: left">Surface des os</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.01</span></span></span></span></td></tr>
+<tr><td style="text-align: left">Autres</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.05</span></span></span></span></td></tr>
+</tbody></table>
+</div>
+<p><a href="">ANNEXE II</a></p>
+<p>L'unité de dose efficace est le Sievert <code>Sv</code>.</p>
+<p><strong>Sievert</strong> <code>Sv</code>: nom de l'unité de <em>dose équivalente</em> ou de <em>dose efficace</em>.</p>
+<p>Un Sievert équivaut à un joule par kilogramme,</p>
+<p>Pour les photons et électrons de toutes énergies :
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">1</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace nobreak"> </span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0585em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><strong>Limites de dose:</strong></p>
+<ul>
+<li>valeurs maximales fixées dans un règlement pour les doses résultant de l'exposition des personnes professionnellement exposées</li>
+<li>des apprenti(e)s et des étudiant(e)s</li>
+<li>ainsi que des autres personnes du public, aux rayonnements ionisants visés par le présent règlement</li>
+<li>et qui s'appliquent à la somme des doses concernées résultant de sources externes de rayonnement pendant la période spécifiée</li>
+<li>et des doses engagées sur cinquante années (jusqu'à l'âge de 70 ans pour les enfants) par suite des incorporations pendant la même période</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">catégorie de personne</th><th style="text-align: left">Limite dose efficace</th></tr></thead><tbody>
+<tr><td style="text-align: left">Personne professionnellement exposée</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">20</span><span class="mspace nobreak"> </span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span></td></tr>
+<tr><td style="text-align: left">Apprentis ou étudiants de 16 à 18 ans</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">6</span><span class="mspace nobreak"> </span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span></td></tr>
+<tr><td style="text-align: left">Public</td><td style="text-align: left"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">1</span><span class="mspace nobreak"> </span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span></td></tr>
+<tr><td style="text-align: left">Femmes enceintes</td><td style="text-align: left">- maximum <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">1</span><span class="mspace nobreak"> </span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> durant la grossesse</td></tr>
+<tr><td style="text-align: left"></td><td style="text-align: left">- interdiction de manipuler des sources non scellées</td></tr>
+</tbody></table>
+</div>
+<p>En ce qui concerne les organes ou tissus pris individuellement, les limites sont les suivantes:
+|:-------------------------------------------------|:-----------------|
+| Peau                                             | <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">500</span><span class="mspace nobreak"> </span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span>         |
+| Main, avant-bras, pieds, chevilles               | <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">150</span><span class="mspace nobreak"> </span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span>         |
+| Cristallin                                       | <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">100</span><span class="mspace nobreak"> </span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span>         |
+| Gonades                                          | <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">167</span><span class="mspace nobreak"> </span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span>         |
+| Moelle rouge, colon, poumons, estomac            | <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">400</span><span class="mspace nobreak"> </span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span>         |
+| Vessie, seins, foie, oesophage, thyroïde, autres |                      4                     |</p>
+<h1 id="contrainte-dedose"><a class="header" href="#contrainte-dedose">Contrainte dedose:</a></h1>
+<p>Restriction imposée aux doses éventuelles qu'une source peut délivrer aux individus et utilisée à des fins d'optimisation, dans la phase de planification de la protection contre les rayonnements ionisants.</p>
+<blockquote>
+<p>Pour les professionnels de la radioprotection, il est nécessaire de donner certaines définitions:</p>
+</blockquote>
+<h2 id="source-scellée-"><a class="header" href="#source-scellée-">Source scellée :</a></h2>
+<p>Source constituée par des substances radioactives solidement incorporées dans des matières solides et effectivement inactives présentant une résistance suffisante pour éviter, dans des conditions normales d'emploi, toute dispersion de substances radioactives.</p>
+<h2 id="source-orpheline-"><a class="header" href="#source-orpheline-">Source orpheline :</a></h2>
+<p>Une source scellée dont le niveau d'activité au moment de sa découverte est supérieur au niveau d'exemption et qui n'est pas sous contrôle réglementaire.</p>
+<ul>
+<li>soit parce qu'elle n'a jamais fait l'objet d'un tel contrôle.</li>
+<li>soit parce qu'elle a été abandonnée, perdue, égarée, volée ou transférée à un nouveau détenteur sans modification en bonne et due forme à l'autorité compétente ou sans que le destinataire en ait été informé.</li>
+</ul>
+<p><strong>Source scellée de haute activité</strong>, en abrégé <code>SSHA</code> : source scellée contenant <em>un radionucléide</em> dont l'activité au moment de la fabrication ou, si ce moment n'est pas connu, au moment de la première mise sur le marché ou au moment de l'acquisition par le détenteur est égale ou supérieure au niveau d'activité visé à <a href="">l'annexe VI</a>.</p>
+<p><strong>Conteneur de source :</strong> enceinte de confinement d'une source scellée de haute activité ne faisant pas partie intégrante de la source, mais destinée à permettre le transport, la manutention, le stockage etc.</p>
+<p><strong>Déchets radioactifs :</strong> toutes substances radioactives provenant d'une pratique autorisée ou d'une activité professionnelle, traitée en tout ou en partie, comme une pratique non exemptée en vertu de l'article 9.3, et pour laquelle aucun usage ultérieur n'est prévu au sein de l'établissement.</p>
+<p><strong>Elimination de déchets radioactifs</strong> : rejet de déchets radioactifs directement dans l'environnement ( <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> compris sous forme d'incinération), avec dispersion ultérieure et absence d'intention de récupération, ou stockage de déchets radioactifs dans un dépôt définitif, y compris sous forme de mise en décharge, sans intention de récupération.</p>
+<p><strong>Intervention</strong> : activité humaine destinée à prévenir ou à réduire l'exposition des individus aux rayonnements ionisants à partir de sources qui ne font pas partie d'une pratique ou ne sont pas maîtrisées, en agissant sur les sources de rayonnement ionisant, les voies d'exposition et les individus eux-mêmes.</p>
+<p><strong>Personnes professionnellement exposées</strong> : personnes, travaillant à leur compte ou pour un employeur, soumises pendant leur travail à une exposition provenant de pratiques visées dans le présent règlement et susceptible d'entraîner des doses supérieures à l'une quelconque des limites de dose fixées pour les personnes du public, ou soumises pendant leur travail à une exposition provenant d'activités professionnelles autorisées en application des dispositions du présent règlement.</p>
+<p><strong>Personnes professionnellement exposées de catégorie A</strong> : les personnes professionnellement exposées qui sont susceptibles de recevoir une dose efficace supérieure à 6 millisievert par 12 mois consécutifs glissants ou une dose équivalente supérieure aux trois dixièmes des limites de dose fixées à l'article <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">20.1.3</span></span></span></span> pour le cristallin, la peau et les extrémités.</p>
+<p><strong>Personnes professionnellement exposées de catégorie B</strong> : les personnes
+professionnellement exposées qui ne relèvent pas de la catégorie <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span></p>
+<p><strong>Personnes du public</strong> : individus de la population, à l'exception des personnes professionnellement exposées, des apprenti(e)s et des étudiant(e)s pendant leurs heures de travail.</p>
+<p><strong>Population dans son ensemble</strong>: toute la population comprenant les personnes professionnellement exposées, les apprenti(e)s, les étudiant(e)s et les personnes du public.</p>
+<p><strong>Enfantà naître</strong> : être humain, depuis la conception jusqu'à la naissance Zone contrôlée : zone soumise à une réglementation spéciale pour des raisons de protection contre les rayonnements ionisants et de confinement de la contamination radioactive, et dont l'accès est réglementé; dans les établissements autorisés en vertu des dispositions du présent règlement, toute zone dans laquelle les trois dixièmes des limites de dose annuelle fixées pour les personnes professionnellement exposées sont susceptibles d'être dépassés doit constituer une zone contrôlée</p>
+<p><strong>Zone surveillée</strong> : zone faisant l'objet d'une surveillance appropriée à des fins de protection contre les rayonnements ionisants; dans les établissements autorisés en vertu des dispositions du présent règlement, toute zone dans laquelle un individu pourrait être soumis à une exposition susceptible d'entraîner des doses supérieures à l'une quelconque des limites de dose fixées pour les personnes du public et qui n'est pas considérée comme une zone contrôlée doit constituer une zone surveillée ou y être incluse.</p>
+<p>Démantèlement : ensemble des opérations administratives et techniques et des travaux nécessaires ou conduisant à la cessation de l'exploitation d'une installation et à sa mise dans un état sûr pour les travailleurs, la population et l'environnement</p>
+<p>Exploitant : toute personne physique ou morale qui assume la responsabilité de l'établissement ou de l'activité professionnelle devant faire l'objet d'une autorisation ou d'une déclaration au sens du chapitre II</p>
+<p><strong>Entreprise extérieure</strong> : toute personne physique ou morale, appelée à exécuter une opération de quelque nature que ce soit en zone contrôlée d'un établissement, à l'exception de l'exploitant de cet établissement et des membres de son personnel.</p>
+<p><strong>Travailleur extérieur</strong> : toute personne professionnellement exposée qui exécute une opération de quelque nature que ce soit en zone contrôlée, qu'elle soit employée à titre temporaire ou permanent par une entreprise extérieure, y compris les stagiaires, apprenti(e)s et étudiant(e)s ou qu'elle preste ses services en qualité de travailleur indépendant, y compris les médecins indépendants dans les hôpitaux; les travailleurs extérieurs doivent être considérés comme des travailleurs professionnellement exposés de catégorie A Protection efficace : dispositif de protection contre les rayonnements ionisants tel que la dose délivrée à toute personne soit aussi faible que raisonnablement possible et en tout cas n'excède pas les limites de dose fixées au chapitre III.</p>
+<p><strong>Service de dosimètre agréé</strong> : organisme responsable de l'étalonnage, de la lecture ou de l'interprétation des appareils de contrôle individuels, ou de la mesure de la radioactivité dans le corps humain ou dans des échantillons biologiques, ou de la détermination des doses, et dont la qualification pour cette tâche est reconnue par l'Agence.</p>
+<p><strong>Service agréé de médecine du travail</strong> : section ou département chargé de la surveillance médicale du service pour la prévention et la protection au travail de l'entreprise en question, visée aux arrêtés royaux du 27 mars 1998 relatifs aux services internes et externes pour la prévention et la protection au travail.</p>
+<p>**Médecin agréé **: le conseiller en prévention -médecin du travail de la section ou du département chargé de la surveillance médicale du service pour la prévention et la protection au travail de l'entreprise en question, responsable du contrôle médical des personnes professionnellement exposées et agréé selon la procédure décrite à l'article75.</p>
+<p><strong>Expert qualifié en contrôle physique</strong> : personne ayant les connaissances et l'entraînement nécessaires, notamment pour effectuer des examens physiques, techniques ou radiochimiques permettant d'évaluer les doses et pour donner des conseils afin d'assurer une protection efficace des individus et un fonctionnement correct des moyens de protection, conformément aux dispositions de la loi</p>
+<h1 id="8-bases-de-la-radioprotection--bases-de-la-radioprotection"><a class="header" href="#8-bases-de-la-radioprotection--bases-de-la-radioprotection">8) BASES DE LA RADIOPROTECTION  [bases-de-la-radioprotection]</a></h1>
+<p>Le but de la radioprotection est <em>d'empêcher</em> ou réduire ces risques, lies aux rayonnements, afin d'éviter ou réduire la radioprotection s'appuie sur trois grands principes</p>
+<ul>
+<li>
+<p><strong>la justification</strong> des activités comportant un risque d'exposition à des rayonnements ionisants ;</p>
+</li>
+<li>
+<p><strong>l'optimisation</strong> des expositions à ces rayonnements au niveau le plus faible possible ;</p>
+</li>
+<li>
+<p><strong>la limitation</strong> des doses d'exposition individuelle à ces rayonnements.</p>
+</li>
+</ul>
+<blockquote>
+<p>Ces trois principes fondamentaux découlent du principe général de précaution: le principe <code>ALARA</code> : As Low As Reasonably Achievable» ou bas que raisonnablement possible</p>
+</blockquote>
+<h1 id="principe-de-justification"><a class="header" href="#principe-de-justification">Principe de justification</a></h1>
+<p>Justification toute activité faisant intervenir un risque radiologique doit être justifiée <u>c'est-à-dire</u> le bénéfice positif
+Penser à des procédures alternatives qui doivent être analysées et retenues le cas échéant.</p>
+<p>L'examen demandé peut-il être remplacé par un examen non irradiant?</p>
+<ul>
+<li>Performances égales ?</li>
+<li>Disponibilité ?</li>
+<li>Coût ?</li>
+<li>Risques et inconvénients respectifs?</li>
+</ul>
+<blockquote>
+<p>IRM et ECHOGRAPHIE</p>
+</blockquote>
+<ul>
+<li>
+<p>L'expression d'une question clinique</p>
+<ul>
+<li>Clairement formulée</li>
+<li>Dont la réponse contribue à la décision médicale</li>
+</ul>
+</li>
+<li>
+<p>Un examen dont on connaît le coût/efficacité</p>
+<ul>
+<li>Les performances</li>
+<li>La pénibilité</li>
+<li>Les risques</li>
+<li>Le coût financier</li>
+</ul>
+</li>
+</ul>
+<h1 id="fin"><a class="header" href="#fin">fin</a></h1>
+<h1 id="principe-doptimisation"><a class="header" href="#principe-doptimisation">Principe d'optimisation</a></h1>
+<p>La mise en évidence des <code>effets stochastiques</code> des radiations et <code>l'hypothèse d'une absence de seuil</code> pour de tels effets <u>conduisent</u> naturellement à l'exigence de l'optimisation.</p>
+<p>Il s'agit ainsi de maintenir les doses aussi faibles que cela est raisonnablement possible (principe <code>ALARA</code> : As low As Reasonably Achievable).</p>
+<h2 id="principe-de-limitation-des-doses"><a class="header" href="#principe-de-limitation-des-doses">Principe de limitation des doses</a></h2>
+<p>L'application des principes de justification et d'optimisation, est
+conduire à ce qu'un petit nombre d'individus reçoivent des doses trop élevées.</p>
+<p>Pour cette raison, <u>On doit</u> définir :<strong>la limitation des doses</strong>.</p>
+<p>Les principes de la radioprotection sont adaptés à
+trois catégories de population :On distingue</p>
+<ul>
+<li>
+<p><strong>Les professionnels</strong>:</p>
+<ul>
+<li>
+<p><u>Directement Affectées </u>à des Travaux utilisant des Rayonnements ionisants (DATR) ou catégorie A. (par exemple les manipulateurs d'électroradiologie ou de médecine nucléaire).</p>
+</li>
+<li>
+<p><u>Non Directement Affectées </u>à des Travaux utilisant des Rayonnements ionisants (NDATR) ou catégorie B (par exemple les secrétaires médicales d'un service d'électroradiologie ou de médecine nucléaire).</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Les Patients</strong>: Le patient et les proches du patient en tant qu'aides dans les soins ainsi que les personnes exposées dans le cadre d'études biomédicales</p>
+</li>
+<li>
+<p><strong>Le public</strong>: Rayonnements et environnement de santé, L'autorité de sûreté nucléaire doit contrôler la bonne application du système de radioprotection</p>
+</li>
+</ul>
+<h1 id="principes-de-base-de-radioprotection"><a class="header" href="#principes-de-base-de-radioprotection">Principes de base de radioprotection</a></h1>
+<p>Les principes élémentaires à mettre en place pour assurer une bonne protection face aux radiations ionisantes peuvent être résumés ainsi :</p>
+<ul>
+<li>soin, ordre</li>
+<li>temps</li>
+<li>distance</li>
+<li>et blindage</li>
+</ul>
+<h2 id="temps-dexposition"><a class="header" href="#temps-dexposition">Temps d'exposition</a></h2>
+<p>Le temps pendant lequel une personne est exposée à une source radioactive doit être réduit au minimum nécessaire.</p>
+<p>Pour ce faire, quelques règles simples peuvent être appliquées :</p>
+<ul>
+<li>avoir une bonne connaissance du mode opératoire</li>
+<li>ne sortir une source de son blindage que le temps nécessaire</li>
+<li>ne pass séjourner inutilement près d'une source de rayonnements ionisants</li>
+</ul>
+<p>Dans certains cas particuliers, il convient d"effectuer une rotation du personnel afin d'éviter un dépassement des limites de doses.</p>
+<h2 id="protection-par-la-distance"><a class="header" href="#protection-par-la-distance">Protection par la distance</a></h2>
+<p>Les rayonnements issus d'une source radioactive sont a priori émis dans toutes les directions.</p>
+<p>Tous les endroits irradiés de la même manière se situent à la surface <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span> une sphère dont le centre est une source ponctuelle.</p>
+<p>Par conséquent, la dose va suivre la loi de l'inverse du carré de la distance selon
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.1963em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.725em;vertical-align:-1.094em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.631em;"><span style="top:-2.156em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="minner"><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">)</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.954em;"><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="minner"><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">)</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.954em;"><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.094em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+A titre d'exemple, le simple fait de prendre une source à l'aide d'une pince la distance passant de 1 à <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10</span><span class="mspace nobreak"> </span><span class="mord mathnormal">c</span><span class="mord mathnormal">m</span></span></span></span>, la dose diminue d'un facteur 100 au niveau des mains.</p>
+<h1 id="protection-par-interposition-de-blindage"><a class="header" href="#protection-par-interposition-de-blindage">Protection par interposition de blindage</a></h1>
+<p>L'interposition de blindage entre la source et le personnel permet également une limitation des doses reçues.</p>
+<p>En fonction des différents types de rayonnements et de leur énergie, il conviendra d'adapter le blindage mis en place.</p>
+<p>De manière générale, on peut dire que <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">5</span></span></span></span> à <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">6</span><span class="mspace nobreak"> </span><span class="mord mathnormal">c</span><span class="mord mathnormal">m</span></span></span></span> d'air suffisent pour arrêter les rayonnements <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span>.</p>
+<p>Les rayonnements <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span> sont quant à eux relativement faciles à arrêter.</p>
+<p>Les rayonnements émis par le phosphore 32 seront complètement arrêtés par <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">8</span><span class="mspace nobreak"> </span><span class="mord mathnormal">mm</span></span></span></span> d'eau.</p>
+<p>Les rayonnements <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span></span></span></span> et <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> sont généralement très pénétrants; ils nécessitent donc des épaisseurs de blindage plus élevées.</p>
+<p>Leurs énergies étant très variables (de quelques <code>keV</code> à plusieurs <code>MeV</code>), il est impossible d'établir une règle générale du type <code>autant de cm de plomb suffisent</code>.</p>
+<p>Il faudra étudier le blindage de ces sources au cas par cas</p>
+<p><img src="./images/2022_09_10_778a3b88fd20437b691bg-04.jpg" alt="image" /></p>
+<h1 id="particularité-des-sources-β-pures"><a class="header" href="#particularité-des-sources-β-pures">Particularité des sources <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span> pures</a></h1>
+<p>il est conseillé de réaliser les blindages à l'aide de matériau dont le numéro atomique est faible.<code> Car</code>, un matériau dont le numéro atomique est lourd, tel que le plomb.</p>
+<p>Un rayonnement de freinage (appelé Bremsstralhung)</p>
+<blockquote>
+<p>principe physique utilisé dans les appareils de radiologie pour produire les rayons <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span>.</p>
+</blockquote>
+<p>Par exemple, dans le cas du <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">32</span></span></span></span></span></span></span></span></span></span></span></span>, le blindage sera généralement constitué de plaques de plexiglas d'un <code>cm</code> d'épaisseur.
+<img src="./images/2022_09_10_778a3b88fd20437b691bg-05-2.jpg" alt="image" />
+<strong>transparent</strong>: il est plus simple de travailler derrière ce type d'écran.</p>
+<p>Selon <strong>G. Sitzlack</strong> il est possible de calculer le rayonnement de freinage produit à l'aide de la relation empirique suivante :
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9202em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9202em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.0833em;"><span class="mord">˙</span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">26</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">A</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8641em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></span>
+dans laquelle:</p>
+<ul>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9202em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9202em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.0833em;"><span class="mord">˙</span></span></span></span></span></span></span></span></span></span>: débit de dose en <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>;</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span></span></span></span> : numéro atomique du matériau absorbant les électrons;</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> : activité en <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">GBq</span></span></span></span>;</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> : distance à la source en <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span><span class="mord mathnormal">m</span></span></span></span>;</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span></span></span></span> : <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight"><span class="mtight">m</span><span class="mtight">a</span><span class="mtight">x</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mord mathrm">des</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span> en <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>.</li>
+</ul>
+<p>Attention, cette formule n'est valable que si tout le rayonnement <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span> est absorbé !</p>
+<h1 id="modes-dexpositions"><a class="header" href="#modes-dexpositions">Modes d'expositions</a></h1>
+<h2 id="exposition-externe"><a class="header" href="#exposition-externe">Exposition externe</a></h2>
+<ul>
+<li>On est à coté d'une source de rayonnement.</li>
+<li>Elle est due essentiellement au rayonnement gamma.</li>
+<li>L'exposition externe due au rayonnement alpha peut être négligé.</li>
+</ul>
+<h2 id="exposition-interne"><a class="header" href="#exposition-interne">Exposition interne</a></h2>
+<p>Par inhalation de l'air contaminé ou ingèrer des aliments, contaminés,contamination interne de son organisme.</p>
+<p>L'exposition interne concerne tous les types de rayonnements car il n'y a plus d'écran pour arrêter <code>les alpha</code> et <code>les bêta</code>.</p>
+<p>Si la source est en contact direct avec la peau, on parle de contamination qui engendre une exposition <code>externe</code> et qui peut également engendrer une exposition <code>interne</code> si la substance radioactive pénètre dans le corps (par une blessure, une coupure ou les pores de la peau).</p>
+<h1 id="comment-éviter-les-risques-dans-les-laboratoires"><a class="header" href="#comment-éviter-les-risques-dans-les-laboratoires">Comment éviter les risques dans les laboratoires</a></h1>
+<p>Les sources utilisées dans les laboratoires sont de 2 types :</p>
+<ul>
+<li><strong>Les sources scellées</strong> (c'est-à-dire sources dont la structure empêche, en utilisation normale, toute dispersion de substances radioactives dans le milieu ambiant) servant essentiellement à la calibration d'appareils de mesure.</li>
+</ul>
+<p>Avec ce type de sources, seule l'irradiation est à craindre.
+Les mesures de protection seront essentiellement axées sur le blindage lorsque la source n'est pas utilisée.</p>
+<ul>
+<li><strong>Les sources non scellées</strong> : dans ce cas, à l'irradiation, viendra s'ajouter le risque de contamination interne et/ou externe.</li>
+</ul>
+<p>Le schéma présenté ici permet de situer les différents points sur lesquels il y a moyen d'intervenir afin de diminuer le risque de contamination interne.
+<img src="./images/2022_09_10_778a3b88fd20437b691bg-07.jpg" alt="image" /></p>
+<h2 id="ce-quil-faut-faire-"><a class="header" href="#ce-quil-faut-faire-">Ce qu'il faut faire ...</a></h2>
+<p>Afin de diminuer les risques le plus possible, voici quelques règles très simples à mettre en place :</p>
+<ul>
+<li>porter une blouse de laboratoire</li>
+<li>Porter des gants à usage unique</li>
+<li>Protéger le plan de travail (par ex: avec du papier type benchkote)</li>
+<li>Étiqueter chaque objet contaminé</li>
+<li>Effectuer régulièrement des mesures de contaminations</li>
+<li>Récupérer les déchets radioactifs dans les récipients ad hoc</li>
+<li>Porter son dosimètre et le remettre régulièrement pour lecture</li>
+</ul>
+<h2 id="ce-quil-ne-faut-pas-faire-"><a class="header" href="#ce-quil-ne-faut-pas-faire-">Ce qu'il ne faut pas faire ...</a></h2>
+<ul>
+<li>pipeter à la bouche</li>
+<li>boire, fumer, manger dans les laboratoires</li>
+<li>introduire des objets personnels</li>
+<li>mélanger activités de bureau et activités de laboratoire</li>
+<li>mélanger du matériel radioactif et non radioactif</li>
+<li>toucher des objets non contaminés avec des gants contaminés (téléphone, ...)</li>
+</ul>
+<h1 id="la-dosimétrie-est-un-aspect-essentiel-de-la-radioprotection"><a class="header" href="#la-dosimétrie-est-un-aspect-essentiel-de-la-radioprotection">La dosimétrie est un aspect essentiel de la radioprotection</a></h1>
+<hr />
+<h1 id="1er-partie-aspects-théorique"><a class="header" href="#1er-partie-aspects-théorique">1er partie: Aspects théorique</a></h1>
+<ul>
+<li><strong>dosimétrie</strong>, c'est-à-dire la mesure de l'exposition aux radiations ionisantes, fait partie des outils le la radioprotection, Elle a pour objet de mesurer au mieux les rayonnements en un lieu ou sur une personne (on parle alors de dosimétrie individuelle), pour fournir une estimation de l'équivalent de lose et de dose efficace.</li>
+<li>grande variété des situations et des rayonnements a conduit à une grande diversité de ces létecteurs qui doivent en outre s'adapter régulièrement aux changements des limites réglementaires (c'est parfois même leurs améliorations qui permettent de définir de nouvelles imites)</li>
+<li><strong>dosimétrie individuelle</strong> permet une surveillance radiologique (vérification que les doses reçues ont dans les limites réglementaires), mais elle doit aussi apporter le maximum d'informations en :as d'irradiations accidentelles et si possible servir d'alarme dans ces situations.</li>
+</ul>
+<p>Enfin les dosimètres doivent pouvoir fonctionner dans des environnements très variés (température, humidité, orientation, etc.), ce qui affecte en général leur précision.</p>
+<h1 id="dosimétrie"><a class="header" href="#dosimétrie">Dosimétrie</a></h1>
+<h1 id="badge-poitrine"><a class="header" href="#badge-poitrine">Badge poitrine</a></h1>
+<p>Toute personne professionnellement exposée doit porter un dosimètre à hauteur de poitrine sauf pour une exposition exclusive à des émetteurs <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span> dont l'énergie est inférieure à <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">200</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>.</p>
+<p><img src="./images/2022_09_10_778a3b88fd20437b691bg-10.jpg" alt="image" /></p>
+<p>En pratique, toute personne ne manipulant que du <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">18.6</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mclose">)</span></span></span></span>, du <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">14</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">156</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mclose">)</span></span></span></span> ou du <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">35</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">167</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mclose">)</span></span></span></span> ne doit pas porter de dosimètre.</p>
+<p>Dans ces cas, il convient de mettre en place un système de monitoring adéquat (par exemple, contrôle des urines, ...)</p>
+<h1 id="dosimètre-supplémentaire"><a class="header" href="#dosimètre-supplémentaire">Dosimètre supplémentaire</a></h1>
+<p>Si une irradiation non négligeable des tissus ou d'un organe est à craindre, la personne portera un ou plusieurs dosimètres supplémentaires permettant de mesurer la dose à ces endroits.</p>
+<p><img src="./images/2022_09_10_778a3b88fd20437b691bg-10-1.jpg" alt="image" /></p>
+<p>Dans le cas où l'irradiation est susceptible de provoquer une dose supérieure aux <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3/10</span></span></span></span> des limites pour le cristallin, les mains, les avant-bras, les pieds ou les chevilles, ces dosimètres supplémentaires seront toujours portés.</p>
+<h2 id="exemples"><a class="header" href="#exemples">exemples</a></h2>
+<p>le personnel de radiologie devant maintenir le patient pendant la prise du cliché (et plus particulièrement les enfants et les nourrissons), toute personne travaillant en radiologie interventionnelle, lors de l'injection de substances radioactives aux patients, toutes ces personnes porteront un dosimetre(<em>bague ou bracelet</em>).</p>
+<h2 id="dosimétrie-opérationnelle"><a class="header" href="#dosimétrie-opérationnelle">Dosimétrie opérationnelle</a></h2>
+<p>Toute personne susceptible de recevoir une dose supérieure à <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">500</span><span class="mspace nobreak"> </span><span class="mord mathnormal">μ</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> par semaine portera à hauteur de la poitrine un dosimètre à lecture directe</p>
+<p><img src="./images/2022_09_10_778a3b88fd20437b691bg-11.jpg" alt="image" /></p>
+<p>Dans les situations où le port d'un tablier plombé est indiqué, <code>il y a lieu de porter 2 dosimètres</code>, l'un au-dessus, l'autre en-dessous du tablier plombé.</p>
+<blockquote>
+<p>Tout visiteur, travailleur extérieur, stagiaire, étudiant et personnel intérimaire doit porter le mêmes moyens de protection que les travailleurs régulièrement occupes dans la zone et parconséquent du même type de dosimètre que celui utilisẻ par le personnel régulier.</p>
+</blockquote>
+<h1 id="la-thermoluminescence"><a class="header" href="#la-thermoluminescence">La thermoluminescence</a></h1>
+<p>la thermoluminescence:capacité d'un matériau d'émettre de la lumière lorsqu'il est chauffé, la quantité de lumière émise étant proportionnelle à la quantité de rayonnements ionisants reçus par ce matériau.</p>
+<p>Les matériaux thermoluminescents sont essentiellement des cristaux isolants dans lesquels on a introduit des impuretés chimiques (ou activateurs) en quantités soigneusement contrôlées.</p>
+<p>Lorsque ces matériaux sont irradiés par des rayonnements ionisants, une fraction minime de l'énergie du rayonnement absorbé est emmagasinée dans des états d'énergie métastables.</p>
+<p>En dosimétrie par thermoluminescence, l'énergie absorbée et emmagasinée dans le matériau détecteur est libérée par échauffement, ce qui se traduit par une émission de lumière, dont l'intensité est liée à la dose de rayonnement.</p>
+<p>L'information dosimétrique étant perdue au cours de la lecture, les détecteurs thermoluminescents ne peuvent habituellement être lus qu'une fois. Cependant, ils sont réutilisables.</p>
+<p>Divers matériaux détecteurs sont actuellement disponibles dont le fluorure de lithium <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span></span></span></span>, le borat de lithium <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal">L</span><span class="mord"><span class="mord mathnormal">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace nobreak"> </span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">7</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, le fluorure de calcium <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">a</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, le sulfate de calcium <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span></span></span></span> Leur réponse à différents types de rayonnements ionisants dépend de divers paramètres, tels qu leur composition isotopique, l'épaisseur du détecteur,...</p>
+<h2 id="modèle-de-niveaux-dénergie"><a class="header" href="#modèle-de-niveaux-dénergie">Modèle de niveaux d'énergie</a></h2>
+<p><img src="./images/2022_09_10_778a3b88fd20437b691bg-13-2.jpg" alt="image" />
+Ce schéma représente les bandes de valence et de conduction, ainsi que les niveaux d'énergie associés aux pièges à électrons et à trous introduits dans le cristal par les activateurs, c'est-à-dire les impuretés chimiques et les défauts réticulaires.</p>
+<p>Si le cristal est irradié, l'énergie est transmise aux électrons de la bande de valence et les fait passer dans la bande de conduction, en laissant des trous dans la bande de valence (figure a).</p>
+<p>Certains de ces électrons et trous se recombinent immédiatement, d'autres sont piégés dans les états métastables où ils peuvent subsister pendant très longtemps.</p>
+<p>L'échauffement du cristal libère les électrons et les trous de leurs pièges et les amène à se recombiner, soit rapidement (figure b), soit après avoir erré à travers le cristal dans la bande de conduction (figure c) ou dans la bande de valence (figure d).</p>
+<p>Dans tous les cas, il y a émission de lumière.</p>
+<p>Dans la plupart des matériaux utilisés, il existe un certain nombre de pièges situés à des niveaux d'énergie différents, si bien que la courbe de thermoluminescence présente habituellement plusieurs pics.</p>
+<p>La répartition des niveaux d'énergie des pièges, et donc le tracé de la courbe de thermoluminescence, dépend de plusieurs paramètres, dont le plus important est le passé thermique du matériau thermoluminescent considéré.</p>
+<p>Bande de conduction
+<img src="./images/2022_09_10_778a3b88fd20437b691bg-14.jpg" alt="image" />
+Bande de valenceb Crecombinaison</p>
+<h1 id="courbe-de-thermoluminescence"><a class="header" href="#courbe-de-thermoluminescence">courbe de thermoluminescence.</a></h1>
+<p>Dans la plupart des matériaux utilisés, il existe un certain nombre de pièges situés à des niveaux d'énergie différents, si bien que la courbe de thermoluminescence présente habituellement plusieurs pics.</p>
+<p>La répartition des niveaux d'énergie des pièges, et donc le tracé de la courbe de thermoluminescence, dépend de plusieurs paramètres, dont le plus important est le passé thermique du matériau thermoluminescent considéré.</p>
+<p><img src="./images/2022_09_10_778a3b88fd20437b691bg-14-1.jpg" alt="image" /></p>
+<p>Courbe de thermoluminescence du <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span></span></span></span></p>
+<p>La répartition spectrale de l'émission de thermoluminescence varie d'un matériau à l'autre et entre les divers pics de la même courbe de thermoluminescence.</p>
+<p>Dans le cas du dosimètre (LiF:Mg, Ti) la luminescence principale se situe à <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">23</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∘</span></span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span> pour un maximum du spectre d'émission situé à <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">400</span><span class="mspace nobreak"> </span><span class="mord mathnormal">nm</span></span></span></span>.</p>
+<p>La réponse de la plupart des matériaux thermoluminescentsen fonction de la dose absorbée est linéaire sur une large gamme de dose.</p>
+<p>Dans le cas du LiF, la réponse est linéaire jusqu'à une dose gamma d'au moins <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">5</span><span class="mspace nobreak"> </span><span class="mord mathnormal">G</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> (500 rad).</p>
+<p>Leurs pièges respectifs est une fonction de la température.</p>
+<p>Lorsque les pièges sont peu profonds, cette probabilité n'est pas négligeable à température ambiante.</p>
+<p>Par conséquent, une partie de l'information peut être perdue au cours de la période de stockage du dosimètre entre l'irradiation et la lecture.</p>
+<p>C'est ce qu'on appelle le <code>fading</code>.</p>
+<p>Un traitement thermique adéquat lors de la lecture permet de minimiser ce phenomene.</p>
+<h1 id="2eme--partie--aspects-pratiques"><a class="header" href="#2eme--partie--aspects-pratiques"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">eme </span></span></span></span></span></span></span></span></span></span></span></span></span> partie : Aspects pratiques</a></h1>
+<ul>
+<li>Gestion: demande?</li>
+<li>la réception?</li>
+<li>la lecture etc..</li>
+</ul>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3.6em;vertical-align:-1.55em;"></span><span class="mord"><span class="mtable"><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em;"><span style="top:-4.21em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord"> Fonction : </span></span></span></span><span style="top:-3.01em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-1.81em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.55em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em;"><span style="top:-4.21em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord amsrm">□</span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord"> Etudiant </span></span></span></span><span style="top:-3.01em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord amsrm">□</span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord"> M</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord">e</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˊ</span></span></span></span></span></span></span><span class="mord">decin </span></span></span></span><span style="top:-1.81em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord amsrm">□</span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord"> Infirmier(e) </span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.55em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em;"><span style="top:-4.21em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord amsrm">□</span><span class="mord text"><span class="mord"> Chercheur, doctorant </span></span></span></span><span style="top:-3.01em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord amsrm">□</span><span class="mord text"><span class="mord"> Technicien </span></span></span></span><span style="top:-1.81em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord amsrm">□</span><span class="mord text"><span class="mord"> Autre (</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord">a</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˋ</span></span></span></span></span></span></span><span class="mord"> pr</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord">e</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˊ</span></span></span></span></span></span></span><span class="mord">ciser) ......... </span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.55em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span></span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">Service</span><span class="mord nobreak">   </span><span class="mord">: ...............................</span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Campus : ...............................</span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Matricule (chez employeur ou </span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord">e</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˊ</span></span></span></span></span></span></span><span class="mord">tudiant)</span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:13.2em;vertical-align:-6.35em;"></span><span class="mord"><span class="mtable"><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:6.85em;"><span style="top:-9.01em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord"> Employeur : </span></span></span></span><span style="top:-7.81em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-6.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-5.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-4.21em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-3.01em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-1.81em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-0.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:0.59em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:1.79em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:2.99em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:6.35em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:6.85em;"><span style="top:-9.01em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord amsrm">□</span><span class="mspace" style="margin-right:1em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mord">.</span><span class="mord mathnormal">L</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span><span style="top:-7.81em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord"> Institut Bordet : </span></span></span></span><span style="top:-6.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-5.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-4.21em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord amsrm">□</span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord">C.H.U. Saint Pierre</span></span></span></span><span style="top:-3.01em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord amsrm">□</span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord">C.H.U. Brugmann</span></span></span></span><span style="top:-1.81em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord amsrm">□</span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord">H.U.D.E.R.F.</span></span></span></span><span style="top:-0.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord amsrm">□</span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord">H</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord">o</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˆ</span></span></span></span></span></span></span><span class="mord">pital Erasme</span></span></span></span><span style="top:0.59em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord amsrm">□</span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord">C.P.A. S. B.</span></span></span></span><span style="top:1.79em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord amsrm">□</span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord">Soci</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord">e</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˊ</span></span></span></span></span></span></span><span class="mord">t</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord">e</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˊ</span></span></span></span></span></span></span><span class="mord"> d’int</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord">e</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˊ</span></span></span></span></span></span></span><span class="mord">rim: ..............................................</span></span></span></span><span style="top:2.99em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord amsrm">□</span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord">Dur</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord">e</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˊ</span></span></span></span></span></span></span><span class="mord">e probable de l’int</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord">e</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˊ</span></span></span></span></span></span></span><span class="mord">rim:...............................</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:6.35em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-l"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:5.65em;"><span style="top:-7.81em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord amsrm">□</span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord">U.L.B</span></span></span></span><span style="top:-6.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord amsrm">□</span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord">Institut Bordet</span></span></span></span><span style="top:-5.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord amsrm">□</span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord">Centre des Tumeurs</span></span></span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span></span></span></span></span></span></p>
+<h2 id="quelques-recommandations-"><a class="header" href="#quelques-recommandations-">Quelques recommandations .....</a></h2>
+<ul>
+<li>Portez votre dosimètre</li>
+<li>Remettez-le régulièrement afin que nous puissions le lire et vous transmettre les résultats</li>
+<li>Chaque dosimètre est nominatif, portez celui qui vous est attribué</li>
+<li>Ce dosimètre est réutilisable, NE LE JETEZ PAS APRES USAGE !</li>
+<li>La fenêtre noire est fragile, ne la percez pas.</li>
+<li>Ce dosimètre est sensible aux U.V. : ne l'exposez pas au soleil, ....</li>
+<li>N'essayez pas de l'ouvrir, vous le casseriez !</li>
+<li>Lorsque vous passez un examen isotopique ou radiologique en tant que patient, ne portez pas votre dosimètre</li>
+<li>Pour tout problème concernant votre dosimètre, n'hésitez pas, contactez le Service de Contrôle Physique.</li>
+</ul>
+<h2 id="protection-lors-de-lutilisation-des-installations-mettant-en-oeuvre-des-ravons-x"><a class="header" href="#protection-lors-de-lutilisation-des-installations-mettant-en-oeuvre-des-ravons-x">Protection lors de l'utilisation des installations mettant en oeuvre des ravons <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span></a></h2>
+<p>Les conditions d'utilisation les plus courantes sont de l'ordre de <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">40</span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.22222em;">kV</span></span></span></span> et <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">30</span><span class="mspace nobreak"> </span><span class="mord mathnormal">m</span><span class="mord mathnormal">A</span></span></span></span>.</p>
+<p>Dans ces conditions, le pouvoir pénétrant du rayonnement est faible, mais par contre le débit de dose est énorme.
+De plus, le faisceau étant tellement étroit, le dosimètre a peu de chances d'être dans la trajectoire du faisceau lors d'un incident.</p>
+<p>L'accent devra donc être mis sur la sécurité intrinsèque de l'appareil pour prévenir tout incident. 2 types d'installations</p>
+<h2 id="appareils-autoblindés"><a class="header" href="#appareils-autoblindés">Appareils autoblindés</a></h2>
+<p>L'appareil autoblindés est se trouvant dans une enceinte blindée.</p>
+<p>Les installations récentes sont complètement enfermées dans des enceintes blindées et ne posent pas de problèmes majeurs.</p>
+<p>Néanmoins, une installation de ce type doit répondre aux obligations suivantes :</p>
+<ul>
+<li>
+<p>un signal lumineux doit s'allumer lorsque la haute tension est appliquée (si ce signal est défectueux, la haute tension ne devrait pas pouvoir être appliquée);</p>
+</li>
+<li>
+<p>les sécurités placées sur les portes d'accès à la chambre d'irradiation doivent être opérationnelles.</p>
+</li>
+</ul>
+<p>Toute ouverture d'une porte d'accès <strong>doit couper automatiquement</strong> l'alimentation électrique et par conséquent le faisceau.</p>
+<ul>
+<li>le sigle <code>radioactif</code> doit être apposé sur l'appareil</li>
+</ul>
+<h1 id="appareils-non-autoblindés"><a class="header" href="#appareils-non-autoblindés">Appareils non autoblindés</a></h1>
+<p>Il s'agit souvent de vieilles installations pour lesquelles peu (ou pas) de protections d'origine existent ; il a donc fallu <code>bricoler</code> ces protections.</p>
+<p>Le risque majeur lors de l'utilisation de ces installations provient bien souvent d'un mauvais ajustage des écrans de protection.</p>
+<p>Voici quelques règles à respecter :</p>
+<ul>
+<li>
+<p>ces installations doivent être utilisées par du personnel expérimenté et conscient des risques;</p>
+</li>
+<li>
+<p>les écrans de protection doivent être placés correctement avant toute mise sous tension; il convient également de placer des <code>barrières physiques</code> afin d'éviter qu'une partie du corps ne se retrouve dans le faisceau direct;</p>
+</li>
+<li>
+<p>chaque nouveau montage doit être soigneusement vérifié avant la mise en route de l'irradiation :</p>
+<ul>
+<li>
+<p>un signal lumineux doit s'allumer lorsque la haute tension est appliquée (si ce signal est défectueux, la haute tension ne devrait pas pouvoir être appliquée), signal lumineux au niveau de l'appareil et du local ;</p>
+</li>
+<li>
+<p>le nombre de personnes présentes dans le local doit être réduit au minimum ainsi que le temps de présence près de l'installation en fonctionnement;</p>
+</li>
+<li>
+<p>le port du dosimètre et d'un tablier plombé est obligatoire pour l'opérateur et pour toute personne se trouvant à proximité de l'installation;</p>
+</li>
+<li>
+<p>le sigle <code>radioactif</code> doit être apposé sur l'appareil et sur la porte du local ; il convient de tenir à jour un carnet d'utilisation de l'appareil reprenant au minimum les informations suivantes:</p>
+<ul>
+<li>date</li>
+<li>nom de l'utilisateur</li>
+<li>tension d'utilisation, nombre de <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">A</span></span></span></span>, temps d'irradiation</li>
+<li>positionnement des blindages</li>
+<li>remarque éventuelle, incident, ...</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="exposés"><a class="header" href="#exposés">Exposés</a></h1>
+<ul>
+<li>Les déchets radioactifs</li>
+<li>Radioprotection dans les cabinets d'imagerie</li>
+<li>Radioprotection dans les services de médecine nucléaire.</li>
+<li>Contamination et Décontaminations du lieu de travail</li>
+<li>Gestion des sources</li>
+<li>Transport des substances radioactives.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../s3/1-radio_protection/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../s3/1-radio_protection/chapter_2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../s3/1-radio_protection/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../s3/1-radio_protection/chapter_2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
